@@ -24,7 +24,8 @@
     "web-vitals": "^1.0.1"
   },
   "scripts": {
-    "lint": "eslint '*/**/*.{ts,tsx}' --fix",
+    "lint": "eslint '*/**/*.{js,jsx,ts,tsx}' --fix ",
+    "pretty": "prettier --config ./.prettierrc.js --write \"src/**/*.{js,jsx,ts,tsx,json}\"",
     "start": "react-app-rewired start",
     "build": "react-app-rewired build",
     "test": "react-app-rewired test",
@@ -49,6 +50,8 @@
     ]
   },
   "devDependencies": {
+    "@commitlint/cli": "13.1.0",
+    "@commitlint/config-conventional": "13.1.0",
     "@types/react-router-dom": "^5.1.7",
     "@types/styled-components": "^5.1.10",
     "@typescript-eslint/eslint-plugin": "^4.28.0",
@@ -65,20 +68,21 @@
     "eslint-plugin-prettier": "^3.4.0",
     "eslint-plugin-react": "^7.24.0",
     "eslint-plugin-react-hooks": "^4.2.0",
-    "husky": "^6.0.0",
-    "lint-staged": "^11.0.0",
+    "husky": "4.3.0",
+    "lint-staged": "11.0.0",
     "prettier": "^2.3.1",
     "react-app-rewired": "^2.1.8"
   },
+  "lint-staged": {
+    "*/**/*.{js,ts}": [
+      "yarn lint",
+      "yarn pretty"
+    ]
+  },
   "husky": {
     "hooks": {
-      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
-      "pre-commit": "lint-staged"
+      "pre-commit": "yarn lint-staged",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
     }
-  },
-  "lint-staged": {
-    "*.{js,jsx,ts,tsx}": [
-      "eslint --fix"
-    ]
   }
 }
