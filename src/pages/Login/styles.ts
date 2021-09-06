@@ -4,57 +4,101 @@ export const Container = styled.div`
   width: 100vw;
   height: 100vh;
 
-  background: rgb(130, 87, 229);
-  background: linear-gradient(
-    322deg,
-    rgba(130, 87, 229, 1) 0%,
-    rgba(91, 12, 125, 0.835171568627451) 50%,
-    rgba(202, 102, 255, 1) 100%
-  );
+  background: #034c3c;
 
   display: flex;
   align-items: center;
-  justify-content: center;
+  flex-direction: column;
+  justify-content: flex-start;
+  position: absolute;
 `;
 
-export const MainContainer = styled.div`
-  width: 90%;
-  height: 80%;
-  max-width: 1280px;
-  max-height: 750px;
-
-  border-radius: 30px;
-
-  background: rgb(130, 87, 229);
-  background: linear-gradient(
-    322deg,
-    rgba(130, 87, 229, 1) 0%,
-    rgba(91, 12, 125, 0.835171568627451) 50%,
-    rgba(202, 102, 255, 1) 100%
-  );
-
-  box-shadow: 0 2px 30px rgb(0 0 0 / 30%);
+export const Nav = styled.div`
+  width: 100%;
+  height: 10%;
+  background: none;
 
   display: flex;
-  flex-direction: row;
-`;
-
-export const ImgContainer = styled.div`
-  width: 55%;
-  height: 100%;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
 
   img {
-    width: 90%;
+    padding-left: 50px;
+
+    width: 90px;
+    height: 90px;
+
+    position: absolute;
   }
 `;
 
-export const FormContainer = styled.div`
-  width: 45%;
-  height: 100%;
+export const FormContainer = styled.form`
+  width: 100%;
+  min-width: 350px;
+  max-width: 450px;
+  height: 500px;
 
-  background: #f4f4f4;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+
+  position: absolute;
+
+  top: 25%;
+
+  background: #fff;
+
+  border-radius: 10px;
+`;
+
+export const Header = styled.div`
+  width: 100%;
+  height: 18%;
+
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+
+  margin-bottom: 20px;
+`;
+
+export const Title = styled.span`
+  font-size: 20px;
+  font-weight: 500;
+  color: #222222;
+`;
+
+export const Button = styled.button.attrs({
+  type: 'submit',
+})`
+  width: 70%;
+  height: 13%;
+  background: none;
+
+  border: 1.5px solid #cecece;
+  border-radius: 5px;
+
+  color: #cecece;
+  font-weight: 400;
+
+  margin-top: 50px;
+
+  cursor: pointer;
+
+  &:hover {
+    border: 1.5px solid #034c3c;
+    color: #034c3c;
+
+    transition: 0.4s;
+  }
+`;
+
+export const Span = styled.span`
+  color: #034c3c;
+  font-size: 15px;
+  font-weight: 400;
+
+  padding-top: 50px;
+
+  text-decoration: underline;
+
+  cursor: pointer;
 `;
