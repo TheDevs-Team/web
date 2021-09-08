@@ -40,7 +40,7 @@ export const FormContainer = styled.form`
   align-items: center;
   flex-direction: column;
 
-  margin: 50px 10px 0 10px;
+  margin: 8% 10px 0 10px;
 
   background: #fff;
 
