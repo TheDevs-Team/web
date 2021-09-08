@@ -6,7 +6,7 @@ import { Login } from './pages';
 export const Routes: React.FC = () => (
   <BrowserRouter>
     <Switch>
-      <Route exact path={'/entrar'} component={Login} />
+      <Route exact path={'/'} component={Login} />
     </Switch>
   </BrowserRouter>
 );
