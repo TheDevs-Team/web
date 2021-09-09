@@ -1,10 +1,11 @@
 import styled from 'styled-components';
+import colors from '~/theme/colors';
 
 export const Container = styled.div`
   width: 100vw;
   height: 100vh;
 
-  background: #034c3c;
+  background: ${colors.primary.main};
 
   display: flex;
   align-items: center;
@@ -42,7 +43,7 @@ export const FormContainer = styled.form`
 
   margin: auto;
 
-  background: #fff;
+  background: ${colors.primary.white};
 
   border-radius: 10px;
 `;
@@ -61,7 +62,7 @@ export const Header = styled.div`
 export const Title = styled.span`
   font-size: 20px;
   font-weight: 500;
-  color: #222222;
+  color: ${colors.primary.dark};
 `;
 
 export const Button = styled.button.attrs({
@@ -71,10 +72,10 @@ export const Button = styled.button.attrs({
   height: 13%;
   background: none;
 
-  border: 1.5px solid #cecece;
+  border: 1.5px solid ${colors.primary.light};
   border-radius: 5px;
 
-  color: #cecece;
+  color: ${colors.primary.light};
   font-weight: 400;
 
   margin-top: 50px;
@@ -82,15 +83,15 @@ export const Button = styled.button.attrs({
   cursor: pointer;
 
   &:hover {
-    border: 1.5px solid #034c3c;
-    color: #034c3c;
+    border: 1.5px solid ${colors.primary.main};
+    color: ${colors.primary.main};
 
     transition: 0.4s;
   }
 `;
 
 export const Span = styled.span`
-  color: #034c3c;
+  color: ${colors.primary.main};
   font-size: 15px;
   font-weight: 400;
 
