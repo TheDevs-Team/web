@@ -5,7 +5,7 @@ import GlobalStyle from '~/styles/global';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-import logoImg from 'assets/logo.png';
+import logoImg from 'assets/png/logo.png';
 import Input from '~/components/Input/Input';
 import { Container, Nav, FormContainer, Header, Title, Button, Span } from './styles';
 
