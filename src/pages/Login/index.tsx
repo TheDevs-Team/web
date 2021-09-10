@@ -5,7 +5,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useHistory } from 'react-router-dom';
 import logoImg from 'assets/png/logo.png';
-import Input from '~/components/Input/Input';
+import { Input } from '~/components';
 import { Container, Nav, FormContainer, Header, Title, Button, Span } from './styles';
 import { setToken } from '~/utils';
 import api from '~/api/user.api';
