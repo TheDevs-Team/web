@@ -9,8 +9,6 @@ type Props = {
   onChange?: (event) => void;
 };
 
-const Input: React.FC<Props> = ({ placeholder, type, onChange, ...rest }) => {
+export const Input: React.FC<Props> = ({ placeholder, type, onChange, ...rest }) => {
   return <Container {...{ ...rest }} placeholder={placeholder} type={type} onChange={onChange} />;
 };
-
-export default Input;
