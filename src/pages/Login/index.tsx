@@ -8,7 +8,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import logoImg from 'assets/png/logo.png';
 import Input from '~/components/Input/Input';
 import { Container, Nav, FormContainer, Header, Title, Button, Span } from './styles';
-
+import { setToken } from '~/utils';
 import api from '~/api/user.api';
 
 export const Login: React.FC = () => {
@@ -22,9 +22,9 @@ export const Login: React.FC = () => {
     const response = await api.Login({ email, password });
 
     if (response) {
-      await localStorage.setItem('@g2k:token', response.data.token);
+      setToken(response.data.token);
 
-      return (window.location.href = 'www.google.com');
+      return (window.location.href = '/');
     }
     return notify('Email/Senha Incorretos!');
   };
