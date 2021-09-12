@@ -6,7 +6,7 @@ import { useHistory } from 'react-router-dom';
 import logoImg from 'assets/png/logo.png';
 import { Input } from '~/components';
 import { Container, Nav, FormContainer, Header, Title, Button, Span } from './styles';
-import { setToken } from '~/utils';
+import { setToken, setUserData } from '~/utils';
 import api from '~/api/user.api';
 
 export const Login: React.FC = () => {
@@ -22,8 +22,8 @@ export const Login: React.FC = () => {
     const { user, token } = await api.Login({ email, password });
 
     if (token) {
-      console.log(token, user);
       setToken(token);
+      setUserData(user);
 
       history.push('/');
     }
