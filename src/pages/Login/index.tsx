@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/rules-of-hooks */
 import React, { useState } from 'react';
 import GlobalStyle from '~/styles/global';
 import { ToastContainer, toast } from 'react-toastify';
@@ -11,8 +10,8 @@ import { setToken } from '~/utils';
 import api from '~/api/user.api';
 
 export const Login: React.FC = () => {
-  const [password, setPassword] = useState<string>();
-  const [email, setEmail] = useState<string>();
+  const [password, setPassword] = useState<string>('');
+  const [email, setEmail] = useState<string>('');
 
   const notify = (value) => toast.error(value);
 
@@ -20,10 +19,11 @@ export const Login: React.FC = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    const response = await api.Login({ email, password });
+    const { user, token } = await api.Login({ email, password });
 
-    if (response) {
-      setToken(response.data.token);
+    if (token) {
+      console.log(token, user);
+      setToken(token);
 
       history.push('/');
     }
