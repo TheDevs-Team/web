@@ -11,17 +11,19 @@ import {
   ListCourses,
   ContentList,
 } from './styles';
+import { UserStore } from '~/store';
 import { Modal, CourseCard } from '../../components';
 import api from '~/services/api';
 
-export const Course: React.FC = () => {
-  // Estado do modal para abrir e fechar
-  const [modal, setModal] = useState(false);
+type Props = {
+  user: UserStore;
+};
 
-  //Declarando state
+export const Course: React.FC<Props> = ({ user }) => {
+  const [modal, setModal] = useState(false);
   const [courses, setCourses] = useState<CourseType[]>([]);
 
-  // Pegando dados do endpoint
+  console.log('AAAAAAAAAAAA', user.profile);
   useEffect(() => {
     api.get('course/list').then(({ data }) => {
       setCourses(data);

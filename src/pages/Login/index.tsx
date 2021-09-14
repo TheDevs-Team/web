@@ -17,13 +17,15 @@ const LoginContainer: React.FC<Props> = ({ user }) => {
     const response = await user.login({ email, password });
 
     if (response) {
-      notify('success', 'Bem vindo');
+      console.log('LOGIN PAGE:', user.profile.name);
+      console.log('profile name', user.profile.name);
+      return notify('success', 'Bem vindo');
     }
 
     notify('error', 'Login inválido');
   };
 
-  return <Login onSubmit={onSubmit} setEmail={setEmail} setPassword={setPassword} />;
+  return <Login onSubmit={onSubmit} setEmail={setEmail} setPassword={setPassword} name={user.profile?.name} />;
 };
 
 export default inject('user')(observer(LoginContainer));

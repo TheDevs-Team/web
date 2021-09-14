@@ -23,7 +23,8 @@
     "jsx": "react-jsx",
     "baseUrl": "./src",
     "emitDecoratorMetadata": true,
-    "experimentalDecorators": true
+    "experimentalDecorators": true,
+    "strictPropertyInitialization": false
   },
   "include": [
     "./src/**/*.ts",

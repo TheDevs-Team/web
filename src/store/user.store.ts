@@ -6,7 +6,7 @@ import { setToken } from '~/utils';
 class UserStore {
   @persist('object')
   @observable
-  profile!: UserType;
+  profile: UserType;
 
   @observable
   user = 'USER TESTE';
@@ -15,10 +15,9 @@ class UserStore {
   login = async (values: UserLoginType): Promise<boolean> => {
     const response = await UserAPI.Login(values);
 
-    console.log('api response', response);
-
     if (response) {
-      this.profile = response.user;
+      console.log('STORE:', response.user.name);
+      this.profile = response.user as UserType;
       setToken(response.token);
 
       return true;

@@ -27,14 +27,14 @@ export const notify = (type: 'success' | 'error', msg: string) => {
   if (type === 'error') {
     const notifyError = () =>
       toast.error(msg, {
-        toastId: 'no-repeat',
+        toastId: 'no-repeat-error',
       });
 
     return notifyError();
   }
   const notifySuccess = () =>
     toast.success(msg, {
-      toastId: 'no-repeat',
+      toastId: 'no-repeat-success',
     });
 
   return notifySuccess();

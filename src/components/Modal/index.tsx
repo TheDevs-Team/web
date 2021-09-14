@@ -26,7 +26,6 @@ export const Modal: React.FC<Props> = ({ onClose = () => {} }) => {
     e.preventDefault();
 
     const response = await api.post('course/create', state);
-    console.log(response);
 
     if (response) {
       window.location.reload();

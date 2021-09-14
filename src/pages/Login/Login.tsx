@@ -9,9 +9,10 @@ type Props = {
   onSubmit: (event: React.FormEvent<HTMLFormElement>) => void;
   setPassword: (value: string) => void;
   setEmail: (value: string) => void;
+  name: string;
 };
 
-export const Login: React.FC<Props> = ({ onSubmit, setEmail, setPassword }) => {
+export const Login: React.FC<Props> = ({ onSubmit, setEmail, setPassword, name }) => {
   return (
     <Container>
       <Nav>
@@ -24,7 +25,7 @@ export const Login: React.FC<Props> = ({ onSubmit, setEmail, setPassword }) => {
         <Input placeholder="E-mail" type="text" onChange={(event) => setEmail(event.target.value)} />
         <Input placeholder="Senha" type="password" onChange={(event) => setPassword(event.target.value)} />
         <Button>CONTINUAR</Button>
-        <Span>Ainda não sou G2K </Span>
+        <Span>eu, {name}</Span>
       </FormContainer>
     </Container>
   );
