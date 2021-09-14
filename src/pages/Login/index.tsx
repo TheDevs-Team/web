@@ -12,13 +12,12 @@ const LoginContainer: React.FC<Props> = ({ user }) => {
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
 
+  console.log('AAAABC', user.profile);
   const onSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const response = await user.login({ email, password });
 
     if (response) {
-      console.log('LOGIN PAGE:', user.profile.name);
-      console.log('profile name', user.profile.name);
       return notify('success', 'Bem vindo');
     }
 
