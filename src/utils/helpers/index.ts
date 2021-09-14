@@ -1,3 +1,5 @@
+import { toast } from 'react-toastify';
+
 export const getToken = (): string | null => {
   return localStorage.getItem('@g2k:token');
 };
@@ -19,4 +21,21 @@ export const setUserData = ({ id, name, document, email, phone, type, financial_
   });
 
   return localStorage.setItem('@g2k:user', userData);
+};
+
+export const notify = (type: 'success' | 'error', msg: string) => {
+  if (type === 'error') {
+    const notifyError = () =>
+      toast.error(msg, {
+        toastId: 'no-repeat',
+      });
+
+    return notifyError();
+  }
+  const notifySuccess = () =>
+    toast.success(msg, {
+      toastId: 'no-repeat',
+    });
+
+  return notifySuccess();
 };
