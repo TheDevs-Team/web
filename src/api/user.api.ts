@@ -1,14 +1,14 @@
 import api from '~/services/api';
 
-class UserApi {
-  Login = async (values: UserLoginType) => {
+class UserAPI {
+  static Login = async (values: UserLoginType): Promise<UserLoginResponse | null> => {
     try {
       const { data } = await api.post('/user/login', values);
-      return data;
+      return data || null;
     } catch (error) {
-      return error.response.data;
+      return null;
     }
   };
 }
 
-export default new UserApi();
+export default UserAPI;

@@ -16,3 +16,8 @@ declare type UserType = {
   created_at?: Date;
   updated_at?: Date;
 };
+
+declare type UserLoginResponse = {
+  user: UserType;
+  token: string;
+};

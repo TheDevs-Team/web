@@ -1,53 +1,26 @@
+import { inject, observer } from 'mobx-react';
 import React, { useState } from 'react';
-import GlobalStyle from '~/styles/global';
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-import { useHistory } from 'react-router-dom';
-import logoImg from 'assets/png/logo.png';
-import { Input } from '~/components';
-import { Container, Nav, FormContainer, Header, Title, Button, Span } from './styles';
-import { setToken, setUserData } from '~/utils';
-import api from '~/api/user.api';
+import { UserStore } from '~/store';
+import { Login } from './Login';
 
-export const Login: React.FC = () => {
-  const [password, setPassword] = useState<string>('');
+type Props = {
+  user: UserStore;
+};
+
+const LoginContainer: React.FC<Props> = ({ user }) => {
   const [email, setEmail] = useState<string>('');
+  const [password, setPassword] = useState<string>('');
 
-  const notify = (value) => toast.error(value);
+  console.log(user.profile);
 
-  const history = useHistory();
-
-  const handleSubmit = async (event) => {
+  const onSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const { user, token } = await api.Login({ email, password });
+    const response = await user.login({ email, password });
 
-    if (token) {
-      setToken(token);
-      setUserData(user);
-
-      history.push('/');
-    }
-    return notify('Email/Senha Incorretos!');
+    console.log(response);
   };
 
-  return (
-    <>
-      <GlobalStyle />
-      <Container>
-        <Nav>
-          <img src={logoImg} />
-        </Nav>
-        <FormContainer onSubmit={(event) => handleSubmit(event)}>
-          <Header>
-            <Title>Faça seu login</Title>
-          </Header>
-          <Input placeholder="E-mail" type="text" onChange={(event) => setEmail(event.target.value)} />
-          <Input placeholder="Senha" type="password" onChange={(event) => setPassword(event.target.value)} />
-          <Button>CONTINUAR</Button>
-          <ToastContainer />
-          <Span>Ainda não sou G2K </Span>
-        </FormContainer>
-      </Container>
-    </>
-  );
+  return <Login onSubmit={onSubmit} setEmail={setEmail} setPassword={setPassword} />;
 };
+
+export default inject('user')(observer(LoginContainer));
