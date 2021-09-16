@@ -16,19 +16,9 @@ export const Container = styled.div`
 
 export const Nav = styled.div`
   width: 100%;
-  height: 10%;
   background: none;
 
   display: flex;
-
-  img {
-    padding-left: 50px;
-
-    width: 90px;
-    height: 90px;
-
-    position: absolute;
-  }
 `;
 
 export const FormContainer = styled.form`
@@ -63,6 +53,21 @@ export const Title = styled.span`
   font-size: 20px;
   font-weight: 500;
   color: ${colors.primary.dark};
+`;
+
+export const Logo = styled.span`
+  font-size: 25px;
+  font-weight: 500;
+
+  color: ${colors.primary.white};
+
+  padding-left: 50px;
+  padding-top: 30px;
+
+  width: 90px;
+  height: 90px;
+
+  position: absolute;
 `;
 
 export const Button = styled.button.attrs({
