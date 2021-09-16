@@ -12,7 +12,7 @@ class UserStore {
   user = 'USER TESTE';
 
   @action
-  login = async (values: UserLoginType) => {
+  login = async (values: UserLoginType): Promise<boolean> => {
     const response = await UserAPI.Login(values);
 
     console.log('api response', response);
@@ -20,7 +20,11 @@ class UserStore {
     if (response) {
       this.profile = response.user;
       setToken(response.token);
+
+      return true;
     }
+
+    return false;
   };
 }
 
