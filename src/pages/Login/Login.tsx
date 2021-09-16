@@ -1,9 +1,8 @@
 /* eslint-disable no-unused-vars */
 import React from 'react';
 
-import logoImg from 'assets/png/logo.png';
 import { Input } from '~/components';
-import { Container, Nav, FormContainer, Header, Title, Button, Span } from './styles';
+import { Container, Nav, FormContainer, Header, Title, Button, Span, Logo } from './styles';
 
 type Props = {
   onSubmit: (event: React.FormEvent<HTMLFormElement>) => void;
@@ -16,7 +15,7 @@ export const Login: React.FC<Props> = ({ onSubmit, setEmail, setPassword, name }
   return (
     <Container>
       <Nav>
-        <img src={logoImg} />
+        <Logo>G2K</Logo>
       </Nav>
       <FormContainer onSubmit={(event) => onSubmit(event)}>
         <Header>

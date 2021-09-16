@@ -1,4 +1,6 @@
 export * from './CourseCard';
 export * from './Input';
 export * from './Modal';
-export * from './If';
+export * from './Header/Header';
+export * from './Aside/Aside';
+export * from './Main/Main';
