@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
 import { toast } from 'react-toastify';
 
 export const getToken = (): string | null => {
@@ -8,33 +9,26 @@ export const setToken = (value: string): void => {
   return localStorage.setItem('@g2k:token', value);
 };
 
-export const setUserData = ({ id, name, document, email, phone, type, financial_status, active }: UserType): void => {
-  const userData = JSON.stringify({
-    id,
-    name,
-    document,
-    email,
-    phone,
-    type,
-    financial_status,
-    active,
-  });
+export const setUserData = (user: string): void => {
+  return localStorage.setItem('@g2k:user', JSON.stringify(user));
+};
 
-  return localStorage.setItem('@g2k:user', userData);
+export const getUserData = () => {
+  return JSON.parse(localStorage.getItem('@g2k:user')!);
 };
 
 export const notify = (type: 'success' | 'error', msg: string) => {
   if (type === 'error') {
     const notifyError = () =>
       toast.error(msg, {
-        toastId: 'no-repeat',
+        toastId: 'no-repeat-error',
       });
 
     return notifyError();
   }
   const notifySuccess = () =>
     toast.success(msg, {
-      toastId: 'no-repeat',
+      toastId: 'no-repeat-success',
     });
 
   return notifySuccess();

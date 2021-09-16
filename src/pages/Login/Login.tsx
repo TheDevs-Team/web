@@ -23,7 +23,7 @@ export const Login: React.FC<Props> = ({ onSubmit, setEmail, setPassword }) => {
         <Input placeholder="E-mail" type="text" onChange={(event) => setEmail(event.target.value)} />
         <Input placeholder="Senha" type="password" onChange={(event) => setPassword(event.target.value)} />
         <Button>CONTINUAR</Button>
-        <Span>Ainda não sou G2K </Span>
+        <Span>Ainda não sou G2K</Span>
       </FormContainer>
     </Container>
   );
