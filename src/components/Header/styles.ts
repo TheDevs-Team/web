@@ -45,6 +45,9 @@ export const Avatar = styled(IoIosContact)`
   font-size: 30px;
   padding: 0 15px;
   cursor: pointer;
+  &:hover {
+    color: #219150;
+  }
 `;
 
 export const Logout = styled(FiLogOut)`
@@ -52,4 +55,13 @@ export const Logout = styled(FiLogOut)`
   font-size: 25px;
   padding: 0 15px;
   cursor: pointer;
+`;
+
+export const Button = styled.button`
+  background: none;
+  border: none;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;

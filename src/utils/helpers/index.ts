@@ -39,3 +39,8 @@ export const notify = (type: 'success' | 'error', msg: string) => {
 
   return notifySuccess();
 };
+
+export const logout = () => {
+  localStorage.removeItem('@g2k:token');
+  window.location.reload();
+};

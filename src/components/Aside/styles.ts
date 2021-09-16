@@ -6,7 +6,6 @@ import { HiOutlineDocumentText, HiOutlineDocumentDuplicate } from 'react-icons/h
 import { colors } from '~/theme';
 
 export const Container = styled.div`
-  width: 55px;
   height: 93%;
 
   display: flex;
@@ -39,7 +38,7 @@ export const Ul = styled.ul`
 `;
 
 export const Li = styled.li`
-  padding: 20px 0;
+  padding: 20px 12px;
   overflow: hidden;
 `;
 
@@ -47,22 +46,35 @@ export const Home = styled(AiOutlineHome)`
   color: ${colors.primary.white};
   font-size: 25px;
   cursor: pointer;
+
+  &:hover {
+    color: #219150;
+  }
 `;
 
 export const Courses = styled(HiOutlineDocumentDuplicate)`
   color: ${colors.primary.white};
   font-size: 25px;
   cursor: pointer;
+  &:hover {
+    color: #219150;
+  }
 `;
 
 export const Materials = styled(HiOutlineDocumentText)`
   color: ${colors.primary.white};
   font-size: 25px;
   cursor: pointer;
+  &:hover {
+    color: #219150;
+  }
 `;
 
 export const Users = styled(FiUsers)`
   color: ${colors.primary.white};
   font-size: 25px;
   cursor: pointer;
+  &:hover {
+    color: #219150;
+  }
 `;
