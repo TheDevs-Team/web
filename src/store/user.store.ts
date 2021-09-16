@@ -13,7 +13,7 @@ class UserStore {
 
   @action
   login = async (values: UserLoginType): Promise<boolean> => {
-    const response = await UserAPI.Login(values);
+    const response = await UserAPI.login(values);
 
     if (response) {
       setUserData(response.user as unknown as string);

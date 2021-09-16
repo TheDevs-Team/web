@@ -6,7 +6,7 @@ import { Login, HomeAdm } from '../pages';
 export const Routes: React.FC = () => (
   <BrowserRouter>
     <Switch>
-      <PrivateRoute exact path={'/adm'} component={HomeAdm} />
+      <PrivateRoute exact path={'/'} component={HomeAdm} />
       <Route exact path={'/entrar'} component={Login} />
     </Switch>
   </BrowserRouter>
