@@ -20,7 +20,7 @@ const LoginContainer: React.FC<Props> = ({ user }) => {
     const response = await user.login({ email, password });
 
     if (response) {
-      return history.push('/adm');
+      return history.push('/');
     }
 
     notify('error', 'Login inválido');

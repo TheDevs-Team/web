@@ -1,2 +1,2 @@
 export { default as Login } from './Login';
-export * from './HomeAdm/HomeAdm';
+export { default as HomeAdm } from './HomeAdm';
