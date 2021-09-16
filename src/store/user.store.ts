@@ -1,7 +1,7 @@
 import { observable, action } from 'mobx';
 import { persist } from 'mobx-persist';
 import { UserAPI } from '~/api';
-import { setToken } from '~/utils';
+import { setToken, setUserData } from '~/utils';
 
 class UserStore {
   @persist('object')
@@ -16,8 +16,7 @@ class UserStore {
     const response = await UserAPI.Login(values);
 
     if (response) {
-      console.log('STORE:', response.user.name);
-      this.profile = response.user as UserType;
+      setUserData(response.user as unknown as string);
       setToken(response.token);
 
       return true;

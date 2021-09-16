@@ -1,16 +1,15 @@
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
 import React from 'react';
 import { observer, inject } from 'mobx-react';
-import { UserStore } from '~/store';
 import { Course } from './Course';
 
-type Props = {
-  user: UserStore;
-};
+const CourseContainer: React.FC = () => {
+  const { name } = JSON.parse(localStorage.getItem('@g2k:user')!);
+  const user = JSON.parse(localStorage.getItem('@g2k:user')!);
 
-const CourseContainer: React.FC<Props> = ({ user }) => {
-  console.log(user.profile);
+  console.log(user);
 
-  return <Course name={user.profile.name} />;
+  return <Course name={name} />;
 };
 
 export default inject('user')(observer(CourseContainer));
