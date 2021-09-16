@@ -1,7 +1,7 @@
 import React from 'react';
 
-import { Avatar, Container, Logo, Logout, Menu } from './styles';
-
+import { Avatar, Container, Logo, Logout, Menu, Button } from './styles';
+import { logout } from '~/utils';
 export const Header: React.FC = () => {
   return (
     <Container>
@@ -10,7 +10,9 @@ export const Header: React.FC = () => {
       </Logo>
       <Menu>
         <Avatar title="Perfil" />
-        <Logout title="Sair" />
+        <Button onClick={logout}>
+          <Logout title="Sair" />
+        </Button>
       </Menu>
     </Container>
   );
