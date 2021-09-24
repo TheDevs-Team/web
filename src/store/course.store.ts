@@ -5,14 +5,15 @@ import { CourseAPI } from '~/api';
 class CourseStore {
   @persist('object')
   @observable
-  courses: CourseType[];
+  courses: CourseType[] = [];
 
   @action
   list = async (): Promise<CourseType[]> => {
     const response = await CourseAPI.list();
 
     if (response) {
-      return (this.courses = response);
+      this.courses = response;
+      return response;
     }
 
     return (this.courses = []);
