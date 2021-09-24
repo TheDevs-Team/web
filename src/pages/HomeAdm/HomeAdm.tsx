@@ -1,14 +1,23 @@
 import React from 'react';
-
-import { Header, Aside, Main } from '~/components';
-import { Container } from './styles';
+import GlobalStyles from '../../styles/global';
+import { Header, Table } from '~/components';
+import { Container, Main, RightSide, LeftSide, Users } from './styles';
 
 export const HomeAdm: React.FC = () => {
   return (
-    <Container>
-      <Header />
-      <Main />
-      <Aside />
-    </Container>
+    <>
+      <GlobalStyles />
+      <Container>
+        <Header />
+        <Main>
+          <LeftSide>
+            <Users>
+              <Table />
+            </Users>
+          </LeftSide>
+          <RightSide></RightSide>
+        </Main>
+      </Container>
+    </>
   );
 };

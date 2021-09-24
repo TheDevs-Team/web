@@ -8,15 +8,12 @@ type Props = {
 };
 
 const HomeAdmContainer: React.FC<Props> = ({ course }) => {
-  const fetchCourses = async () => {
-    await course.list();
-
-    console.log('courses', course.courses);
-  };
+  const fetchCourses = async () => await course.list();
 
   useEffect(() => {
     fetchCourses();
   }, []);
+
   return <HomeAdm />;
 };
 
