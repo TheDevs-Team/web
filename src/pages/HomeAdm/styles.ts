@@ -10,15 +10,18 @@ export const Container = styled.div`
 export const Main = styled.div`
   width: 100%;
   height: 94%;
+
   background: ${colors.primary.dark};
 
   display: flex;
   align-items: center;
-  flex-direction: row;
+  justify-content: space-around;
+  flex-direction: column;
 `;
 
-export const LeftSide = styled.div`
-  width: 60%;
+export const UserField = styled.div`
+  width: 100%;
+
   height: 100%;
 
   display: flex;
@@ -27,7 +30,9 @@ export const LeftSide = styled.div`
 `;
 
 export const Users = styled.div`
-  height: 80%;
+  height: 95%;
+  width: 100%;
+  overflow-x: scroll;
   border-radius: 10px;
   margin: 0px 20px;
 
@@ -36,20 +41,15 @@ export const Users = styled.div`
   flex-direction: column;
 
   ::-webkit-scrollbar-track {
-    background-color: #222222;
+    background-color: transparent;
   }
   ::-webkit-scrollbar {
     width: 3px;
-    background: #f4f4f4;
+    background: transparent;
   }
   ::-webkit-scrollbar-thumb {
-    background: #dad7d7;
+    background: transparent;
   }
-`;
-
-export const RightSide = styled.div`
-  width: 40%;
-  height: 100%;
 `;
 
 export const CloseIcon = styled(AiOutlineClose)`

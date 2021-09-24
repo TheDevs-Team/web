@@ -1,7 +1,7 @@
 import React from 'react';
 import GlobalStyles from '../../styles/global';
 import { Header, Table } from '~/components';
-import { Container, Main, RightSide, LeftSide, Users } from './styles';
+import { Container, Main, UserField, Users } from './styles';
 
 export const HomeAdm: React.FC = () => {
   return (
@@ -10,12 +10,11 @@ export const HomeAdm: React.FC = () => {
       <Container>
         <Header />
         <Main>
-          <LeftSide>
+          <UserField>
             <Users>
               <Table />
             </Users>
-          </LeftSide>
-          <RightSide></RightSide>
+          </UserField>
         </Main>
       </Container>
     </>
