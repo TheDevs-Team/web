@@ -1,7 +1,8 @@
 import React from 'react';
 
-import { Avatar, Container, Logo, Logout, Menu, Button } from './styles';
+import { Avatar, Container, Logo, Logout, Menu, Button, Ul, Li, Home, Courses, Materials, Users } from './styles';
 import { logout } from '~/utils';
+
 export const Header: React.FC = () => {
   return (
     <Container>
@@ -9,10 +10,28 @@ export const Header: React.FC = () => {
         <span>G2K</span>
       </Logo>
       <Menu>
-        <Avatar title="Perfil" />
-        <Button onClick={logout}>
-          <Logout title="Sair" />
-        </Button>
+        <Ul>
+          <Li>
+            <Home title="Resumo" />
+          </Li>
+          <Li>
+            <Courses title="Cursos" />
+          </Li>
+          <Li>
+            <Materials title="Materiais" />
+          </Li>
+          <Li>
+            <Users title="Usuarios" />
+          </Li>
+          <Li>
+            <Avatar title="Perfil" />
+          </Li>
+          <Li>
+            <Button onClick={logout}>
+              <Logout title="Sair" />
+            </Button>
+          </Li>
+        </Ul>
       </Menu>
     </Container>
   );
