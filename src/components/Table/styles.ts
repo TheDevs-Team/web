@@ -1,8 +1,9 @@
 import styled from 'styled-components';
 
 export const Container = styled.table`
+  height: 100%;
+  width: 100%;
   border-collapse: collapse;
-  letter-spacing: 1px;
   font-family: sans-serif;
   font-size: 0.8rem;
 `;
