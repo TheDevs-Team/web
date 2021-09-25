@@ -9,6 +9,15 @@ class UserAPI {
       return null;
     }
   };
+
+  static list = async (): Promise<UserType[] | []> => {
+    try {
+      const { data } = await api.get('/user/list');
+      return data;
+    } catch (error) {
+      return [];
+    }
+  };
 }
 
 export default UserAPI;

@@ -9,7 +9,7 @@ class UserStore {
   profile: UserType;
 
   @observable
-  user = 'USER TESTE';
+  users: UserType[] | [];
 
   @action
   login = async (values: UserLoginType): Promise<boolean> => {
@@ -23,6 +23,17 @@ class UserStore {
     }
 
     return false;
+  };
+
+  @action
+  list = async (): Promise<UserType[] | []> => {
+    const response = await UserAPI.list();
+
+    if (response) {
+      return (this.users = response);
+    }
+
+    return [];
   };
 }
 

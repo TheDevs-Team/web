@@ -3,7 +3,11 @@ import GlobalStyles from '../../styles/global';
 import { Header, Table } from '~/components';
 import { Container, Main, UserField, Users } from './styles';
 
-export const HomeAdm: React.FC = () => {
+type Props = {
+  users: UserType[];
+};
+
+export const HomeAdm: React.FC<Props> = ({ users }) => {
   return (
     <>
       <GlobalStyles />
@@ -12,7 +16,7 @@ export const HomeAdm: React.FC = () => {
         <Main>
           <UserField>
             <Users>
-              <Table />
+              <Table users={users} />
             </Users>
           </UserField>
         </Main>

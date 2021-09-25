@@ -1,20 +1,22 @@
 import { inject, observer } from 'mobx-react';
-import React, { useEffect } from 'react';
-import { CourseStore } from '~/store';
+import React, { useEffect, useState } from 'react';
 import { HomeAdm } from './HomeAdm';
+import api from '~/services/api';
 
-type Props = {
-  course: CourseStore;
-};
+const HomeAdmContainer: React.FC = () => {
+  const [users, setUsers] = useState<UserType[]>([]);
 
-const HomeAdmContainer: React.FC<Props> = ({ course }) => {
-  const fetchCourses = async () => await course.list();
+  const fetchUsers = async () => {
+    const { data } = await api.get('/user/list');
+    console.log(data);
+    setUsers(data);
+  };
 
   useEffect(() => {
-    fetchCourses();
+    fetchUsers();
   }, []);
 
-  return <HomeAdm />;
+  return <HomeAdm users={users} />;
 };
 
-export default inject('course')(observer(HomeAdmContainer));
+export default inject('user')(observer(HomeAdmContainer));
