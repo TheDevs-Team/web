@@ -32,7 +32,7 @@ export const UserField = styled.div`
 export const Users = styled.div`
   height: 95%;
   width: 100%;
-  overflow-x: scroll;
+  overflow-x: auto;
   border-radius: 10px;
   margin: 0px 20px;
 
