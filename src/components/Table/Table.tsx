@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Container, Thead, Tr, Th, Td, Tbody, ButtonEdit, ButtonRemove } from './styles';
+import { Container, Thead, Tr, Th, Td, Tbody, ButtonEdit, ButtonRemove, ButtonCreate } from './styles';
 
 type Props = {
   users?: UserType[];
@@ -18,13 +18,15 @@ export const Table: React.FC<Props> = ({ users }) => {
           <Th scope="row">Financeiro</Th>
           <Th scope="row">Status</Th>
           <Th scope="row"></Th>
-          <Th scope="row"></Th>
+          <Th scope="row">
+            <ButtonCreate>Adicionar</ButtonCreate>
+          </Th>
         </Tr>
       </Thead>
       <Tbody>
         {users?.map((user: UserType, idx: number) => (
           <Tr key={idx}>
-            <Th scope="row">1</Th>
+            <Th scope="row">{idx + 1}</Th>
             <Td>{user.name}</Td>
             <Td>{user.document}</Td>
             <Td>{user.email}</Td>
