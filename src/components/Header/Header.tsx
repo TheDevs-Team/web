@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Avatar, Container, Logo, Logout, Menu, Button, Ul, Li, Home, Courses, Materials, Users } from './styles';
+import { Avatar, Container, Logo, Logout, Menu, Button, Ul, Li, Courses, Materials, Users } from './styles';
 import { logout } from '~/utils';
 
 export const Header: React.FC = () => {
@@ -11,9 +11,6 @@ export const Header: React.FC = () => {
       </Logo>
       <Menu>
         <Ul>
-          <Li>
-            <Home title="Resumo" />
-          </Li>
           <Li>
             <Courses title="Cursos" />
           </Li>

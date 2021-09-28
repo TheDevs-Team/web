@@ -4,7 +4,7 @@ import { IoIosContact } from 'react-icons/io';
 import { FiLogOut, FiUsers } from 'react-icons/fi';
 import { colors } from '~/theme';
 import { HiOutlineDocumentDuplicate, HiOutlineDocumentText } from 'react-icons/hi';
-import { AiOutlineClose, AiOutlineHome } from 'react-icons/ai';
+import { AiOutlineClose } from 'react-icons/ai';
 
 export const Container = styled.div`
   width: 100%;
@@ -78,16 +78,6 @@ export const Ul = styled.ul`
 export const Li = styled.li`
   padding: 0 22px;
   overflow: hidden;
-`;
-
-export const Home = styled(AiOutlineHome)`
-  color: ${colors.primary.white};
-  font-size: 24px;
-  cursor: pointer;
-
-  &:hover {
-    color: #219150;
-  }
 `;
 
 export const Courses = styled(HiOutlineDocumentDuplicate)`
