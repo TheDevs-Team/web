@@ -23,7 +23,6 @@ export const Content = styled.div`
   align-items: center;
   justify-content: center;
   padding: 10px 0;
-  margin: 0 10px;
 `;
 
 export const CloseContainer = styled.div`
@@ -50,17 +49,17 @@ export const InputContainer = styled.div`
 `;
 
 export const Label = styled.label`
-  font-size: 16px;
+  font-size: 14px;
   color: #cecece;
 `;
 
 export const Input = styled.input`
   width: 95%;
-  height: 50px;
-  border: 2px solid #2b2b2c;
+
+  border: 1px solid #2b2b2c;
   background: transparent;
   border-radius: 10px;
-  padding-left: 10px;
+  padding: 10px 0 10px 10px;
   outline: 0;
   color: #c4c4c4;
 `;
@@ -71,14 +70,28 @@ export const Btn = styled.button`
   font-size: 16px;
   font-weight: 300;
   width: 60%;
-  height: 50px;
+  height: 40px;
   border: none;
   border-radius: 15px;
-  margin: 10px 0;
   opacity: 0.8;
   cursor: pointer;
   &:hover {
     opacity: 1;
     transition: 0.4s;
   }
+`;
+
+export const Select = styled.select`
+  width: 98%;
+
+  border: 1px solid #2b2b2c;
+  background: transparent;
+  border-radius: 10px;
+  padding: 10px 0 10px 10px;
+  outline: 0;
+  color: #c4c4c4;
+`;
+
+export const Option = styled.option`
+  background: #2b2b2c;
 `;
