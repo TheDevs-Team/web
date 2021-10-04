@@ -2,8 +2,11 @@ import React from 'react';
 
 import { Avatar, Container, Logo, Logout, Menu, Button, Ul, Li, Courses, Materials, Users } from './styles';
 import { logout } from '~/utils';
+import { useHistory } from 'react-router';
 
 export const Header: React.FC = () => {
+  const history = useHistory();
+
   return (
     <Container>
       <Logo>
@@ -18,10 +21,10 @@ export const Header: React.FC = () => {
             <Materials title="Materiais" />
           </Li>
           <Li>
-            <Users title="Usuarios" />
+            <Users title="Usuarios" onClick={() => history.push('/')} />
           </Li>
           <Li>
-            <Avatar title="Perfil" />
+            <Avatar title="Perfil" onClick={() => history.push('/perfil')} />
           </Li>
           <Li>
             <Button onClick={logout}>
