@@ -46,7 +46,7 @@ export const Avatar = styled(IoIosContact)`
   font-size: 24px;
   cursor: pointer;
   &:hover {
-    color: #219150;
+    color: ${colors.tertiary.green};
   }
 `;
 
@@ -76,8 +76,11 @@ export const Ul = styled.ul`
 `;
 
 export const Li = styled.li`
-  padding: 0 22px;
+  padding: 0 15px;
   overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;
 
 export const Courses = styled(HiOutlineDocumentDuplicate)`
@@ -85,7 +88,7 @@ export const Courses = styled(HiOutlineDocumentDuplicate)`
   font-size: 24px;
   cursor: pointer;
   &:hover {
-    color: #219150;
+    color: ${colors.tertiary.green};
   }
 `;
 
@@ -94,7 +97,7 @@ export const Materials = styled(HiOutlineDocumentText)`
   font-size: 24px;
   cursor: pointer;
   &:hover {
-    color: #219150;
+    color: ${colors.tertiary.green};
   }
 `;
 
@@ -103,7 +106,7 @@ export const Users = styled(FiUsers)`
   font-size: 24px;
   cursor: pointer;
   &:hover {
-    color: #219150;
+    color: ${colors.tertiary.green};
   }
 `;
 
