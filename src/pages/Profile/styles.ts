@@ -19,7 +19,7 @@ export const Main = styled.div`
 `;
 
 export const Form = styled.form`
-  width: 400px;
+  width: 500px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -34,7 +34,7 @@ export const Form = styled.form`
 `;
 
 export const InputContainer = styled.div`
-  width: 100%;
+  width: 90%;
   margin: 8px 0;
 `;
 
