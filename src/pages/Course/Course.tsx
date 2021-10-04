@@ -12,7 +12,7 @@ const Course: React.FC = () => {
         <Main>
           <CourseField>
             <Courses>
-              <Table />
+              <Table courseTable />
             </Courses>
           </CourseField>
         </Main>
