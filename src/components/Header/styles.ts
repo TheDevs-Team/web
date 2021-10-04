@@ -1,10 +1,8 @@
 import styled from 'styled-components';
 
-import { IoIosContact } from 'react-icons/io';
-import { FiLogOut, FiUsers } from 'react-icons/fi';
+import { GoFile, GoPackage } from 'react-icons/go';
 import { colors } from '~/theme';
-import { HiOutlineDocumentDuplicate, HiOutlineDocumentText } from 'react-icons/hi';
-import { AiOutlineClose } from 'react-icons/ai';
+import { AiOutlineClose, AiOutlineUser, AiOutlineUsergroupDelete, AiOutlinePoweroff } from 'react-icons/ai';
 
 export const Container = styled.div`
   width: 100%;
@@ -41,18 +39,18 @@ export const Menu = styled.div`
   align-items: center;
 `;
 
-export const Avatar = styled(IoIosContact)`
+export const Avatar = styled(AiOutlineUser)`
   color: ${colors.primary.white};
-  font-size: 24px;
+  font-size: 20px;
   cursor: pointer;
   &:hover {
     color: ${colors.tertiary.green};
   }
 `;
 
-export const Logout = styled(FiLogOut)`
+export const Logout = styled(AiOutlinePoweroff)`
   color: ${colors.primary.white};
-  font-size: 24px;
+  font-size: 20px;
   cursor: pointer;
 `;
 
@@ -83,27 +81,27 @@ export const Li = styled.li`
   justify-content: center;
 `;
 
-export const Courses = styled(HiOutlineDocumentDuplicate)`
+export const Courses = styled(GoPackage)`
   color: ${colors.primary.white};
-  font-size: 24px;
+  font-size: 20px;
   cursor: pointer;
   &:hover {
     color: ${colors.tertiary.green};
   }
 `;
 
-export const Materials = styled(HiOutlineDocumentText)`
+export const Materials = styled(GoFile)`
   color: ${colors.primary.white};
-  font-size: 24px;
+  font-size: 20px;
   cursor: pointer;
   &:hover {
     color: ${colors.tertiary.green};
   }
 `;
 
-export const Users = styled(FiUsers)`
+export const Users = styled(AiOutlineUsergroupDelete)`
   color: ${colors.primary.white};
-  font-size: 24px;
+  font-size: 20px;
   cursor: pointer;
   &:hover {
     color: ${colors.tertiary.green};
