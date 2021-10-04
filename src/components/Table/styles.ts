@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { colors } from '~/theme';
 
 export const Container = styled.table`
   height: 100%;
@@ -9,15 +10,15 @@ export const Container = styled.table`
 `;
 
 export const Thead = styled.thead`
-  background-color: #3d3d3d;
-  color: #fff;
+  background-color: ${colors.secondary.main};
+  color: ${colors.primary.white};
 
   height: 60px;
 `;
 
 export const Tbody = styled.tbody`
-  background-color: #2c2c2c;
-  color: #fff;
+  background-color: ${colors.secondary.body};
+  color: ${colors.primary.white};
 `;
 
 export const Th = styled.th`
@@ -35,14 +36,14 @@ export const Tr = styled.tr``;
 export const ButtonEdit = styled.button`
   border: none;
   padding: 8px 20px;
-  background: #217150;
-  color: #fff;
+  background: ${colors.primary.green};
+  color: ${colors.primary.white};
   border-radius: 5px;
 
   cursor: pointer;
 
   &:hover {
-    background: #215050;
+    background: ${colors.secondary.green};
     transition: 0.4s;
   }
 `;
@@ -50,13 +51,13 @@ export const ButtonEdit = styled.button`
 export const ButtonRemove = styled.button`
   border: none;
   padding: 8px 20px;
-  background: #9b111e;
-  color: #fff;
+  background: ${colors.primary.red};
+  color: ${colors.primary.white};
   border-radius: 5px;
   cursor: pointer;
 
   &:hover {
-    background: #6b211e;
+    background: ${colors.secondary.red};
     transition: 0.4s;
   }
 `;
@@ -64,15 +65,15 @@ export const ButtonRemove = styled.button`
 export const ButtonCreate = styled.button`
   border: none;
   padding: 8px 15px;
-  background: #2b2b2c;
-  color: #fff;
+  background: ${colors.primary.main};
+  color: ${colors.primary.white};
   border-radius: 5px;
   cursor: pointer;
   font-weight: 300;
   font-size: 12px;
 
   &:hover {
-    background: #222222;
+    background: ${colors.primary.dark};
     transition: 0.4s;
   }
 `;
