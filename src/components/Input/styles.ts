@@ -11,4 +11,8 @@ export const Container = styled.input`
   margin-top: 20px;
 
   color: ${colors.primary.dark};
+
+  &:focus {
+    border-bottom: 1px dashed ${colors.primary.dark};
+  }
 `;
