@@ -16,7 +16,7 @@ export const HomeAdm: React.FC<Props> = ({ users }) => {
         <Main>
           <UserField>
             <Users>
-              <Table users={users} />
+              <Table userTable users={users} />
             </Users>
           </UserField>
         </Main>
