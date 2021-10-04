@@ -19,13 +19,18 @@ export const Main = styled.div`
 `;
 
 export const Form = styled.form`
-  width: 350px;
+  width: 400px;
   display: flex;
   flex-direction: column;
   align-items: center;
   background: ${colors.primary.main};
-  padding: 16px;
+  padding: 30px;
   border-radius: 15px;
+
+  @media screen and (max-width: 600px) {
+    width: 350px;
+    padding: 16px;
+  } ;
 `;
 
 export const InputContainer = styled.div`
