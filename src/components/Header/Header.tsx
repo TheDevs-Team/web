@@ -15,10 +15,10 @@ export const Header: React.FC = () => {
       <Menu>
         <Ul>
           <Li>
-            <Courses title="Cursos" />
+            <Courses title="Cursos" onClick={() => history.push('/cursos')} />
           </Li>
           <Li>
-            <Materials title="Materiais" />
+            <Materials title="Materiais" onClick={() => history.push('/materiais')} />
           </Li>
           <Li>
             <Users title="Usuarios" onClick={() => history.push('/')} />
