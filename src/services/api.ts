@@ -2,7 +2,7 @@ import axios from 'axios';
 import { getToken } from '~/utils';
 
 const api = axios.create({
-  baseURL: 'http://localhost:3333',
+  baseURL: 'https://g2k-api.herokuapp.com',
 });
 
 api.interceptors.request.use(async (config) => {
