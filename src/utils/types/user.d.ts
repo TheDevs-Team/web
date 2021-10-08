@@ -21,3 +21,14 @@ declare type UserLoginResponse = {
   user: UserType;
   token: string;
 };
+
+declare type CreateUserType = {
+  name: string;
+  document: string;
+  email: string;
+  phone: string;
+  type: string;
+  financial_status: string;
+  password: string;
+  confirm_password: string;
+};
