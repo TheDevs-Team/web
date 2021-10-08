@@ -9,7 +9,6 @@ const HomeAdmContainer: React.FC = () => {
 
   const fetchUsers = async () => {
     const { data } = await api.get('/user/list');
-    console.log(data);
     setUsers(data);
   };
 
