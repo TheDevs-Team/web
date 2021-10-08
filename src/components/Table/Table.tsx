@@ -18,9 +18,9 @@ export const Table: React.FC<Props> = ({ users, userTable, courseTable, material
 
   return (
     <>
-      <If condition={register}> {modal && <Modal onRegister={true} onClose={() => setModal(false)} />}</If>
-      <If condition={edit}> {modal && <Modal onEdit={true} onClose={() => setModal(false)} />}</If>
-      <If condition={remove}> {modal && <Modal onRemove={true} onClose={() => setModal(false)} />}</If>
+      <If condition={register}> {modal && <Modal onRegister onClose={() => setModal(false)} />}</If>
+      <If condition={edit}> {modal && <Modal onEdit onClose={() => setModal(false)} />}</If>
+      <If condition={remove}> {modal && <Modal onRemove onClose={() => setModal(false)} />}</If>
       <Container>
         <Thead>
           <If condition={userTable}>
