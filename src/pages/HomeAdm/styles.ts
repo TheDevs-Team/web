@@ -19,6 +19,27 @@ export const Main = styled.div`
   flex-direction: column;
 `;
 
+export const ContentAddUser = styled.div`
+  width: 97%;
+  overflow: hidden;
+`;
+
+export const ButtonAddUser = styled.button`
+  background: none;
+  color: ${colors.primary.green};
+  border: 2px solid ${colors.primary.green};
+  margin: 10px 0;
+  padding: 12px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+
+  &:hover {
+    background: ${colors.primary.green};
+    color: ${colors.primary.white};
+    transition: 0.4s;
+  }
+`;
+
 export const UserField = styled.div`
   width: 100%;
 
