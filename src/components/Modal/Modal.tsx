@@ -1,11 +1,6 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable @typescript-eslint/no-unused-vars */
-/* eslint-disable @typescript-eslint/no-empty-function */
-/*  eslint-disable @typescript-eslint/no-explicit-any */
 import { inject, observer } from 'mobx-react';
 import React, { useState } from 'react';
 import { AiOutlineClose } from 'react-icons/ai';
-import { UserStore } from '~/store';
 import { If } from '~/components';
 import {
   Container,
@@ -26,13 +21,12 @@ import {
 
 type Props = {
   onClose: () => void;
-  user?: UserStore;
   onRegister?: boolean;
   onEdit?: boolean;
   onRemove?: boolean;
 };
 
-const Modal: React.FC<Props> = ({ onClose = () => {}, user, onRegister, onEdit, onRemove }) => {
+const Modal: React.FC<Props> = ({ onClose = () => {}, onRegister, onEdit, onRemove }) => {
   // State dos campos do form Modal Cadastro de Usuario
   const [name, setName] = useState('');
   const [document, setDocument] = useState('');
