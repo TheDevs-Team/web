@@ -1,7 +1,7 @@
 import { observable, action } from 'mobx';
 import { persist } from 'mobx-persist';
 import { UserAPI } from '~/api';
-import { setToken, setUserData } from '~/utils';
+import { setToken, setUserData, USER_STATUS_FINANCEIRO } from '~/utils';
 
 class UserStore {
   @persist('object')
@@ -10,6 +10,9 @@ class UserStore {
 
   @observable
   users: UserType[] | [];
+
+  @observable
+  current: UserType;
 
   @action
   login = async (values: UserLoginType): Promise<boolean> => {
@@ -38,12 +41,31 @@ class UserStore {
 
   @action
   create = async (values: CreateUserType): Promise<boolean> => {
-    const response = await UserAPI.create(values);
+    const response = await UserAPI.create({
+      ...values,
+      financial_status: values.financial_status === USER_STATUS_FINANCEIRO.PAGO ? 'PAID' : 'WAITING_PAYMENT',
+    });
 
     if (response) {
       return true;
     }
     return false;
+  };
+
+  @action
+  delete = async (id: string): Promise<boolean> => {
+    const response = await UserAPI.delete(id);
+
+    if (response) {
+      return true;
+    }
+
+    return false;
+  };
+
+  @action
+  setCurrent = (value: UserType) => {
+    return (this.current = value);
   };
 }
 

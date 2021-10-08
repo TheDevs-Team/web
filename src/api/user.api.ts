@@ -27,6 +27,15 @@ class UserAPI {
       return false;
     }
   };
+
+  static delete = async (id: string): Promise<boolean> => {
+    try {
+      await api.post('/user/delete', { id });
+      return true;
+    } catch (error) {
+      return false;
+    }
+  };
 }
 
 export default UserAPI;

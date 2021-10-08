@@ -2,7 +2,7 @@
 import React from 'react';
 import { AiOutlineClose } from 'react-icons/ai';
 import { If } from '~/components';
-import { useFormikContext, FormikProps, notify } from '~/utils';
+import { useFormikContext, FormikProps } from '~/utils';
 import {
   Container,
   Content,
@@ -25,16 +25,13 @@ type Props = {
   onRegister?: boolean;
   onEdit?: boolean;
   onRemove?: boolean;
-  setError: () => void;
-  error: boolean;
+  handleRemoveUser: () => void;
 };
 
-const Modal: React.FC<Props> = ({ onClose, onRegister, onEdit, onRemove, setError, error }) => {
+const Modal: React.FC<Props> = ({ onClose, onRegister, onEdit, onRemove, handleRemoveUser }) => {
   const { values, submitForm, handleChange, isValid }: FormikProps<CreateUserType> = useFormikContext();
 
   return (
-    <>
-      {error && notify('error', 'Campos inválidos')}
       <Container>
         <Content>
           <CloseContainer>
@@ -133,7 +130,7 @@ const Modal: React.FC<Props> = ({ onClose, onRegister, onEdit, onRemove, setErro
               <Remove>
                 <TitleRemove>Deseja remover esse Usuário?</TitleRemove>
                 <OptionRemove>
-                  <RemoveBtn>Sim</RemoveBtn>
+                  <RemoveBtn onClick={handleRemoveUser}>Sim</RemoveBtn>
                   <RemoveBtn>Nao</RemoveBtn>
                 </OptionRemove>
               </Remove>
@@ -141,7 +138,6 @@ const Modal: React.FC<Props> = ({ onClose, onRegister, onEdit, onRemove, setErro
           </Main>
         </Content>
       </Container>
-    </>
   );
 };
 

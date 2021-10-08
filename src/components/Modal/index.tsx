@@ -15,8 +15,6 @@ type Props = {
 };
 
 const ModalContainer: React.FC<Props> = ({ user, onRegister, onEdit, onRemove, onClose }) => {
-  const [error, setError] = useState(false);
-
   const handleSubmit = async (values: CreateUserType) => {
     const response = await user?.create(values);
 
@@ -27,11 +25,24 @@ const ModalContainer: React.FC<Props> = ({ user, onRegister, onEdit, onRemove, o
       }, 1500);
     }
 
-    return notify('error', 'Não Criado');
+    return notify('error', 'Erro ao Criar o usuário');
   };
 
-  const handleError = () => {
-    setError(true);
+  const handleRemoveUser = async () => {
+    const response = await user?.delete(user?.current.id);
+
+    console.log(user?.current);
+
+    console.log(response);
+
+    if (response) {
+      notify('success', 'Usuário Removido com sucesso');
+      return setTimeout(() => {
+        location.reload();
+      }, 1500);
+    }
+
+    return notify('error', 'Falha ao remover o usuário');
   };
 
   return (
@@ -41,8 +52,7 @@ const ModalContainer: React.FC<Props> = ({ user, onRegister, onEdit, onRemove, o
         onRegister={onRegister}
         onRemove={onRemove}
         onClose={onClose}
-        setError={handleError}
-        error={error}
+        handleRemoveUser={handleRemoveUser}
       />
     </Formik>
   );
