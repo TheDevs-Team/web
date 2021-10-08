@@ -35,6 +35,16 @@ class UserStore {
 
     return [];
   };
+
+  @action
+  create = async (values: CreateUserType): Promise<boolean> => {
+    const response = await UserAPI.create(values);
+
+    if (response) {
+      return true;
+    }
+    return false;
+  };
 }
 
 export default UserStore;

@@ -18,6 +18,15 @@ class UserAPI {
       return [];
     }
   };
+
+  static create = async (values: CreateUserType): Promise<boolean> => {
+    try {
+      await api.post('/user/create', values);
+      return true;
+    } catch (error) {
+      return false;
+    }
+  };
 }
 
 export default UserAPI;
