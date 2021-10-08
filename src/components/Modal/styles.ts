@@ -37,7 +37,7 @@ export const CloseContainer = styled.div`
   color: ${colors.primary.white};
 `;
 
-export const Form = styled.form`
+export const Main = styled.main`
   width: 85%;
   display: flex;
   flex-direction: column;
