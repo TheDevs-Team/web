@@ -30,8 +30,9 @@ export const Table: React.FC<Props> = ({ users, userTable, courseTable, material
               <Th scope="row">E-mail</Th>
               <Th scope="row">Financeiro</Th>
               <Th scope="row">Status</Th>
+              <Th scope="row">Ações</Th>
               <Th scope="row"></Th>
-              <Th scope="row">
+              {/* <Th scope="row">
                 <ButtonCreate
                   onClick={() => {
                     setModal(true);
@@ -42,7 +43,7 @@ export const Table: React.FC<Props> = ({ users, userTable, courseTable, material
                 >
                   Adicionar
                 </ButtonCreate>
-              </Th>
+              </Th> */}
             </Tr>
           </If>
           <If condition={courseTable}>

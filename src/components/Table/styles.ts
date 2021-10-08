@@ -12,8 +12,6 @@ export const Container = styled.table`
 export const Thead = styled.thead`
   background-color: ${colors.secondary.main};
   color: ${colors.primary.white};
-
-  height: 60px;
 `;
 
 export const Tbody = styled.tbody`
