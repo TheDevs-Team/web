@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Modal, If } from '~/components';
 import { Container, Thead, Tr, Th, Td, Tbody, ButtonEdit, ButtonRemove, ButtonCreate } from './styles';
+import { USER_STATUS, USER_STATUS_FINANCEIRO } from '~/utils';
 
 type Props = {
   users?: UserType[];
@@ -97,8 +98,12 @@ export const Table: React.FC<Props> = ({ users, userTable, courseTable, material
                 <Td>{user.name}</Td>
                 <Td>{user.document}</Td>
                 <Td>{user.email}</Td>
-                <Td>{user.financial_status}</Td>
-                <Td>{user.active}</Td>
+                <Td>
+                  {user.financial_status === 'PAID'
+                    ? USER_STATUS_FINANCEIRO.PAGO
+                    : USER_STATUS_FINANCEIRO.AGUARDANDO_PAGAMENTO}
+                </Td>
+                <Td>{user.active ? USER_STATUS.ATIVO : USER_STATUS.DESATIVADO}</Td>
                 <Td>
                   <ButtonEdit
                     onClick={() => {

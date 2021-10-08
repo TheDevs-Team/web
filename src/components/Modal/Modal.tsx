@@ -71,10 +71,11 @@ const Modal: React.FC<Props> = ({ onClose = () => {}, onRegister, onEdit, onRemo
             </InputContainer>
             <InputContainer>
               <Label>Financeiro:</Label>
-              <Input
-                placeholder="Digite o status financeiro do usuário"
-                onChange={(e: any) => setFinancial(e.target.value)}
-              ></Input>
+              <Select onChange={(e: any) => setFinancial(e.target.value)}>
+                <Option>Status Financeiro</Option>
+                <Option>Pago</Option>
+                <Option>Aguardando Pagamento</Option>
+              </Select>
             </InputContainer>
             <InputContainer>
               <Label>Telefone:</Label>
@@ -82,7 +83,7 @@ const Modal: React.FC<Props> = ({ onClose = () => {}, onRegister, onEdit, onRemo
             </InputContainer>
             <InputContainer>
               <Label>Tipo:</Label>
-              <Select placeholder="Digite o Tipo do usuário" onChange={(e: any) => setType(e.target.value)}>
+              <Select onChange={(e: any) => setType(e.target.value)}>
                 <Option>Escolha o Tipo Do usuario</Option>
                 <Option>User</Option>
                 <Option>Professor</Option>
