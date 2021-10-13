@@ -1,6 +1,6 @@
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import React from 'react';
-import { Login, HomeAdm, Profile, Course, Material } from '../pages';
+import { Login, HomeAdm, Profile, Course, Material, Home } from '~/pages';
 import { PrivateRoute } from './PrivateRoutes';
 
 export const Routes: React.FC = () => (
@@ -11,6 +11,7 @@ export const Routes: React.FC = () => (
       <PrivateRoute exact path={'/cursos'} component={Course} />
       <PrivateRoute exact path={'/materiais'} component={Material} />
       <Route exact path={'/entrar'} component={Login} />
+      <Route exact path={'/home'} component={Home} />
     </Switch>
   </BrowserRouter>
 );
