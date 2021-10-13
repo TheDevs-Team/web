@@ -1,5 +1,5 @@
 import React from 'react';
-import { Header, Table, Modal } from '~/components';
+import { Header, Modal, UsersTable } from '~/components';
 import { Container, Main, UserField, Users, ContentAddUser, ButtonAddUser } from './styles';
 
 type Props = {
@@ -19,7 +19,7 @@ export const HomeAdm: React.FC<Props> = ({ users, setCreateUser, createUser }) =
         </ContentAddUser>
         <UserField>
           <Users>
-            <Table userTable users={users} />
+            <UsersTable users={users} handleEdit={() => {}} handleRemove={() => {}} />
           </Users>
         </UserField>
       </Main>
