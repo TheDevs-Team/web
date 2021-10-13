@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React from 'react';
 import { Container, Thead, Tr, Th, Td, Tbody, ButtonEdit, ButtonRemove } from './styles';
 import { USER_STATUS } from '~/utils';
@@ -5,7 +6,7 @@ import { USER_STATUS } from '~/utils';
 type Props = {
   users: UserType[];
   handleEdit: () => void;
-  handleRemove: () => void;
+  handleRemove: (event: any) => void;
 };
 
 export const UsersTable: React.FC<Props> = ({ users, handleEdit, handleRemove, ...rest }) => {
@@ -36,7 +37,9 @@ export const UsersTable: React.FC<Props> = ({ users, handleEdit, handleRemove, .
               <ButtonEdit onClick={handleEdit}>Editar</ButtonEdit>
             </Td>
             <Td>
-              <ButtonRemove onClick={handleRemove}>X</ButtonRemove>
+              <ButtonRemove onClick={handleRemove} value={item.id}>
+                X
+              </ButtonRemove>
             </Td>
           </Tr>
         ))}

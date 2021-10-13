@@ -1,7 +1,7 @@
 import React from 'react';
 import GlobalStyles from '../../styles/global';
 import { Container, Main, MaterialField, Materials } from './styles';
-import { Header, Table } from '~/components';
+import { Header } from '~/components';
 
 const Course: React.FC = () => {
   return (
@@ -11,9 +11,7 @@ const Course: React.FC = () => {
         <Header />
         <Main>
           <MaterialField>
-            <Materials>
-              <Table materialTable />
-            </Materials>
+            <Materials></Materials>
           </MaterialField>
         </Main>
       </Container>
