@@ -15,6 +15,7 @@ class CourseAPI {
       const { data } = await api.get('/course/list');
       return data;
     } catch (error) {
+      console.log(error);
       return [];
     }
   };
