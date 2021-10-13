@@ -2,19 +2,16 @@ import styled from 'styled-components';
 import { colors } from '~/theme';
 
 export const Container = styled.button`
+  border: none;
+  padding: 8px 20px;
   background: ${colors.primary.green};
   color: ${colors.primary.white};
-  font-size: 16px;
-  font-weight: 300;
-  width: 60%;
-  height: 40px;
-  margin: 10px 0;
-  border: none;
-  border-radius: 15px;
-  opacity: 0.8;
+  border-radius: 5px;
+
   cursor: pointer;
+
   &:hover {
-    opacity: 1;
+    background: ${colors.secondary.green};
     transition: 0.4s;
   }
 `;
