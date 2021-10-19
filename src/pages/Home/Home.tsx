@@ -20,6 +20,8 @@ import {
   UserIcon,
 } from './styles';
 
+import { Recharts } from 'components';
+
 type Props = {
   hover: HoverIconsType;
   setHover: (value: HoverIconsType) => void;
@@ -157,7 +159,7 @@ const Home: React.FC<Props> = ({ hover, setHover }) => {
         </InfoCard>
 
         <ChartsArea>
-          <ResponsiveContainer width="98%" height="92%">
+          {/* <ResponsiveContainer width="98%" height="92%">
             <AreaChart width={730} height={250} data={data} margin={{ top: 10, right: 30, left: 0, bottom: 0 }}>
               <defs>
                 <linearGradient id="coloruv" x1="0" y1="0" x2="0" y2="1">
@@ -177,7 +179,9 @@ const Home: React.FC<Props> = ({ hover, setHover }) => {
                 strokeWidth={5}
               />
             </AreaChart>
-          </ResponsiveContainer>
+          </ResponsiveContainer> */}
+
+          <Recharts data={data} />
         </ChartsArea>
       </Main>
     </Container>
