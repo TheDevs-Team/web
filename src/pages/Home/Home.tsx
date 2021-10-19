@@ -20,6 +20,8 @@ import {
   UserIcon,
 } from './styles';
 
+import { Recharts } from 'components';
+
 type Props = {
   hover: HoverIconsType;
   setHover: (value: HoverIconsType) => void;
@@ -28,75 +30,51 @@ type Props = {
 const data = [
   {
     name: 'Jan',
-    alunos: 4000,
-    pv: 2400,
-    amt: 2400,
+    alunos: 65,
   },
   {
     name: 'Fev',
-    alunos: 3000,
-    pv: 1398,
-    amt: 2210,
+    alunos: 50,
   },
   {
     name: 'Mar',
-    alunos: 2000,
-    pv: 9800,
-    amt: 2290,
+    alunos: 55,
   },
   {
     name: 'Abr',
-    alunos: 2780,
-    pv: 3908,
-    amt: 2000,
+    alunos: 60,
   },
   {
     name: 'Mai',
-    alunos: 1890,
-    pv: 4800,
-    amt: 2181,
+    alunos: 70,
   },
   {
     name: 'Jun',
-    alunos: 2390,
-    pv: 3800,
-    amt: 2500,
+    alunos: 50,
   },
   {
     name: 'Jul',
-    alunos: 1890,
-    pv: 4300,
-    amt: 2100,
+    alunos: 50,
   },
   {
     name: 'Ago',
-    alunos: 3490,
-    pv: 4300,
-    amt: 2100,
+    alunos: 63,
   },
   {
     name: 'Set',
-    alunos: 3490,
-    pv: 4300,
-    amt: 2100,
+    alunos: 73,
   },
   {
     name: 'Out',
-    alunos: 2100,
-    pv: 4300,
-    amt: 2100,
+    alunos: 65,
   },
   {
     name: 'Nov',
-    alunos: 3490,
-    pv: 4300,
-    amt: 2100,
+    alunos: 55,
   },
   {
     name: 'Dez',
-    alunos: 3490,
-    pv: 4300,
-    amt: 2100,
+    alunos: 40,
   },
 ];
 
@@ -157,27 +135,7 @@ const Home: React.FC<Props> = ({ hover, setHover }) => {
         </InfoCard>
 
         <ChartsArea>
-          <ResponsiveContainer width="98%" height="92%">
-            <AreaChart width={730} height={250} data={data} margin={{ top: 10, right: 30, left: 0, bottom: 0 }}>
-              <defs>
-                <linearGradient id="coloruv" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="5%" stopColor="#67f7bd" stopOpacity={0.8} />
-                  <stop offset="95%" stopColor="#363333" stopOpacity={0} />
-                </linearGradient>
-              </defs>
-              <XAxis dataKey="name" />
-              <YAxis />
-              <Tooltip />
-              <Area
-                type="monotone"
-                dataKey="alunos"
-                stroke="#67f7bd"
-                fillOpacity={1}
-                fill="url(#coloruv)"
-                strokeWidth={5}
-              />
-            </AreaChart>
-          </ResponsiveContainer>
+          <Recharts data={data} />
         </ChartsArea>
       </Main>
     </Container>

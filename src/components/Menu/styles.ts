@@ -7,7 +7,7 @@ const active = ifStyle('active');
 const hover = ifStyle('hover');
 
 export const Container = styled.aside`
-  width: 14vw;
+  width: 15vw;
   height: 100%;
   background: #2b2b2c;
   display: flex;
@@ -33,7 +33,7 @@ export const Logo = styled.span`
 `;
 
 export const MenuItem = styled.div`
-  width: 60%;
+  width: 75%;
   display: flex;
   align-items: center;
   margin: 15px 0;
@@ -76,9 +76,10 @@ export const CoursesIcon = styled(BiBook)<MenuStyleType>`
 `;
 
 export const MenuText = styled.a<MenuStyleType>`
-  font-size: 1rem;
+  font-size: 0.9rem;
   font-weight: 400;
   color: ${active(colors.tertiary.green, hover(colors.tertiary.green, colors.primary.light))};
   margin-left: 0.8rem;
   cursor: pointer;
+  width: 100;
 `;
