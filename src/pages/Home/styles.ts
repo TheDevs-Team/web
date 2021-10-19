@@ -48,6 +48,16 @@ export const InfoCard = styled.section`
   display: flex;
   align-items: center;
   justify-content: space-around;
+`;
+
+export const ChartsArea = styled.section`
+  background: #2b2b2c;
+  width: 100%;
+  height: 60vh;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
   margin-top: 1rem;
 `;
 
@@ -83,14 +93,14 @@ export const ItemQuantity = styled.h3`
   font-weight: 600;
   margin-top: 5px;
   color: ${colors.tertiary.green};
-  color: #32b768;
+  color: #67f7bd;
 `;
 
 export const BackgroudIcon = styled.div`
   width: 50px;
   height: 50px;
   border-radius: 12px;
-  background: #daf2e4;
+  background: #fff;
   display: flex;
   align-items: center;
   justify-content: center; ;
@@ -98,6 +108,6 @@ export const BackgroudIcon = styled.div`
 
 export const UserIcon = styled(FiUser)<MenuStyleType>`
   font-size: 1.5rem;
-  color: #32b768;
+  color: #2b2b2b;
   cursor: pointer;
 `;
