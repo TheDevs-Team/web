@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { colors } from '~/theme';
+import { Button } from '../Button';
 
 export const Container = styled.table`
   height: 100%;
@@ -31,20 +32,7 @@ export const Td = styled.td`
 
 export const Tr = styled.tr``;
 
-export const ButtonEdit = styled.button`
-  border: none;
-  padding: 8px 20px;
-  background: ${colors.primary.green};
-  color: ${colors.primary.white};
-  border-radius: 5px;
-
-  cursor: pointer;
-
-  &:hover {
-    background: ${colors.secondary.green};
-    transition: 0.4s;
-  }
-`;
+export const ButtonEdit = styled(Button)``;
 
 export const ButtonRemove = styled.button`
   border: none;

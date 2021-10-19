@@ -8,13 +8,10 @@ import Modal from './Modal';
 
 type Props = {
   user?: UserStore;
-  onRegister?: boolean;
-  onEdit?: boolean;
-  onRemove?: boolean;
   onClose: () => void;
 };
 
-const ModalContainer: React.FC<Props> = ({ user, onRegister, onEdit, onRemove, onClose }) => {
+const ModalContainer: React.FC<Props> = ({ user, onClose }) => {
   const handleSubmit = async (values: CreateUserType) => {
     const response = await user?.create(values);
 
@@ -29,11 +26,7 @@ const ModalContainer: React.FC<Props> = ({ user, onRegister, onEdit, onRemove, o
   };
 
   const handleRemoveUser = async () => {
-    const response = await user?.delete(user?.current.id);
-
-    console.log(user?.current);
-
-    console.log(response);
+    const response = await user?.delete(user?.current as string);
 
     if (response) {
       notify('success', 'Usuário Removido com sucesso');
@@ -47,13 +40,7 @@ const ModalContainer: React.FC<Props> = ({ user, onRegister, onEdit, onRemove, o
 
   return (
     <Formik initialValues={initialValues} onSubmit={handleSubmit} validationSchema={validationSchema}>
-      <Modal
-        onEdit={onEdit}
-        onRegister={onRegister}
-        onRemove={onRemove}
-        onClose={onClose}
-        handleRemoveUser={handleRemoveUser}
-      />
+      <Modal onClose={onClose} handleRemoveUser={handleRemoveUser} />
     </Formik>
   );
 };

@@ -1,5 +1,6 @@
 import { AiOutlineClose } from 'react-icons/ai';
 import styled from 'styled-components';
+import { Button } from '~/components';
 import { colors } from '~/theme';
 
 export const Container = styled.div`
@@ -24,7 +25,9 @@ export const ContentAddUser = styled.div`
   overflow: hidden;
 `;
 
-export const ButtonAddUser = styled.button`
+export const ButtonAddUser = styled(Button)`
+  width: auto;
+  height: auto;
   background: none;
   color: ${colors.primary.green};
   border: 2px solid ${colors.primary.green};
@@ -32,7 +35,6 @@ export const ButtonAddUser = styled.button`
   padding: 12px 16px;
   border-radius: 8px;
   cursor: pointer;
-
   &:hover {
     background: ${colors.primary.green};
     color: ${colors.primary.white};

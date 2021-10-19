@@ -15,6 +15,6 @@ export const colors = {
     red: '#6b211e',
   },
   tertiary: {
-    green: '#219150',
+    green: '#67f7bd',
   },
 };

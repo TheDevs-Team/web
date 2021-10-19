@@ -1,2 +1,7 @@
 export * from 'formik';
 export * as Yup from 'yup';
+export * from 'react-icons/fi';
+export * from 'react-icons/gr';
+export * from 'react-icons/ri';
+export * from 'react-icons/bi';
+export * from '@platformbuilders/helpers';

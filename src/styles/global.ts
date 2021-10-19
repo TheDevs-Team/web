@@ -8,7 +8,7 @@ export default createGlobalStyle`
     overflow-x: hidden;
     text-decoration: none;
     outline: none;
-
+    overflow: hidden;
   }
 
   html{
@@ -17,6 +17,4 @@ export default createGlobalStyle`
     display: center;
     justify-content: center;
   }
-
-
 `;

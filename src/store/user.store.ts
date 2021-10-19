@@ -12,7 +12,7 @@ class UserStore {
   users: UserType[] | [];
 
   @observable
-  current: UserType;
+  current: string | undefined;
 
   @action
   login = async (values: UserLoginType): Promise<boolean> => {
@@ -64,8 +64,8 @@ class UserStore {
   };
 
   @action
-  setCurrent = (value: UserType) => {
-    return (this.current = value);
+  setCurrent = (id?: string) => {
+    return (this.current = id);
   };
 }
 
