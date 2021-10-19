@@ -7,7 +7,7 @@ const active = ifStyle('active');
 const hover = ifStyle('hover');
 
 export const Container = styled.aside`
-  width: 18vw;
+  width: 14vw;
   height: 100%;
   background: #2b2b2c;
   display: flex;
