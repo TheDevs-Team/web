@@ -9,4 +9,5 @@ export const Container = styled(ResponsiveContainer).attrs({
 export const AreaChartStyled = styled(AreaChart)`
   width: 700px;
   height: 250px;
+  overflow: hidden;
 `;

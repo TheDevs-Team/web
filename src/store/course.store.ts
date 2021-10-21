@@ -1,4 +1,4 @@
-import { observable, action } from 'mobx';
+import { observable, action, makeObservable } from 'mobx';
 import { persist } from 'mobx-persist';
 import { CourseAPI } from '~/api';
 
@@ -6,6 +6,10 @@ class CourseStore {
   @persist('object')
   @observable
   courses: CourseType[] = [];
+
+  constructor() {
+    makeObservable(this);
+  }
 
   @action
   list = async (): Promise<CourseType[]> => {

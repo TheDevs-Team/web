@@ -21,6 +21,8 @@ const hydrate = create({
   storage: localStorage,
 });
 
+hydrate('user', store.user);
+hydrate('course', store.course);
 hydrate('dashboard', store.dashboard);
 
 export { UserStore, CourseStore, DashboardStore };

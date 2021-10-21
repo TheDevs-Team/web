@@ -106,6 +106,17 @@ const Home: React.FC<Props> = ({ hover, setHover, allData }) => {
               </BackgroudIcon>
             </ContentItemCard>
             <ContentTextCard>
+              <ItemTitle>Pendentes</ItemTitle>
+              <ItemQuantity>{allData.pendings}</ItemQuantity>
+            </ContentTextCard>
+          </ItemCard>
+          <ItemCard>
+            <ContentItemCard>
+              <BackgroudIcon>
+                <UserIcon />
+              </BackgroudIcon>
+            </ContentItemCard>
+            <ContentTextCard>
               <ItemTitle>Cursos</ItemTitle>
               <ItemQuantity>{allData.courses}</ItemQuantity>
             </ContentTextCard>
@@ -119,17 +130,6 @@ const Home: React.FC<Props> = ({ hover, setHover, allData }) => {
             <ContentTextCard>
               <ItemTitle>Materiais</ItemTitle>
               <ItemQuantity>{allData.materials}</ItemQuantity>
-            </ContentTextCard>
-          </ItemCard>
-          <ItemCard>
-            <ContentItemCard>
-              <BackgroudIcon>
-                <UserIcon />
-              </BackgroudIcon>
-            </ContentItemCard>
-            <ContentTextCard>
-              <ItemTitle>Pendentes</ItemTitle>
-              <ItemQuantity>{allData.pendings}</ItemQuantity>
             </ContentTextCard>
           </ItemCard>
         </InfoCard>

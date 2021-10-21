@@ -25,7 +25,7 @@ export const UsersTable: React.FC<Props> = ({ users, handleEdit, handleRemove, .
         </Tr>
       </Thead>
       <Tbody>
-        {users.map((item: UserType, idx: number) => (
+        {users?.map((item: UserType, idx: number) => (
           <Tr key={idx}>
             <Th scope="row">{idx + 1}</Th>
             <Td>{item.name}</Td>

@@ -8,6 +8,7 @@ export const Container = styled.div`
   height: 100vh;
   background: #202024;
   display: flex;
+  overflow: hidden;
 `;
 
 export const MenuStyled = styled(Menu)``;
@@ -48,6 +49,7 @@ export const InfoCard = styled.section`
   display: flex;
   align-items: center;
   justify-content: space-around;
+  overflow: hidden;
 `;
 
 export const ChartsArea = styled.section`
@@ -59,6 +61,7 @@ export const ChartsArea = styled.section`
   align-items: center;
   justify-content: space-around;
   margin-top: 1rem;
+  overflow: hidden;
 `;
 
 export const ItemCard = styled.div`
