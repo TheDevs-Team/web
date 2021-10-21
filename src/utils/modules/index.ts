@@ -5,4 +5,5 @@ export * from 'react-icons/gr';
 export * from 'react-icons/ri';
 export * from 'react-icons/bi';
 export * from 'react-icons/md';
+export * from 'react-icons/fa';
 export * from '@platformbuilders/helpers';

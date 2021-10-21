@@ -1,14 +1,14 @@
 import { inject, observer } from 'mobx-react';
 import React, { useState, useEffect } from 'react';
-import { isAdm } from '~/services/auth';
-import { DashboardStore } from '~/store';
+import { DashboardStore, UserStore } from '~/store';
 import Home from './Home';
 
 type Props = {
   dashboard: DashboardStore;
+  user: UserStore;
 };
 
-const HomeContainer: React.FC<Props> = ({ dashboard }) => {
+const HomeContainer: React.FC<Props> = ({ dashboard, user }) => {
   const [hover, setHover] = useState<HoverIconsType>('');
   const [size, setSize] = useState(0);
 
@@ -26,18 +26,24 @@ const HomeContainer: React.FC<Props> = ({ dashboard }) => {
 
   const allData = async () => await dashboard.index();
 
-  console.log(isAdm());
+  const getUser = async () => await user.get();
 
   useEffect(() => {
     allData();
-  }, []);
-
-  useEffect(() => {
     updateSize();
     sizeEvent();
+    getUser();
   }, []);
 
-  return <Home hover={hover} setHover={handleHover} allData={dashboard.allData || {}} size={size} />;
+  return (
+    <Home
+      hover={hover}
+      setHover={handleHover}
+      allData={dashboard.allData || {}}
+      size={size}
+      user={user.profile || {}}
+    />
+  );
 };
 
-export default inject('dashboard')(observer(HomeContainer));
+export default inject('dashboard', 'user')(observer(HomeContainer));

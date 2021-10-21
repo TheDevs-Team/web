@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { Menu } from '~/components';
 import { colors } from '~/theme';
-import { FiUsers, MdPendingActions, MdOutlineLibraryBooks, MdOutlineSchool } from '~/utils';
+import { FiUsers, MdPendingActions, MdOutlineLibraryBooks, MdOutlineSchool, FaMoneyBillWave } from '~/utils';
 
 export const Container = styled.div`
   width: 100vw;
@@ -103,32 +103,98 @@ export const BackgroudIcon = styled.div`
   width: 50px;
   height: 50px;
   border-radius: 12px;
-  background: #fff;
+  background: #353535;
   display: flex;
   align-items: center;
-  justify-content: center; ;
+  justify-content: center;
+  cursor: pointer;
 `;
 
 export const UserIcon = styled(FiUsers)<MenuStyleType>`
   font-size: 1.5rem;
-  color: #2b2b2b;
+  color: #67f7bd;
   cursor: pointer;
 `;
 
 export const PendingsIcon = styled(MdPendingActions)<MenuStyleType>`
   font-size: 1.5rem;
-  color: #2b2b2b;
+  color: #67f7bd;
   cursor: pointer;
 `;
 
 export const CoursesIcon = styled(MdOutlineSchool)<MenuStyleType>`
   font-size: 1.5rem;
-  color: #2b2b2b;
+  color: #67f7bd;
   cursor: pointer;
 `;
 
 export const MaterialsIcon = styled(MdOutlineLibraryBooks)<MenuStyleType>`
   font-size: 1.5rem;
-  color: #2b2b2b;
+  color: #67f7bd;
   cursor: pointer;
 `;
+
+/**
+  @description User styles
+**/
+
+export const Text = styled(TitlePage)`
+  font-size: 32px;
+  margin-top: 25px;
+`;
+
+export const CoursesContainer = styled.section`
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 25px;
+  overflow: hidden;
+`;
+
+export const CoursesCard = styled.div`
+  width: 27%;
+  height: 380px;
+  background: #2b2b2c;
+  display: flex;
+  flex-direction: column;
+  border-radius: 8px 8px 0 0;
+  border-bottom: 2px solid #38c58d;
+  justify-content: flex-start;
+  cursor: pointer;
+
+  &:hover {
+    background: #38383a;
+    transition: 0.5;
+  }
+`;
+
+export const CoursesCardContent = styled.div`
+  width: 80%;
+  height: 70%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  margin: 15px auto 0;
+  background: none;
+`;
+
+export const BackgroudIconCard = styled.div`
+  width: 80px;
+  height: 80px;
+  border-radius: 8px;
+  background: #38c58d;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+`;
+
+export const IconMoney = styled(FaMoneyBillWave)`
+  font-size: 2.5rem;
+  color: #fff;
+  cursor: pointer;
+`;
+
+export const TitleCard = styled(TitlePage)``;
+
+export const DescriptionCard = styled(Description)``;

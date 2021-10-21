@@ -19,6 +19,14 @@ import {
   PendingsIcon,
   CoursesIcon,
   MaterialsIcon,
+  CoursesContainer,
+  Text,
+  CoursesCard,
+  IconMoney,
+  BackgroudIconCard,
+  DescriptionCard,
+  TitleCard,
+  CoursesCardContent,
 } from './styles';
 
 import { Recharts, If } from 'components';
@@ -30,6 +38,7 @@ type Props = {
   setHover: (value: HoverIconsType) => void;
   allData: AllDashboardData;
   size: number;
+  user: UserType;
 };
 
 const data = [
@@ -83,7 +92,7 @@ const data = [
   },
 ];
 
-const Home: React.FC<Props> = ({ hover, setHover, allData, size }) => {
+const Home: React.FC<Props> = ({ hover, setHover, allData, size, user }) => {
   console.log(size);
   return (
     <Container>
@@ -156,59 +165,49 @@ const Home: React.FC<Props> = ({ hover, setHover, allData, size }) => {
             <MenuStyled hover={hover} setHover={setHover} active={'DASHBOARD'} />
             <Main>
               <Header>
-                <TitlePage>Dashboard</TitlePage>
-                <Description>Fique por dentro de tudo que acontece.</Description>
+                <TitlePage>Olá, {user.name}</TitlePage>
+                <Description> Bem vindo a sua plataforma de estudos.</Description>
               </Header>
-              <InfoCard>
-                <ItemCard>
-                  <ContentItemCard>
-                    <BackgroudIcon>
-                      <UserIcon />
-                    </BackgroudIcon>
-                  </ContentItemCard>
-                  <ContentTextCard>
-                    <ItemTitle>Usuários</ItemTitle>
-                    <ItemQuantity>{allData.users}</ItemQuantity>
-                  </ContentTextCard>
-                </ItemCard>
-                <ItemCard>
-                  <ContentItemCard>
-                    <BackgroudIcon>
-                      <PendingsIcon />
-                    </BackgroudIcon>
-                  </ContentItemCard>
-                  <ContentTextCard>
-                    <ItemTitle>Pendentes</ItemTitle>
-                    <ItemQuantity>{allData.pendings}</ItemQuantity>
-                  </ContentTextCard>
-                </ItemCard>
-                <ItemCard>
-                  <ContentItemCard>
-                    <BackgroudIcon>
-                      <CoursesIcon />
-                    </BackgroudIcon>
-                  </ContentItemCard>
-                  <ContentTextCard>
-                    <ItemTitle>Cursos</ItemTitle>
-                    <ItemQuantity>{allData.courses}</ItemQuantity>
-                  </ContentTextCard>
-                </ItemCard>
-                <ItemCard>
-                  <ContentItemCard>
-                    <BackgroudIcon>
-                      <MaterialsIcon />
-                    </BackgroudIcon>
-                  </ContentItemCard>
-                  <ContentTextCard>
-                    <ItemTitle>Materiais</ItemTitle>
-                    <ItemQuantity>{allData.materials}</ItemQuantity>
-                  </ContentTextCard>
-                </ItemCard>
-              </InfoCard>
-
-              <ChartsArea>
-                <Recharts data={data} />
-              </ChartsArea>
+              <Text>Novos Cursos</Text>
+              <Description>Para mais informações sobre cursos entre em contato com a instituição.</Description>
+              <CoursesContainer>
+                <CoursesCard>
+                  <CoursesCardContent>
+                    <BackgroudIconCard>
+                      <IconMoney />
+                    </BackgroudIconCard>
+                    <TitleCard>Indice Futuro</TitleCard>
+                    <DescriptionCard>
+                      O contrato de índice futuro é derivado do Índice Ibovespa. Os contratos associados a ele são
+                      acordos que preveem ...
+                    </DescriptionCard>
+                  </CoursesCardContent>
+                </CoursesCard>
+                <CoursesCard>
+                  <CoursesCardContent>
+                    <BackgroudIconCard>
+                      <IconMoney />
+                    </BackgroudIconCard>
+                    <TitleCard>Indice Futuro</TitleCard>
+                    <DescriptionCard>
+                      O contrato de índice futuro é derivado do Índice Ibovespa. Os contratos associados a ele são
+                      acordos que preveem ...
+                    </DescriptionCard>
+                  </CoursesCardContent>
+                </CoursesCard>
+                <CoursesCard>
+                  <CoursesCardContent>
+                    <BackgroudIconCard>
+                      <IconMoney />
+                    </BackgroudIconCard>
+                    <TitleCard>Indice Futuro</TitleCard>
+                    <DescriptionCard>
+                      O contrato de índice futuro é derivado do Índice Ibovespa. Os contratos associados a ele são
+                      acordos que preveem ...
+                    </DescriptionCard>
+                  </CoursesCardContent>
+                </CoursesCard>
+              </CoursesContainer>
             </Main>
           </>
         )}

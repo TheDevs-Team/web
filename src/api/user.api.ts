@@ -36,6 +36,15 @@ class UserAPI {
       return false;
     }
   };
+
+  static get = async (): Promise<UserType | null> => {
+    try {
+      const { data } = await api.get('/user/find');
+      return data;
+    } catch (error) {
+      return null;
+    }
+  };
 }
 
 export default UserAPI;

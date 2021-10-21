@@ -1,7 +1,7 @@
 import { observable, action, makeObservable } from 'mobx';
 import { persist } from 'mobx-persist';
 import { UserAPI } from '~/api';
-import { setToken, setUserData, USER_STATUS_FINANCEIRO } from '~/utils';
+import { setToken, USER_STATUS_FINANCEIRO } from '~/utils';
 
 class UserStore {
   @persist
@@ -25,8 +25,8 @@ class UserStore {
     const response = await UserAPI.login(values);
 
     if (response) {
-      setUserData(response.user as unknown as string);
       setToken(response.token);
+      this.profile = response.user;
 
       return true;
     }
@@ -72,6 +72,17 @@ class UserStore {
   @action
   setCurrent = (id?: string) => {
     return (this.current = id);
+  };
+
+  @action
+  get = async (): Promise<UserType | null> => {
+    const response = await UserAPI.get();
+
+    if (response) {
+      return (this.profile = response);
+    }
+
+    return null;
   };
 }
 
