@@ -5,6 +5,10 @@ export const getToken = (): string | null => {
   return localStorage.getItem('@g2k:token');
 };
 
+export const getTypeUser = (): string | null => {
+  return localStorage.getItem('@g2k:typeuser');
+};
+
 export const setToken = (value: string): void => {
   return localStorage.setItem('@g2k:token', value);
 };

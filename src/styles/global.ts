@@ -8,7 +8,6 @@ export default createGlobalStyle`
     overflow-x: hidden;
     text-decoration: none;
     outline: none;
-    overflow: hidden;
   }
 
   html{

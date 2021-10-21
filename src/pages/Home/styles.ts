@@ -1,13 +1,14 @@
 import styled from 'styled-components';
 import { Menu } from '~/components';
 import { colors } from '~/theme';
-import { FiUser } from '~/utils';
+import { FiUsers, MdPendingActions, MdOutlineLibraryBooks, MdOutlineSchool } from '~/utils';
 
 export const Container = styled.div`
   width: 100vw;
   height: 100vh;
   background: #202024;
   display: flex;
+  overflow: hidden;
 `;
 
 export const MenuStyled = styled(Menu)``;
@@ -48,6 +49,7 @@ export const InfoCard = styled.section`
   display: flex;
   align-items: center;
   justify-content: space-around;
+  overflow: hidden;
 `;
 
 export const ChartsArea = styled.section`
@@ -59,6 +61,7 @@ export const ChartsArea = styled.section`
   align-items: center;
   justify-content: space-around;
   margin-top: 1rem;
+  overflow: hidden;
 `;
 
 export const ItemCard = styled.div`
@@ -106,7 +109,25 @@ export const BackgroudIcon = styled.div`
   justify-content: center; ;
 `;
 
-export const UserIcon = styled(FiUser)<MenuStyleType>`
+export const UserIcon = styled(FiUsers)<MenuStyleType>`
+  font-size: 1.5rem;
+  color: #2b2b2b;
+  cursor: pointer;
+`;
+
+export const PendingsIcon = styled(MdPendingActions)<MenuStyleType>`
+  font-size: 1.5rem;
+  color: #2b2b2b;
+  cursor: pointer;
+`;
+
+export const CoursesIcon = styled(MdOutlineSchool)<MenuStyleType>`
+  font-size: 1.5rem;
+  color: #2b2b2b;
+  cursor: pointer;
+`;
+
+export const MaterialsIcon = styled(MdOutlineLibraryBooks)<MenuStyleType>`
   font-size: 1.5rem;
   color: #2b2b2b;
   cursor: pointer;

@@ -1,18 +1,24 @@
-import { observable, action } from 'mobx';
+import { observable, action, makeObservable } from 'mobx';
 import { persist } from 'mobx-persist';
 import { UserAPI } from '~/api';
 import { setToken, setUserData, USER_STATUS_FINANCEIRO } from '~/utils';
 
 class UserStore {
-  @persist('object')
+  @persist
   @observable
   profile: UserType;
 
+  @persist
   @observable
   users: UserType[] | [];
 
+  @persist
   @observable
   current: string | undefined;
+
+  constructor() {
+    makeObservable(this);
+  }
 
   @action
   login = async (values: UserLoginType): Promise<boolean> => {
