@@ -2,7 +2,7 @@ import { Route, Redirect } from 'react-router-dom';
 import React from 'react';
 import { isAuthenticated } from '../services/auth';
 
-export const PrivateRoute: React.FC<any> = ({ component: Component, ...rest }): any => (
+export const PrivateRoutes: React.FC<any> = ({ component: Component, ...rest }): any => (
   <Route
     {...rest}
     render={(props) =>

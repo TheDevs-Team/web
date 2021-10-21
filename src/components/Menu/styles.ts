@@ -25,7 +25,7 @@ export const LogoContent = styled.div`
 `;
 
 export const Logo = styled.span`
-  font-size: 35px;
+  font-size: 2rem;
   font-weight: 500;
 
   color: ${colors.primary.white};
