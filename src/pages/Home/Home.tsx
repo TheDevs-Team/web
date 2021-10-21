@@ -16,6 +16,9 @@ import {
   BackgroudIcon,
   ChartsArea,
   UserIcon,
+  PendingsIcon,
+  CoursesIcon,
+  MaterialsIcon,
 } from './styles';
 
 import { Recharts } from 'components';
@@ -102,7 +105,7 @@ const Home: React.FC<Props> = ({ hover, setHover, allData }) => {
           <ItemCard>
             <ContentItemCard>
               <BackgroudIcon>
-                <UserIcon />
+                <PendingsIcon />
               </BackgroudIcon>
             </ContentItemCard>
             <ContentTextCard>
@@ -113,7 +116,7 @@ const Home: React.FC<Props> = ({ hover, setHover, allData }) => {
           <ItemCard>
             <ContentItemCard>
               <BackgroudIcon>
-                <UserIcon />
+                <CoursesIcon />
               </BackgroudIcon>
             </ContentItemCard>
             <ContentTextCard>
@@ -124,7 +127,7 @@ const Home: React.FC<Props> = ({ hover, setHover, allData }) => {
           <ItemCard>
             <ContentItemCard>
               <BackgroudIcon>
-                <UserIcon />
+                <MaterialsIcon />
               </BackgroudIcon>
             </ContentItemCard>
             <ContentTextCard>

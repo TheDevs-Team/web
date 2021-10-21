@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { Menu } from '~/components';
 import { colors } from '~/theme';
-import { FiUser } from '~/utils';
+import { FiUsers, MdPendingActions, MdOutlineLibraryBooks, MdOutlineSchool } from '~/utils';
 
 export const Container = styled.div`
   width: 100vw;
@@ -109,7 +109,25 @@ export const BackgroudIcon = styled.div`
   justify-content: center; ;
 `;
 
-export const UserIcon = styled(FiUser)<MenuStyleType>`
+export const UserIcon = styled(FiUsers)<MenuStyleType>`
+  font-size: 1.5rem;
+  color: #2b2b2b;
+  cursor: pointer;
+`;
+
+export const PendingsIcon = styled(MdPendingActions)<MenuStyleType>`
+  font-size: 1.5rem;
+  color: #2b2b2b;
+  cursor: pointer;
+`;
+
+export const CoursesIcon = styled(MdOutlineSchool)<MenuStyleType>`
+  font-size: 1.5rem;
+  color: #2b2b2b;
+  cursor: pointer;
+`;
+
+export const MaterialsIcon = styled(MdOutlineLibraryBooks)<MenuStyleType>`
   font-size: 1.5rem;
   color: #2b2b2b;
   cursor: pointer;
