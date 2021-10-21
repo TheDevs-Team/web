@@ -24,6 +24,7 @@ type Props = {
   hover: HoverIconsType;
   // eslint-disable-next-line no-unused-vars
   setHover: (value: HoverIconsType) => void;
+  allData: AllDashboardData;
 };
 
 const data = [
@@ -77,7 +78,7 @@ const data = [
   },
 ];
 
-const Home: React.FC<Props> = ({ hover, setHover }) => {
+const Home: React.FC<Props> = ({ hover, setHover, allData }) => {
   return (
     <Container>
       <MenuStyled hover={hover} setHover={setHover} active={'DASHBOARD'} />
@@ -95,7 +96,7 @@ const Home: React.FC<Props> = ({ hover, setHover }) => {
             </ContentItemCard>
             <ContentTextCard>
               <ItemTitle>Usuários</ItemTitle>
-              <ItemQuantity>325</ItemQuantity>
+              <ItemQuantity>{allData.users}</ItemQuantity>
             </ContentTextCard>
           </ItemCard>
           <ItemCard>
@@ -106,7 +107,7 @@ const Home: React.FC<Props> = ({ hover, setHover }) => {
             </ContentItemCard>
             <ContentTextCard>
               <ItemTitle>Cursos</ItemTitle>
-              <ItemQuantity>8</ItemQuantity>
+              <ItemQuantity>{allData.courses}</ItemQuantity>
             </ContentTextCard>
           </ItemCard>
           <ItemCard>
@@ -117,7 +118,7 @@ const Home: React.FC<Props> = ({ hover, setHover }) => {
             </ContentItemCard>
             <ContentTextCard>
               <ItemTitle>Materiais</ItemTitle>
-              <ItemQuantity>15</ItemQuantity>
+              <ItemQuantity>{allData.materials}</ItemQuantity>
             </ContentTextCard>
           </ItemCard>
           <ItemCard>
@@ -128,7 +129,7 @@ const Home: React.FC<Props> = ({ hover, setHover }) => {
             </ContentItemCard>
             <ContentTextCard>
               <ItemTitle>Pendentes</ItemTitle>
-              <ItemQuantity>124</ItemQuantity>
+              <ItemQuantity>{allData.pendings}</ItemQuantity>
             </ContentTextCard>
           </ItemCard>
         </InfoCard>

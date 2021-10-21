@@ -1,22 +1,42 @@
-import { observable, action } from 'mobx';
+import { observable, action, makeObservable } from 'mobx';
 import { persist } from 'mobx-persist';
-import { CourseAPI } from '~/api';
+import { DashboardAPI } from '~/api';
 
 class DashboardStore {
-  @persist('object')
+  @persist
   @observable
-  courses: CourseType[] = [];
+  allUsersData: AllUsersDashboard;
+
+  @persist
+  @observable
+  allData: AllDashboardData;
+
+  constructor() {
+    makeObservable(this);
+  }
 
   @action
-  list = async (): Promise<CourseType[]> => {
-    const response = await CourseAPI.list();
+  index = async (): Promise<AllUsersDashboard | null> => {
+    const response = await DashboardAPI.index();
 
     if (response) {
-      this.courses = response;
+      this.allData = response;
       return response;
     }
 
-    return (this.courses = []);
+    return null;
+  };
+
+  @action
+  allUsers = async (): Promise<AllUsersDashboard | null> => {
+    const response = await DashboardAPI.allUsers();
+
+    if (response) {
+      this.allUsersData = response;
+      return response;
+    }
+
+    return null;
   };
 }
 

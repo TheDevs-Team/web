@@ -1,3 +1,4 @@
+import { create } from 'mobx-persist';
 import UserStore from './user.store';
 import CourseStore from './course.store';
 import DashboardStore from './dashboard.store';
@@ -15,6 +16,12 @@ class RootStore {
 }
 
 const store = new RootStore();
+
+const hydrate = create({
+  storage: localStorage,
+});
+
+hydrate('dashboard', store.dashboard);
 
 export { UserStore, CourseStore, DashboardStore };
 
