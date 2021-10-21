@@ -1,6 +1,4 @@
-/* eslint-disable no-unused-vars */
 import React from 'react';
-import { AreaChart, Area, XAxis, YAxis, Tooltip, ResponsiveContainer } from 'recharts';
 
 import {
   Container,
@@ -24,6 +22,7 @@ import { Recharts } from 'components';
 
 type Props = {
   hover: HoverIconsType;
+  // eslint-disable-next-line no-unused-vars
   setHover: (value: HoverIconsType) => void;
 };
 
