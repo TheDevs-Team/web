@@ -41,9 +41,9 @@ const HomeContainer: React.FC<Props> = ({ dashboard, user }) => {
     <Home
       hover={hover}
       setHover={handleHover}
-      allData={dashboard.allData || {}}
+      allData={dashboard.allData}
       size={size}
-      user={user.profile || {}}
+      user={user.profile}
       loaded={loaded}
     />
   );
