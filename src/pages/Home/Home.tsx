@@ -43,57 +43,6 @@ type Props = {
   loaded: boolean;
 };
 
-const data = [
-  {
-    name: 'Jan',
-    alunos: 65,
-  },
-  {
-    name: 'Fev',
-    alunos: 50,
-  },
-  {
-    name: 'Mar',
-    alunos: 55,
-  },
-  {
-    name: 'Abr',
-    alunos: 60,
-  },
-  {
-    name: 'Mai',
-    alunos: 70,
-  },
-  {
-    name: 'Jun',
-    alunos: 50,
-  },
-  {
-    name: 'Jul',
-    alunos: 50,
-  },
-  {
-    name: 'Ago',
-    alunos: 63,
-  },
-  {
-    name: 'Set',
-    alunos: 73,
-  },
-  {
-    name: 'Out',
-    alunos: 65,
-  },
-  {
-    name: 'Nov',
-    alunos: 55,
-  },
-  {
-    name: 'Dez',
-    alunos: 40,
-  },
-];
-
 const Home: React.FC<Props> = ({ hover, setHover, allData, size, user, loaded }) => {
   return (
     <Container>
@@ -102,7 +51,7 @@ const Home: React.FC<Props> = ({ hover, setHover, allData, size, user, loaded })
       </If>
       <If condition={loaded}>
         <If condition={isAdm()}>
-          {size >= 950 && (
+          {size >= 900 && (
             <>
               <MenuStyled hover={hover} setHover={setHover} active={'DASHBOARD'} />
               <Main>
@@ -158,7 +107,7 @@ const Home: React.FC<Props> = ({ hover, setHover, allData, size, user, loaded })
                 </InfoCard>
 
                 <ChartsArea>
-                  <Recharts data={data} />
+                  <Recharts data={allData.dataGraphics} />
                 </ChartsArea>
               </Main>
             </>

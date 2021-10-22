@@ -85,6 +85,7 @@ export const ContentTextCard = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
+  cursor: default;
 `;
 
 export const ItemTitle = styled.h3`
@@ -109,31 +110,31 @@ export const BackgroudIcon = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  cursor: pointer;
+  cursor: default;
 `;
 
 export const UserIcon = styled(FiUsers)<MenuStyleType>`
   font-size: 1.5rem;
   color: #67f7bd;
-  cursor: pointer;
+  cursor: default;
 `;
 
 export const PendingsIcon = styled(MdPendingActions)<MenuStyleType>`
   font-size: 1.5rem;
   color: #67f7bd;
-  cursor: pointer;
+  cursor: default;
 `;
 
 export const CoursesIcon = styled(MdOutlineSchool)<MenuStyleType>`
   font-size: 1.5rem;
   color: #67f7bd;
-  cursor: pointer;
+  cursor: default;
 `;
 
 export const MaterialsIcon = styled(MdOutlineLibraryBooks)<MenuStyleType>`
   font-size: 1.5rem;
   color: #67f7bd;
-  cursor: pointer;
+  cursor: default;
 `;
 
 /**

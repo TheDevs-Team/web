@@ -37,18 +37,6 @@ class DashboardStore {
 
     return null;
   };
-
-  @action
-  allUsers = async (): Promise<AllUsersDashboard | null> => {
-    const response = await DashboardAPI.allUsers();
-
-    if (response) {
-      this.allUsersData = response;
-      return response;
-    }
-
-    return null;
-  };
 }
 
 export default DashboardStore;
