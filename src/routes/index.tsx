@@ -5,11 +5,11 @@ import { PrivateRoutes } from './PrivateRoutes';
 export const Routes: React.FC = () => (
   <BrowserRouter>
     <Switch>
-      <PrivateRoutes exact path={'/'} component={HomeAdm} />
+      <PrivateRoutes exact path={'/'} component={Home} />
       <PrivateRoutes exact path={'/perfil'} component={Profile} />
       <PrivateRoutes exact path={'/cursos'} component={Course} />
       <PrivateRoutes exact path={'/materiais'} component={Material} />
-      <PrivateRoutes exact path={'/home'} component={Home} />
+      <PrivateRoutes exact path={'/home'} component={HomeAdm} />
       <Route exact path={'/entrar'} component={Login} />
     </Switch>
   </BrowserRouter>

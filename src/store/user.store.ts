@@ -1,7 +1,7 @@
 import { observable, action, makeObservable } from 'mobx';
 import { persist } from 'mobx-persist';
 import { UserAPI } from '~/api';
-import { setToken, USER_STATUS_FINANCEIRO } from '~/utils';
+import { setToken, USER_STATUS_FINANCEIRO, setTypeUser } from '~/utils';
 
 class UserStore {
   @persist
@@ -26,6 +26,7 @@ class UserStore {
 
     if (response) {
       setToken(response.token);
+      setTypeUser(response.user.type);
       this.profile = response.user;
 
       return true;

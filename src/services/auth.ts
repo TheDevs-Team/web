@@ -6,5 +6,5 @@ export const isAuthenticated = () => {
 };
 
 export const isAdm = () => {
-  return !isEmpty(getToken()) && getTypeUser() === 'admin';
+  return !isEmpty(getToken()) && getTypeUser() == 'ADMIN';
 };

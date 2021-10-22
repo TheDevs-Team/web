@@ -17,6 +17,10 @@ export const setUserData = (user: string): void => {
   return localStorage.setItem('@g2k:user', JSON.stringify(user));
 };
 
+export const setTypeUser = (value: string): void => {
+  return localStorage.setItem('@g2k:typeuser', value);
+};
+
 export const getUserData = () => {
   return JSON.parse(localStorage.getItem('@g2k:user')!);
 };
