@@ -28,6 +28,7 @@ import {
   DescriptionCard,
   TitleCard,
   CoursesCardContent,
+  LoadingPageStyled,
 } from './styles';
 
 import { Recharts, If } from 'components';
@@ -94,9 +95,11 @@ const data = [
 ];
 
 const Home: React.FC<Props> = ({ hover, setHover, allData, size, user, loaded }) => {
-  console.log(allData);
   return (
     <Container>
+      <If condition={!loaded}>
+        <LoadingPageStyled />
+      </If>
       <If condition={loaded}>
         <If condition={isAdm()}>
           {size >= 950 && (

@@ -6,3 +6,4 @@ export * from './UsersTable';
 export * from './Button';
 export * from './Menu';
 export * from './Recharts';
+export * from './LoadingPage';

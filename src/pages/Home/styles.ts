@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Menu } from '~/components';
+import { Menu, LoadingPage } from '~/components';
 import { colors } from '~/theme';
 import { FiUsers, MdPendingActions, MdOutlineLibraryBooks, MdOutlineSchool, FaMoneyBillWave } from '~/utils';
 
@@ -12,6 +12,8 @@ export const Container = styled.div`
 `;
 
 export const MenuStyled = styled(Menu)``;
+
+export const LoadingPageStyled = styled(LoadingPage)``;
 
 export const Header = styled.header`
   width: 100%;
