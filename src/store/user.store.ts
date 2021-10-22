@@ -6,7 +6,17 @@ import { setToken, USER_STATUS_FINANCEIRO, setTypeUser } from '~/utils';
 class UserStore {
   @persist
   @observable
-  profile: UserType;
+  profile: UserType = {
+    id: '',
+    name: '',
+    document: '',
+    email: '',
+    phone: '',
+    type: '',
+    financial_status: '',
+    password: '',
+    active: true,
+  };
 
   @persist
   @observable

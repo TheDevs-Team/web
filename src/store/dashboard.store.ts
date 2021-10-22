@@ -9,7 +9,18 @@ class DashboardStore {
 
   @persist
   @observable
-  allData: AllDashboardData;
+  allData: AllDashboardData = {
+    users: 0,
+    pendings: 0,
+    courses: 0,
+    materials: 0,
+    dataGraphics: [
+      {
+        month: '',
+        value: 0,
+      },
+    ],
+  };
 
   constructor() {
     makeObservable(this);
