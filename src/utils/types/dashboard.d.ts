@@ -3,6 +3,7 @@ declare type AllDashboardData = {
   courses?: number;
   materials?: number;
   pendings?: number;
+  newCourses?: CourseType[];
 };
 
 declare type AllUsersDashboard = {

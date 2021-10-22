@@ -11,6 +11,7 @@ type Props = {
 const HomeContainer: React.FC<Props> = ({ dashboard, user }) => {
   const [hover, setHover] = useState<HoverIconsType>('');
   const [size, setSize] = useState(0);
+  const [loaded, setLoaded] = useState(false);
 
   const updateSize = () => {
     setSize(window.innerWidth);
@@ -24,15 +25,16 @@ const HomeContainer: React.FC<Props> = ({ dashboard, user }) => {
 
   const handleHover = (item: HoverIconsType) => setHover(item);
 
-  const allData = async () => await dashboard.index();
-
-  const getUser = async () => await user.get();
+  const handleLoad = async () => {
+    await user.get();
+    await dashboard.index();
+    setLoaded(true);
+  };
 
   useEffect(() => {
-    allData();
+    handleLoad();
     updateSize();
     sizeEvent();
-    getUser();
   }, []);
 
   return (
@@ -42,6 +44,7 @@ const HomeContainer: React.FC<Props> = ({ dashboard, user }) => {
       allData={dashboard.allData || {}}
       size={size}
       user={user.profile || {}}
+      loaded={loaded}
     />
   );
 };
