@@ -45,7 +45,7 @@ export const Menu: React.FC<Props> = ({ hover, setHover, active, ...rest }) => {
             <MenuText
               active={item.key === active}
               hover={item.key === hover}
-              onClick={() => (item.key === 'LOGOUT' ? logout() : history.push(item.name))}
+              onClick={() => (item.key === 'LOGOUT' ? logout() : history.push(item.url))}
             >
               {item.name}
             </MenuText>
@@ -62,7 +62,7 @@ export const Menu: React.FC<Props> = ({ hover, setHover, active, ...rest }) => {
             <MenuText
               active={item.key === active}
               hover={item.key === hover}
-              onClick={() => (item.key === 'LOGOUT' ? logout() : history.push(item.name))}
+              onClick={() => (item.key === 'LOGOUT' ? logout() : history.push(item.url))}
             >
               {item.name}
             </MenuText>
