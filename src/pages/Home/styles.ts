@@ -158,7 +158,6 @@ export const CoursesContainer = styled.section`
 
 export const CourseCardStyled = styled(CourseCard)`
   margin: 20px 20px 0 0;
-  height: 300px;
 `;
 
 export const TitleCard = styled(TitlePage)``;
