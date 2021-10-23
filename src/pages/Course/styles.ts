@@ -1,7 +1,7 @@
 import styled from 'styled-components';
-import { Menu, LoadingPage } from '~/components';
+import { Menu, LoadingPage, CourseCard } from '~/components';
 import { colors } from '~/theme';
-import { FiUsers, MdPendingActions, MdOutlineLibraryBooks, MdOutlineSchool, FaMoneyBillWave } from '~/utils';
+import { FiUsers, MdPendingActions, MdOutlineLibraryBooks, MdOutlineSchool } from '~/utils';
 
 export const Container = styled.div`
   width: 100vw;
@@ -137,15 +137,6 @@ export const MaterialsIcon = styled(MdOutlineLibraryBooks)<MenuStyleType>`
   cursor: default;
 `;
 
-/**
-  @description User styles
-**/
-
-export const Text = styled(TitlePage)`
-  font-size: 32px;
-  margin-top: 25px;
-`;
-
 export const CoursesContainer = styled.section`
   width: 100%;
   display: flex;
@@ -153,52 +144,7 @@ export const CoursesContainer = styled.section`
   margin-top: 25px;
   overflow: hidden;
   flex-wrap: wrap;
+  flex-direction: row;
 `;
 
-export const CoursesCard = styled.div`
-  width: 21%;
-  height: 350px;
-  background: #2b2b2c;
-  display: flex;
-  flex-direction: column;
-  border-radius: 8px 8px 0 0;
-  border-bottom: 2px solid #38c58d;
-  cursor: pointer;
-  margin: 15px 0;
-
-  &:hover {
-    background: #38383a;
-    transition: 0.5;
-  }
-`;
-
-export const CoursesCardContent = styled.div`
-  width: 80%;
-  height: 70%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  margin: 15px auto 0;
-  background: none;
-`;
-
-export const BackgroudIconCard = styled.div`
-  width: 80px;
-  height: 80px;
-  border-radius: 8px;
-  background: #38c58d;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-`;
-
-export const IconMoney = styled(FaMoneyBillWave)`
-  font-size: 2.5rem;
-  color: #fff;
-  cursor: pointer;
-`;
-
-export const TitleCard = styled(TitlePage)``;
-
-export const DescriptionCard = styled(Description)``;
+export const CourseCardStyled = styled(CourseCard)``;

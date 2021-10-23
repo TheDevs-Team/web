@@ -22,12 +22,7 @@ import {
   MaterialsIcon,
   CoursesContainer,
   Text,
-  CoursesCard,
-  IconMoney,
-  BackgroudIconCard,
-  DescriptionCard,
-  TitleCard,
-  CoursesCardContent,
+  CourseCardStyled,
   LoadingPageStyled,
 } from './styles';
 
@@ -126,15 +121,7 @@ const Home: React.FC<Props> = ({ hover, setHover, allData, size, user, loaded })
                 <Description>Para mais informações sobre cursos entre em contato com a instituição.</Description>
                 <CoursesContainer>
                   {allData?.newCourses?.map((course: CourseType, idx) => (
-                    <CoursesCard key={idx}>
-                      <CoursesCardContent>
-                        <BackgroudIconCard>
-                          <IconMoney />
-                        </BackgroudIconCard>
-                        <TitleCard>{course.name}</TitleCard>
-                        <DescriptionCard>{course.description}.</DescriptionCard>
-                      </CoursesCardContent>
-                    </CoursesCard>
+                    <CourseCardStyled key={idx} name={course.name} description={course.description} />
                   ))}
                 </CoursesContainer>
               </Main>

@@ -7,3 +7,4 @@ export * from './Button';
 export * from './Menu';
 export * from './Recharts';
 export * from './LoadingPage';
+export * from './CourseCard';

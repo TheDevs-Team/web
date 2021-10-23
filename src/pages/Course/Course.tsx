@@ -2,19 +2,7 @@
 import React from 'react';
 import { If } from '~/components';
 
-import {
-  Container,
-  MenuStyled,
-  Main,
-  CoursesContainer,
-  CoursesCard,
-  IconMoney,
-  BackgroudIconCard,
-  DescriptionCard,
-  TitleCard,
-  CoursesCardContent,
-  LoadingPageStyled,
-} from './styles';
+import { Container, MenuStyled, Main, CoursesContainer, CourseCardStyled, LoadingPageStyled } from './styles';
 
 type Props = {
   hover: HoverIconsType;
@@ -37,15 +25,7 @@ const Course: React.FC<Props> = ({ hover, setHover, courses, size, loaded }) => 
             <Main>
               <CoursesContainer>
                 {courses.map((course: CourseType, idx) => (
-                  <CoursesCard key={idx}>
-                    <CoursesCardContent>
-                      <BackgroudIconCard>
-                        <IconMoney />
-                      </BackgroudIconCard>
-                      <TitleCard>{course.name}</TitleCard>
-                      <DescriptionCard>{course.description}.</DescriptionCard>
-                    </CoursesCardContent>
-                  </CoursesCard>
+                  <CourseCardStyled key={idx} name={course.name} description={course.description} />
                 ))}
               </CoursesContainer>
             </Main>
