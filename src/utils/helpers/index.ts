@@ -46,3 +46,11 @@ export const logout = () => {
   localStorage.clear();
   window.location.reload();
 };
+
+export const textLimiter = (text: string): string => {
+  if (text.length >= 120) {
+    return `${text.substr(0, 120)}...`;
+  }
+
+  return text;
+};

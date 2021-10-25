@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 import React from 'react';
 import { If } from '~/components';
-
+import { textLimiter } from '~/utils';
 import { Container, MenuStyled, Main, CoursesContainer, CourseCardStyled, LoadingPageStyled } from './styles';
 
 type Props = {
@@ -25,7 +25,7 @@ const Course: React.FC<Props> = ({ hover, setHover, courses, size, loaded }) => 
             <Main>
               <CoursesContainer>
                 {courses.map((course: CourseType, idx) => (
-                  <CourseCardStyled key={idx} name={course.name} description={course.description} />
+                  <CourseCardStyled key={idx} name={course.name} description={textLimiter(course.description)} />
                 ))}
               </CoursesContainer>
             </Main>

@@ -1,6 +1,15 @@
 import React from 'react';
 
-import { CoursesCard, CoursesCardContent, BackgroudIconCard, IconMoney, TitleCard, DescriptionCard } from './styles';
+import {
+  CoursesCard,
+  CoursesCardContentTitle,
+  BackgroudIconCard,
+  IconMoney,
+  TitleCard,
+  DescriptionCard,
+  CoursesCardContentIcon,
+  CoursesCardContentDescription,
+} from './styles';
 
 type Props = {
   name: string;
@@ -9,12 +18,16 @@ type Props = {
 
 export const CourseCard: React.FC<Props> = ({ name, description, ...rest }) => (
   <CoursesCard {...{ ...rest }}>
-    <CoursesCardContent>
+    <CoursesCardContentIcon>
       <BackgroudIconCard>
         <IconMoney />
       </BackgroudIconCard>
+    </CoursesCardContentIcon>
+    <CoursesCardContentTitle>
       <TitleCard>{name}</TitleCard>
+    </CoursesCardContentTitle>
+    <CoursesCardContentDescription>
       <DescriptionCard>{description}.</DescriptionCard>
-    </CoursesCardContent>
+    </CoursesCardContentDescription>
   </CoursesCard>
 );
