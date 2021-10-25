@@ -9,6 +9,10 @@ export const getTypeUser = (): string | null => {
   return localStorage.getItem('@g2k:typeuser');
 };
 
+export const getCurrentCourseID = (): string | null => {
+  return localStorage.getItem('@g2k:currentCourseID');
+};
+
 export const setToken = (value: string): void => {
   return localStorage.setItem('@g2k:token', value);
 };
@@ -19,6 +23,10 @@ export const setUserData = (user: string): void => {
 
 export const setTypeUser = (value: string): void => {
   return localStorage.setItem('@g2k:typeuser', value);
+};
+
+export const setCurrentCourseID = (value: string): void => {
+  return localStorage.setItem('@g2k:currentCourseID', value);
 };
 
 export const getUserData = () => {

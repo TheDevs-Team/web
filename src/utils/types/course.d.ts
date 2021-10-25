@@ -4,9 +4,9 @@ declare type CourseType = {
   name: string;
   description: string;
   manager_id: string;
-  created_at: Date;
-  updated_at: Date;
-  user: UserType;
+  created_at: string | Date;
+  updated_at: string | Date;
+  user?: UserType;
 };
 
 declare type CreateCourseType = {

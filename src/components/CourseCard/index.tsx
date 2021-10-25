@@ -14,10 +14,11 @@ import {
 type Props = {
   name: string;
   description: string;
+  onClick?: () => void;
 };
 
-export const CourseCard: React.FC<Props> = ({ name, description, ...rest }) => (
-  <CoursesCard {...{ ...rest }}>
+export const CourseCard: React.FC<Props> = ({ name, description, onClick, ...rest }) => (
+  <CoursesCard onClick={onClick} {...{ ...rest }}>
     <CoursesCardContentIcon>
       <BackgroudIconCard>
         <IconMoney />

@@ -1,28 +1,18 @@
 /* eslint-disable no-unused-vars */
 import React from 'react';
 import { If } from '~/components';
-import { textLimiter } from '~/utils';
 import { isAdm } from '~/services/auth';
-import {
-  Container,
-  MenuStyled,
-  Main,
-  CoursesContainer,
-  CourseCardStyled,
-  LoadingPageStyled,
-  TitlePage,
-} from './styles';
+import { Container, MenuStyled, Main, LoadingPageStyled } from './styles';
 
 type Props = {
   hover: HoverIconsType;
   setHover: (value: HoverIconsType) => void;
-  courses: CourseType[];
   size: number;
   loaded: boolean;
-  myCourses: StudentCourseType[];
+  course: CourseType;
 };
 
-const CourseById: React.FC<Props> = ({ hover, setHover, courses, size, loaded, myCourses }) => {
+const CourseById: React.FC<Props> = ({ hover, setHover, size, loaded, course }) => {
   return (
     <Container>
       <If condition={!loaded}>
@@ -34,11 +24,11 @@ const CourseById: React.FC<Props> = ({ hover, setHover, courses, size, loaded, m
             <>
               <MenuStyled hover={hover} setHover={setHover} active={'COURSES'} />
               <Main>
-                <CoursesContainer>
-                  {courses.map((course: CourseType, idx) => (
-                    <CourseCardStyled key={idx} name={course.name} description={textLimiter(course.description)} />
-                  ))}
-                </CoursesContainer>
+                <p>{course.name}</p>
+                <p>{course.description}</p>
+                <p>{course.id}</p>
+                <p></p>
+                <p></p>
               </Main>
             </>
           )}
@@ -47,27 +37,7 @@ const CourseById: React.FC<Props> = ({ hover, setHover, courses, size, loaded, m
           {size >= 950 && (
             <>
               <MenuStyled hover={hover} setHover={setHover} active={'COURSES'} />
-              <Main>
-                <TitlePage>Meus Cursos</TitlePage>
-                <CoursesContainer userCourses>
-                  {myCourses.map((course: StudentCourseType, idx) => (
-                    <CourseCardStyled
-                      userCourses
-                      key={idx}
-                      name={course.course.name}
-                      description={textLimiter(course.course.description)}
-                    />
-                  ))}
-                </CoursesContainer>
-
-                <TitlePage>Cursos Disponíveis</TitlePage>
-
-                <CoursesContainer>
-                  {courses.map((course: CourseType, idx) => (
-                    <CourseCardStyled key={idx} name={course.name} description={textLimiter(course.description)} />
-                  ))}
-                </CoursesContainer>
-              </Main>
+              <Main></Main>
             </>
           )}
         </If>

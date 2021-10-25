@@ -1,7 +1,8 @@
 /* eslint-disable no-unused-vars */
 import React from 'react';
 import { If } from '~/components';
-import { textLimiter } from '~/utils';
+import { textLimiter, setCurrentCourseID } from '~/utils';
+
 import { isAdm } from '~/services/auth';
 import {
   Container,
@@ -36,7 +37,12 @@ const Course: React.FC<Props> = ({ hover, setHover, courses, size, loaded, myCou
               <Main>
                 <CoursesContainer>
                   {courses.map((course: CourseType, idx) => (
-                    <CourseCardStyled key={idx} name={course.name} description={textLimiter(course.description)} />
+                    <CourseCardStyled
+                      onClick={() => setCurrentCourseID(course.id)}
+                      key={idx}
+                      name={course.name}
+                      description={textLimiter(course.description)}
+                    />
                   ))}
                 </CoursesContainer>
               </Main>

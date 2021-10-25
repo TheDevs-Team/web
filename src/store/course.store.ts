@@ -1,26 +1,50 @@
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
 import { observable, action, makeObservable } from 'mobx';
 import { persist } from 'mobx-persist';
 import { CourseAPI } from '~/api';
+import { getCurrentCourseID } from '~/utils';
 
 class CourseStore {
-  @persist('object')
+  @persist
   @observable
   courses: CourseType[] = [];
+
+  @persist
+  @observable
+  course: CourseType = {
+    id: '',
+    active: false,
+    name: '',
+    description: '',
+    manager_id: '',
+    created_at: '',
+    updated_at: '',
+  };
 
   constructor() {
     makeObservable(this);
   }
 
   @action
-  list = async (): Promise<CourseType[]> => {
+  list = async (): Promise<CourseType[] | null> => {
     const response = await CourseAPI.list();
 
     if (response) {
-      this.courses = response;
-      return response;
+      return (this.courses = response);
     }
 
-    return (this.courses = []);
+    return null;
+  };
+
+  @action
+  find = async (): Promise<CourseType | null> => {
+    const response = await CourseAPI.find(getCurrentCourseID()!);
+
+    if (response) {
+      return (this.course = response);
+    }
+
+    return null;
   };
 }
 

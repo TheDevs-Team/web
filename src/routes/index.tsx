@@ -10,7 +10,7 @@ export const Routes: React.FC = () => (
       <PrivateRoutes exact path={'/materiais'} component={Material} />
       <PrivateRoutes exact path={'/home'} component={HomeAdm} />
       <PrivateRoutes exact path={'/cursos'} component={Course} />
-      <PrivateRoutes exact path={'/cursos/:id'} component={CourseById} />
+      <PrivateRoutes path={'/cursos/:id'} component={CourseById} />
       <Route exact path={'/entrar'} component={Login} />
     </Switch>
   </BrowserRouter>
