@@ -27,8 +27,6 @@ const CourseById: React.FC<Props> = ({ hover, setHover, size, loaded, course }) 
                 <p>{course.name}</p>
                 <p>{course.description}</p>
                 <p>{course.id}</p>
-                <p></p>
-                <p></p>
               </Main>
             </>
           )}
