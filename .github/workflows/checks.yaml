@@ -14,5 +14,8 @@ jobs:
       - name: checkout
         uses: actions/checkout@v2
 
+      - name: install dependences
+        run: yarn
+
       - name: eslint
         run: yarn lint
