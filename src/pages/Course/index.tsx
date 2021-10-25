@@ -2,6 +2,7 @@ import { inject, observer } from 'mobx-react';
 import React, { useState, useEffect } from 'react';
 import { CourseStore, StudentCourseStore } from '~/store';
 import Home from './Course';
+import { useHistory } from 'react-router-dom';
 
 type Props = {
   course: CourseStore;
@@ -12,6 +13,10 @@ const CourseContainer: React.FC<Props> = ({ course, studentCourse }) => {
   const [hover, setHover] = useState<HoverIconsType>('');
   const [size, setSize] = useState(0);
   const [loaded, setLoaded] = useState(false);
+
+  const history = useHistory();
+
+  const toCourse = (path: string) => history.push(path);
 
   const updateSize = () => setSize(window.innerWidth);
 
@@ -43,6 +48,7 @@ const CourseContainer: React.FC<Props> = ({ course, studentCourse }) => {
       size={size}
       loaded={loaded}
       myCourses={studentCourse.courses}
+      toCourse={toCourse}
     />
   );
 };

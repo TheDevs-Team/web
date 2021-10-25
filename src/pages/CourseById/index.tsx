@@ -3,8 +3,6 @@ import React, { useState, useEffect } from 'react';
 import { CourseStore } from '~/store';
 import CourseById from './CourseById';
 
-import { getCurrentCourseID } from '~/utils';
-
 type Props = {
   course: CourseStore;
 };
@@ -29,10 +27,7 @@ const CourseByIdContainer: React.FC<Props> = ({ course }) => {
     setLoaded(true);
   };
 
-  const getTest = () => getCurrentCourseID();
-
   useEffect(() => {
-    console.log(getTest());
     updateSize();
     sizeEvent();
     handleLoad();

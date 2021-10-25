@@ -39,7 +39,6 @@ type Props = {
   user: UserType;
   loaded: boolean;
 };
-
 const Home: React.FC<Props> = ({ hover, setHover, allData, size, user, loaded }) => {
   return (
     <Container>
