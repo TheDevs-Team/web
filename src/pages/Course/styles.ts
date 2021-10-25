@@ -11,7 +11,6 @@ export const Container = styled.div`
   height: 100vh;
   background: #202024;
   display: flex;
-  overflow: hidden;
 `;
 
 export const MenuStyled = styled(Menu)``;
@@ -31,6 +30,7 @@ export const Main = styled.main`
   height: 95%;
   background: none;
   padding: 20px 40px;
+  overflow: scroll;
 `;
 
 export const Description = styled.h4`

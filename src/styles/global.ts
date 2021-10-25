@@ -5,8 +5,7 @@ export default createGlobalStyle`
     margin: 0;
     padding: 0;
     font-family: 'Poppins', 'sans-serif';
-    overflow-x: hidden;
-    overflow-y: auto;
+    overflow: hidden;
     text-decoration: none;
     outline: none;
   }

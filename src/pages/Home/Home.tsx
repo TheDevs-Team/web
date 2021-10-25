@@ -26,6 +26,8 @@ import {
   LoadingPageStyled,
 } from './styles';
 
+import { textLimiter } from '~/utils';
+
 import { Recharts, If } from 'components';
 import { isAdm } from '~/services/auth';
 
@@ -121,7 +123,7 @@ const Home: React.FC<Props> = ({ hover, setHover, allData, size, user, loaded })
                 <Description>Para mais informações sobre cursos entre em contato com a instituição.</Description>
                 <CoursesContainer>
                   {allData?.newCourses?.map((course: CourseType, idx) => (
-                    <CourseCardStyled key={idx} name={course.name} description={course.description} />
+                    <CourseCardStyled key={idx} name={course.name} description={textLimiter(course.description)} />
                   ))}
                 </CoursesContainer>
               </Main>
