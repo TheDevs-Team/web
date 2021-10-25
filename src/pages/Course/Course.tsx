@@ -22,9 +22,10 @@ type Props = {
   loaded: boolean;
   myCourses: StudentCourseType[];
   toCourse: (path: string) => void;
+  onClickCourse: () => void;
 };
 
-const Course: React.FC<Props> = ({ hover, setHover, courses, size, loaded, myCourses, toCourse }) => {
+const Course: React.FC<Props> = ({ hover, setHover, courses, size, loaded, myCourses, toCourse, onClickCourse }) => {
   return (
     <Container>
       <If condition={!loaded}>
@@ -66,6 +67,10 @@ const Course: React.FC<Props> = ({ hover, setHover, courses, size, loaded, myCou
                       key={idx}
                       name={course.course.name}
                       description={textLimiter(course.course.description)}
+                      onClick={() => {
+                        setCurrentCourseID(course.id);
+                        toCourse(`/cursos/${course.id}`);
+                      }}
                     />
                   ))}
                 </CoursesContainer>
@@ -74,7 +79,12 @@ const Course: React.FC<Props> = ({ hover, setHover, courses, size, loaded, myCou
 
                 <CoursesContainer>
                   {courses.map((course: CourseType, idx) => (
-                    <CourseCardStyled key={idx} name={course.name} description={textLimiter(course.description)} />
+                    <CourseCardStyled
+                      key={idx}
+                      name={course.name}
+                      description={textLimiter(course.description)}
+                      onClick={onClickCourse}
+                    />
                   ))}
                 </CoursesContainer>
               </Main>

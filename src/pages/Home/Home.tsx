@@ -38,8 +38,9 @@ type Props = {
   size: number;
   user: UserType;
   loaded: boolean;
+  onClickCourse: () => void;
 };
-const Home: React.FC<Props> = ({ hover, setHover, allData, size, user, loaded }) => {
+const Home: React.FC<Props> = ({ hover, setHover, allData, size, user, loaded, onClickCourse }) => {
   return (
     <Container>
       <If condition={!loaded}>
@@ -122,7 +123,12 @@ const Home: React.FC<Props> = ({ hover, setHover, allData, size, user, loaded })
                 <Description>Para mais informações sobre cursos entre em contato com a instituição.</Description>
                 <CoursesContainer>
                   {allData?.newCourses?.map((course: CourseType, idx) => (
-                    <CourseCardStyled key={idx} name={course.name} description={textLimiter(course.description)} />
+                    <CourseCardStyled
+                      onClick={onClickCourse}
+                      key={idx}
+                      name={course.name}
+                      description={textLimiter(course.description)}
+                    />
                   ))}
                 </CoursesContainer>
               </Main>

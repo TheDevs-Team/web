@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { CourseStore, StudentCourseStore } from '~/store';
 import Home from './Course';
 import { useHistory } from 'react-router-dom';
+import { notify } from '~/utils';
 
 type Props = {
   course: CourseStore;
@@ -25,6 +26,7 @@ const CourseContainer: React.FC<Props> = ({ course, studentCourse }) => {
     updateSize();
     return () => window.removeEventListener('resize', updateSize);
   };
+  const onClickCourse = () => notify('info', 'Entre em contato para adquirir novos cursos!');
 
   const handleHover = (item: HoverIconsType) => setHover(item);
 
@@ -49,6 +51,7 @@ const CourseContainer: React.FC<Props> = ({ course, studentCourse }) => {
       loaded={loaded}
       myCourses={studentCourse.courses}
       toCourse={toCourse}
+      onClickCourse={onClickCourse}
     />
   );
 };

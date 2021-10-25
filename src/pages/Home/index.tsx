@@ -2,6 +2,7 @@ import { inject, observer } from 'mobx-react';
 import React, { useState, useEffect } from 'react';
 import { DashboardStore, UserStore } from '~/store';
 import Home from './Home';
+import { notify } from '~/utils';
 
 type Props = {
   dashboard: DashboardStore;
@@ -23,6 +24,8 @@ const HomeContainer: React.FC<Props> = ({ dashboard, user }) => {
     return () => window.removeEventListener('resize', updateSize);
   };
 
+  const onClickCourse = () => notify('info', 'Entre em contato para adquirir novos cursos!');
+
   const handleHover = (item: HoverIconsType) => setHover(item);
 
   const handleLoad = async () => {
@@ -39,6 +42,7 @@ const HomeContainer: React.FC<Props> = ({ dashboard, user }) => {
 
   return (
     <Home
+      onClickCourse={onClickCourse}
       hover={hover}
       setHover={handleHover}
       allData={dashboard.allData}

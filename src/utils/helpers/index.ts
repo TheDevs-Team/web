@@ -33,10 +33,18 @@ export const getUserData = () => {
   return JSON.parse(localStorage.getItem('@g2k:user')!);
 };
 
-export const notify = (type: 'success' | 'error', msg: string) => {
+export const notify = (type: 'success' | 'error' | 'info', msg: string) => {
   if (type === 'error') {
     const notifyError = () =>
       toast.error(msg, {
+        toastId: 'no-repeat-error',
+      });
+
+    return notifyError();
+  }
+  if (type === 'info') {
+    const notifyError = () =>
+      toast.info(msg, {
         toastId: 'no-repeat-error',
       });
 
