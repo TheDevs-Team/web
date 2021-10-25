@@ -56,7 +56,7 @@ export const BackgroudIconCard = styled.div`
 `;
 
 export const IconMoney = styled(FaMoneyBillWave)`
-  font-size: 2.5rem;
+  font-size: 2rem;
   color: #fff;
   cursor: pointer;
 `;
