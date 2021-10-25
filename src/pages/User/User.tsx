@@ -1,8 +1,8 @@
 import React from 'react';
-import { UsersCard, If } from '~/components';
+import { If } from '~/components';
 import { isAdm } from '~/services/auth';
 
-import { Container, LoadingPageStyled, MenuStyled, Main } from './styles';
+import { Container, LoadingPageStyled, MenuStyled, Main, UsersCardStyled, TitleSection, ContentUsers } from './styles';
 
 type Props = {
   hover: HoverIconsType;
@@ -23,9 +23,18 @@ export const User: React.FC<Props> = ({ hover, setHover, size, loaded, users }) 
           <>
             <MenuStyled hover={hover} setHover={setHover} active={'USERS'} />
             <Main>
-              {users.map((user: UserType, idx: number) => (
-                <UsersCard key={idx} />
-              ))}
+              <ContentUsers>
+                <TitleSection>Administradores</TitleSection>
+                <UsersCardStyled name="Gustavo Henrique Evaristo" />
+                <UsersCardStyled name="Gustavo Henrique Evaristo" />
+                <UsersCardStyled name="Gustavo Henrique Evaristo" />
+              </ContentUsers>
+              <ContentUsers>
+                <TitleSection>Usuários</TitleSection>
+                {users.map((user: UserType, idx: number) => (
+                  <UsersCardStyled key={idx} name={user.name} />
+                ))}
+              </ContentUsers>
             </Main>
           </>
         )}
