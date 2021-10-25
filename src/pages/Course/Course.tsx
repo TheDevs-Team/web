@@ -2,7 +2,16 @@
 import React from 'react';
 import { If } from '~/components';
 import { textLimiter } from '~/utils';
-import { Container, MenuStyled, Main, CoursesContainer, CourseCardStyled, LoadingPageStyled } from './styles';
+import { isAdm } from '~/services/auth';
+import {
+  Container,
+  MenuStyled,
+  Main,
+  CoursesContainer,
+  CourseCardStyled,
+  LoadingPageStyled,
+  TitlePage,
+} from './styles';
 
 type Props = {
   hover: HoverIconsType;
@@ -19,18 +28,35 @@ const Course: React.FC<Props> = ({ hover, setHover, courses, size, loaded }) => 
         <LoadingPageStyled />
       </If>
       <If condition={loaded}>
-        {size >= 950 && (
-          <>
-            <MenuStyled hover={hover} setHover={setHover} active={'COURSES'} />
-            <Main>
-              <CoursesContainer>
-                {courses.map((course: CourseType, idx) => (
-                  <CourseCardStyled key={idx} name={course.name} description={textLimiter(course.description)} />
-                ))}
-              </CoursesContainer>
-            </Main>
-          </>
-        )}
+        <If condition={false}>
+          {size >= 950 && (
+            <>
+              <MenuStyled hover={hover} setHover={setHover} active={'COURSES'} />
+              <Main>
+                <CoursesContainer>
+                  {courses.map((course: CourseType, idx) => (
+                    <CourseCardStyled key={idx} name={course.name} description={textLimiter(course.description)} />
+                  ))}
+                </CoursesContainer>
+              </Main>
+            </>
+          )}
+        </If>
+        <If condition={true}>
+          {size >= 950 && (
+            <>
+              <MenuStyled hover={hover} setHover={setHover} active={'COURSES'} />
+              <Main>
+                <TitlePage>Meus Cursos</TitlePage>
+                <CoursesContainer>
+                  {courses.map((course: CourseType, idx) => (
+                    <CourseCardStyled key={idx} name={course.name} description={textLimiter(course.description)} />
+                  ))}
+                </CoursesContainer>
+              </Main>
+            </>
+          )}
+        </If>
       </If>
     </Container>
   );

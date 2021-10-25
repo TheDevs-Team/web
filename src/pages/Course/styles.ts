@@ -30,12 +30,6 @@ export const Main = styled.main`
   padding: 20px 40px;
 `;
 
-export const TitlePage = styled.h2`
-  font-size: 22px;
-  font-weight: 400;
-  color: ${colors.primary.white};
-`;
-
 export const Description = styled.h4`
   font-size: 13px;
   font-weight: 300;
@@ -148,3 +142,9 @@ export const CoursesContainer = styled.section`
 `;
 
 export const CourseCardStyled = styled(CourseCard)``;
+
+export const TitlePage = styled.h2`
+  font-size: 22px;
+  font-weight: 400;
+  color: ${colors.primary.white};
+`;
