@@ -1,26 +1,25 @@
 import { observable, action, makeObservable } from 'mobx';
 import { persist } from 'mobx-persist';
-import { CourseAPI } from '~/api';
+import { StudentCourseAPI } from '~/api';
 
 class StudentCourseStore {
-  @persist('object')
+  @persist
   @observable
-  courses: CourseType[] = [];
+  courses: StudentCourseType[] = [];
 
   constructor() {
     makeObservable(this);
   }
 
   @action
-  list = async (): Promise<CourseType[]> => {
-    const response = await CourseAPI.list();
+  find = async (): Promise<StudentCourseType[] | null> => {
+    const response = await StudentCourseAPI.find();
 
     if (response) {
-      this.courses = response;
-      return response;
+      return (this.courses = response);
     }
 
-    return (this.courses = []);
+    return null;
   };
 }
 

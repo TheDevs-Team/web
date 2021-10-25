@@ -4,3 +4,7 @@ declare type MenuStyleType = {
   active?: boolean;
   hover?: boolean;
 };
+
+declare type CourseCardType = {
+  userCourses?: boolean;
+};

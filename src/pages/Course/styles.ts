@@ -2,6 +2,9 @@ import styled from 'styled-components';
 import { Menu, LoadingPage, CourseCard } from '~/components';
 import { colors } from '~/theme';
 import { FiUsers, MdPendingActions, MdOutlineLibraryBooks, MdOutlineSchool } from '~/utils';
+import { ifStyle } from '@platformbuilders/helpers';
+
+const userCourses = ifStyle('userCourses');
 
 export const Container = styled.div`
   width: 100vw;
@@ -131,17 +134,19 @@ export const MaterialsIcon = styled(MdOutlineLibraryBooks)<MenuStyleType>`
   cursor: default;
 `;
 
-export const CoursesContainer = styled.section`
+export const CoursesContainer = styled.section<CourseCardType>`
   width: 100%;
   display: flex;
-  justify-content: space-evenly;
-  margin-top: 25px;
+  justify-content: ${userCourses('flex-start', 'space-evenly')};
+  margin: ${userCourses('25px 0 40px', '25px 0 0 0')};
   overflow: hidden;
   flex-wrap: wrap;
   flex-direction: row;
 `;
 
-export const CourseCardStyled = styled(CourseCard)``;
+export const CourseCardStyled = styled(CourseCard)<CourseCardType>`
+  margin: ${userCourses('10px')};
+`;
 
 export const TitlePage = styled.h2`
   font-size: 22px;

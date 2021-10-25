@@ -1,7 +1,7 @@
 import api from '~/services/api';
 
 class StudentCourseAPI {
-  static find = async (): Promise<StudentCourseType | null> => {
+  static find = async (): Promise<StudentCourseType[] | null> => {
     try {
       const { data } = await api.get('/student-course/find');
       return data;

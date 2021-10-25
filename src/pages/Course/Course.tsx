@@ -19,16 +19,17 @@ type Props = {
   courses: CourseType[];
   size: number;
   loaded: boolean;
+  myCourses: StudentCourseType[];
 };
 
-const Course: React.FC<Props> = ({ hover, setHover, courses, size, loaded }) => {
+const Course: React.FC<Props> = ({ hover, setHover, courses, size, loaded, myCourses }) => {
   return (
     <Container>
       <If condition={!loaded}>
         <LoadingPageStyled />
       </If>
       <If condition={loaded}>
-        <If condition={false}>
+        <If condition={isAdm()}>
           {size >= 950 && (
             <>
               <MenuStyled hover={hover} setHover={setHover} active={'COURSES'} />
@@ -42,12 +43,25 @@ const Course: React.FC<Props> = ({ hover, setHover, courses, size, loaded }) => 
             </>
           )}
         </If>
-        <If condition={true}>
+        <If condition={!isAdm()}>
           {size >= 950 && (
             <>
               <MenuStyled hover={hover} setHover={setHover} active={'COURSES'} />
               <Main>
                 <TitlePage>Meus Cursos</TitlePage>
+                <CoursesContainer userCourses>
+                  {myCourses.map((course: StudentCourseType, idx) => (
+                    <CourseCardStyled
+                      userCourses
+                      key={idx}
+                      name={course.course.name}
+                      description={textLimiter(course.course.description)}
+                    />
+                  ))}
+                </CoursesContainer>
+
+                <TitlePage>Cursos Disponíveis</TitlePage>
+
                 <CoursesContainer>
                   {courses.map((course: CourseType, idx) => (
                     <CourseCardStyled key={idx} name={course.name} description={textLimiter(course.description)} />
