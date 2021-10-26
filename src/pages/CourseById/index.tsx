@@ -11,6 +11,7 @@ const CourseByIdContainer: React.FC<Props> = ({ course }) => {
   const [hover, setHover] = useState<HoverIconsType>('');
   const [size, setSize] = useState(0);
   const [loaded, setLoaded] = useState(false);
+  const [tab, setTab] = useState('materials');
 
   const updateSize = () => setSize(window.innerWidth);
 
@@ -33,7 +34,17 @@ const CourseByIdContainer: React.FC<Props> = ({ course }) => {
     handleLoad();
   }, []);
 
-  return <CourseById hover={hover} setHover={handleHover} size={size} loaded={loaded} course={course.course} />;
+  return (
+    <CourseById
+      setTab={setTab}
+      tab={tab}
+      hover={hover}
+      setHover={handleHover}
+      size={size}
+      loaded={loaded}
+      course={course.course}
+    />
+  );
 };
 
 export default inject('course')(observer(CourseByIdContainer));
