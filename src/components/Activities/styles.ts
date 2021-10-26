@@ -13,6 +13,13 @@ export const Container = styled.div`
   align-items: center;
   flex-direction: row;
   justify-content: flex-start;
+
+  cursor: pointer;
+
+  &:hover {
+    background: #3d3d3d;
+    transition: 0.3s;
+  }
 `;
 
 export const IconContainer = styled.div`
@@ -35,6 +42,7 @@ export const IconDelete = styled(FiDelete)`
   font-size: 20px;
   color: #d0cdcd;
   cursor: pointer;
+  padding-right: 20px;
 
   &:hover {
     color: #f76767;

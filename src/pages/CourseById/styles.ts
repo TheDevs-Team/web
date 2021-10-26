@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Menu, LoadingPage } from '~/components';
+import { Menu, LoadingPage, UsersCard } from '~/components';
 import { colors } from '~/theme';
 import { FiUsers, MdPendingActions, MdOutlineLibraryBooks, MdOutlineSchool } from '~/utils';
 import { ifStyle } from '@platformbuilders/helpers';
@@ -49,8 +49,6 @@ export const InfoCard = styled.section`
   justify-content: space-between;
   overflow: hidden;
   flex-direction: column;
-
-  background-image: url();
 `;
 
 export const ChartsArea = styled.section`
@@ -216,6 +214,10 @@ export const Materials = styled.button<TabVisibleType>`
   color: ${tabVisible(colors.tertiary.green, 'white')};
   border-bottom: 2px solid ${tabVisible(colors.tertiary.green, 'none')};
   cursor: pointer;
+
+  &:hover {
+    background: ${tabVisible('#3d3d3d', '#3d3d3d')};
+  }
 `;
 
 export const Students = styled.button<TabVisibleType>`
@@ -227,4 +229,26 @@ export const Students = styled.button<TabVisibleType>`
   color: ${tabVisible(colors.tertiary.green, 'white')};
   border-bottom: 2px solid ${tabVisible(colors.tertiary.green, 'none')};
   cursor: pointer;
+
+  &:hover {
+    background: ${tabVisible('#3d3d3d', '#3d3d3d')};
+  }
+`;
+
+export const UsersContainer = styled.div`
+  margin-left: 50px;
+  width: 65%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+
+  span {
+    color: white;
+    font-size: 20px;
+    padding: 40px 0 40px 0;
+  }
+`;
+
+export const Users = styled(UsersCard)`
+  width: 100%;
 `;
