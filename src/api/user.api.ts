@@ -45,15 +45,6 @@ class UserAPI {
       return null;
     }
   };
-
-  static listByType = async (): Promise<ListUsersByType[] | null> => {
-    try {
-      const { data } = await api.get('/user/listByType');
-      return data;
-    } catch (error) {
-      return null;
-    }
-  };
 }
 
 export default UserAPI;

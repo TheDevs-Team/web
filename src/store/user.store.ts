@@ -103,17 +103,6 @@ class UserStore {
   };
 
   @action
-  listByType = async (): Promise<ListUsersByType[] | null> => {
-    const response = await UserAPI.listByType();
-
-    if (response) {
-      return (this.usersByType = response);
-    }
-
-    return null;
-  };
-
-  @action
   create = async (values: CreateUserType): Promise<boolean> => {
     const response = await UserAPI.create({
       ...values,
