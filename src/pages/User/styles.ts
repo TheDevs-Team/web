@@ -36,7 +36,7 @@ export const SearchContent = styled.div`
   align-items: center;
   justify-content: space-between;
 
-  border: 2px solid #2b2b2c;
+  border: 2px solid #353535;
   border-radius: 8px;
 
   padding: 0 5px;
