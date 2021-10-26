@@ -16,7 +16,9 @@ import {
   Students,
   ContainerActivities,
   Content,
+  Users,
   CreateCard,
+  UsersContainer,
 } from './styles';
 
 import moment from 'moment';
@@ -73,7 +75,27 @@ const CourseById: React.FC<Props> = ({ hover, setHover, size, loaded, course, ta
                     </ContainerActivities>
                   </Content>
                 </If>
-                <If condition={tab === 'students'}> </If>
+                <If condition={tab === 'students'}>
+                  <Content>
+                    <CreateCard>
+                      <span>Olá, Professor!</span>
+                      <p>Aqui você pode adicionar novos alunos para esse curso!</p>
+                      <Button>Adicionar Aluno</Button>
+                    </CreateCard>
+                    <UsersContainer>
+                      <span>Alunos Participantes</span>
+                      <Users name="Eduardo" />
+                      <Users name="Carlos" />
+                      <Users name="Fabio" />
+                      <Users name="Vanessa" />
+                      <Users name="Marcola" />
+                      <Users name="Jonas" />
+                      <Users name="Jennifer" />
+                      <Users name="Rubens" />
+                      <Users name="Neymar" />
+                    </UsersContainer>
+                  </Content>
+                </If>
               </Main>
             </>
           )}
@@ -82,7 +104,34 @@ const CourseById: React.FC<Props> = ({ hover, setHover, size, loaded, course, ta
           {size >= 950 && (
             <>
               <MenuStyled hover={hover} setHover={setHover} active={'COURSES'} />
-              <Main></Main>
+              <Main>
+                <InfoCard>
+                  <HeadInfo>
+                    <Materials tabVisible={tab === 'materials'} onClick={() => setTab('materials')}>
+                      Materiais
+                    </Materials>
+                  </HeadInfo>
+                  <DataCourse>
+                    <NameCourse>{course.name}</NameCourse>
+                    <YearCourse>{moment().format('Y')} - TURMA G2K</YearCourse>
+                  </DataCourse>
+                </InfoCard>
+                <If condition={tab === 'materials'}>
+                  <Content>
+                    <CreateCard>
+                      <span>Olá, Aluno!</span>
+                      <p>Aqui você pode ver os materiais disponibilizados!</p>
+                    </CreateCard>
+                    <ContainerActivities>
+                      <Activities />
+                      <Activities />
+                      <Activities /> <Activities />
+                      <Activities /> <Activities />
+                      <Activities />
+                    </ContainerActivities>
+                  </Content>
+                </If>
+              </Main>
             </>
           )}
         </If>
