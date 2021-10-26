@@ -2,7 +2,20 @@ import React from 'react';
 import { If } from '~/components';
 import { isAdm } from '~/services/auth';
 
-import { Container, LoadingPageStyled, MenuStyled, Main, UsersCardStyled, TitleSection, ContentUsers } from './styles';
+import {
+  Container,
+  LoadingPageStyled,
+  MenuStyled,
+  Main,
+  UsersCardStyled,
+  TitleSection,
+  ContentUsers,
+  Header,
+  SearchInput,
+  ButtonAddUser,
+  SearchContent,
+  SearchIcon,
+} from './styles';
 
 type Props = {
   hover: HoverIconsType;
@@ -23,6 +36,13 @@ export const User: React.FC<Props> = ({ hover, setHover, size, loaded, users }) 
           <>
             <MenuStyled hover={hover} setHover={setHover} active={'USERS'} />
             <Main>
+              <Header>
+                <SearchContent>
+                  <SearchIcon />
+                  <SearchInput placeholder="Buscar usuários" />
+                </SearchContent>
+                <ButtonAddUser onClick={() => {}}>Novo Usuário</ButtonAddUser>
+              </Header>
               <ContentUsers>
                 <TitleSection>Administradores</TitleSection>
                 <UsersCardStyled name="Gustavo Henrique Evaristo" />
