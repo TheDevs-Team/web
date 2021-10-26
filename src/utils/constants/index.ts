@@ -8,6 +8,11 @@ export const USER_STATUS_FINANCEIRO = {
   AGUARDANDO_PAGAMENTO: 'Aguardando Pagamento',
 };
 
+export const FINANCIAL_STATUS = {
+  PAID: 'PAID',
+  WAITING_PAYMENT: 'WAITING_PAYMENT',
+};
+
 export const MENU_ADM_OPTIONS: MenuOptionsType[] = [
   {
     key: 'DASHBOARD',
@@ -70,3 +75,8 @@ export const MENU_USER_OPTIONS: MenuOptionsType[] = [
     url: '/sair',
   },
 ];
+
+export const TYPE_USER = {
+  ADMIN: 'ADMIN',
+  USER: 'USER',
+};

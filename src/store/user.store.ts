@@ -20,19 +20,7 @@ class UserStore {
 
   @persist
   @observable
-  users: UserType[] = [
-    {
-      id: '',
-      name: '',
-      document: '',
-      email: '',
-      phone: '',
-      type: '',
-      financial_status: '',
-      password: '',
-      active: true,
-    },
-  ];
+  users: UserType[] = [];
 
   @persist
   @observable

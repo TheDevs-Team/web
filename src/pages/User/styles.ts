@@ -18,6 +18,7 @@ export const Main = styled.main`
   width: 100%;
   margin: 0 auto;
   overflow: auto;
+  padding-bottom: 20px;
 `;
 
 export const Header = styled.header`

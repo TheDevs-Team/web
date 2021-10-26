@@ -1,6 +1,7 @@
 import React from 'react';
 import { If } from '~/components';
 import { isAdm } from '~/services/auth';
+import { isEmpty } from 'lodash';
 
 import {
   Container,
@@ -23,9 +24,11 @@ type Props = {
   size: number;
   loaded: boolean;
   users: UserType[];
+  adms: UserType[];
+  pendings: UserType[];
 };
 
-export const User: React.FC<Props> = ({ hover, setHover, size, loaded, users }) => (
+export const User: React.FC<Props> = ({ hover, setHover, size, loaded, users, adms, pendings }) => (
   <Container>
     <If condition={!loaded}>
       <LoadingPageStyled />
@@ -45,9 +48,9 @@ export const User: React.FC<Props> = ({ hover, setHover, size, loaded, users }) 
               </Header>
               <ContentUsers>
                 <TitleSection>Administradores</TitleSection>
-                <UsersCardStyled name="Gustavo Henrique Evaristo" />
-                <UsersCardStyled name="Gustavo Henrique Evaristo" />
-                <UsersCardStyled name="Gustavo Henrique Evaristo" />
+                {adms.map((adm: UserType, idx) => (
+                  <UsersCardStyled key={idx} name={adm.name} />
+                ))}
               </ContentUsers>
               <ContentUsers>
                 <TitleSection>Usuários</TitleSection>
@@ -55,6 +58,14 @@ export const User: React.FC<Props> = ({ hover, setHover, size, loaded, users }) 
                   <UsersCardStyled key={idx} name={user.name} />
                 ))}
               </ContentUsers>
+              <If condition={!isEmpty(pendings)}>
+                <ContentUsers>
+                  <TitleSection>Pendentes</TitleSection>
+                  {pendings.map((user: UserType, idx: number) => (
+                    <UsersCardStyled key={idx} name={user.name} />
+                  ))}
+                </ContentUsers>
+              </If>
             </Main>
           </>
         )}
