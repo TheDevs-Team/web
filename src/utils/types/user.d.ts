@@ -32,3 +32,8 @@ declare type CreateUserType = {
   password: string;
   confirm_password: string;
 };
+
+declare type ListUsersByType = {
+  adms: UserType[];
+  users: UserType[];
+};

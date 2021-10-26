@@ -20,7 +20,41 @@ class UserStore {
 
   @persist
   @observable
-  users: UserType[] | [];
+  users: UserType[] = [];
+
+  @persist
+  @observable
+  usersByType: ListUsersByType[] = [
+    {
+      adms: [
+        {
+          id: '',
+          name: '',
+          document: '',
+          email: '',
+          phone: '',
+          type: '',
+          financial_status: '',
+          password: '',
+          active: true,
+        },
+      ],
+
+      users: [
+        {
+          id: '',
+          name: '',
+          document: '',
+          email: '',
+          phone: '',
+          type: '',
+          financial_status: '',
+          password: '',
+          active: true,
+        },
+      ],
+    },
+  ];
 
   @persist
   @observable
@@ -46,14 +80,14 @@ class UserStore {
   };
 
   @action
-  list = async (): Promise<UserType[] | []> => {
+  list = async (): Promise<UserType[] | null> => {
     const response = await UserAPI.list();
 
     if (response) {
       return (this.users = response);
     }
 
-    return [];
+    return null;
   };
 
   @action
