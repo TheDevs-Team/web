@@ -12,20 +12,12 @@ type Props = {
 
 const CourseContainer: React.FC<Props> = ({ course, studentCourse }) => {
   const [hover, setHover] = useState<HoverIconsType>('');
-  const [size, setSize] = useState(0);
   const [loaded, setLoaded] = useState(false);
 
   const history = useHistory();
 
   const toCourse = (path: string) => history.push(path);
 
-  const updateSize = () => setSize(window.innerWidth);
-
-  const sizeEvent = () => {
-    window.addEventListener('resize', updateSize);
-    updateSize();
-    return () => window.removeEventListener('resize', updateSize);
-  };
   const onClickCourse = () => notify('info', 'Entre em contato para adquirir novos cursos!');
 
   const handleHover = (item: HoverIconsType) => setHover(item);
@@ -38,8 +30,6 @@ const CourseContainer: React.FC<Props> = ({ course, studentCourse }) => {
 
   useEffect(() => {
     handleLoad();
-    updateSize();
-    sizeEvent();
   }, []);
 
   return (
@@ -47,7 +37,6 @@ const CourseContainer: React.FC<Props> = ({ course, studentCourse }) => {
       hover={hover}
       setHover={handleHover}
       courses={course.courses}
-      size={size}
       loaded={loaded}
       myCourses={studentCourse.courses}
       toCourse={toCourse}
