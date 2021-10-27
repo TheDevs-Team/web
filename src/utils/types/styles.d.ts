@@ -8,3 +8,7 @@ declare type MenuStyleType = {
 declare type CourseCardType = {
   userCourses?: boolean;
 };
+
+declare type TabVisibleType = {
+  tabVisible?: boolean;
+};

@@ -8,6 +8,20 @@ export default createGlobalStyle`
     overflow: hidden;
     text-decoration: none;
     outline: none;
+
+  /* Works on Chrome, Edge, and Safari */
+  *::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  *::-webkit-scrollbar-track {
+    background: #202024;
+  }
+
+  *::-webkit-scrollbar-thumb {
+    background-color: #67f7bd;
+    border-radius: 10px;
+  }
   }
 
   html{

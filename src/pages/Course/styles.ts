@@ -30,7 +30,7 @@ export const Main = styled.main`
   height: 95%;
   background: none;
   padding: 20px 40px;
-  overflow: scroll;
+  overflow-y: scroll;
 `;
 
 export const Description = styled.h4`

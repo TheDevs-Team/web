@@ -9,16 +9,8 @@ type Props = {
 
 const CourseByIdContainer: React.FC<Props> = ({ course }) => {
   const [hover, setHover] = useState<HoverIconsType>('');
-  const [size, setSize] = useState(0);
   const [loaded, setLoaded] = useState(false);
-
-  const updateSize = () => setSize(window.innerWidth);
-
-  const sizeEvent = () => {
-    window.addEventListener('resize', updateSize);
-    updateSize();
-    return () => window.removeEventListener('resize', updateSize);
-  };
+  const [tab, setTab] = useState('materials');
 
   const handleHover = (item: HoverIconsType) => setHover(item);
 
@@ -28,12 +20,12 @@ const CourseByIdContainer: React.FC<Props> = ({ course }) => {
   };
 
   useEffect(() => {
-    updateSize();
-    sizeEvent();
     handleLoad();
   }, []);
 
-  return <CourseById hover={hover} setHover={handleHover} size={size} loaded={loaded} course={course.course} />;
+  return (
+    <CourseById setTab={setTab} tab={tab} hover={hover} setHover={handleHover} loaded={loaded} course={course.course} />
+  );
 };
 
 export default inject('course')(observer(CourseByIdContainer));

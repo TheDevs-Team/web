@@ -1,10 +1,10 @@
 import styled from 'styled-components';
-import { Menu, LoadingPage, CourseCard } from '~/components';
+import { Menu, LoadingPage, UsersCard } from '~/components';
 import { colors } from '~/theme';
 import { FiUsers, MdPendingActions, MdOutlineLibraryBooks, MdOutlineSchool } from '~/utils';
 import { ifStyle } from '@platformbuilders/helpers';
 
-const userCourses = ifStyle('userCourses');
+const tabVisible = ifStyle('tabVisible');
 
 export const Container = styled.div`
   width: 100vw;
@@ -28,9 +28,8 @@ export const Header = styled.header`
 export const Main = styled.main`
   width: 95%;
   height: 95%;
-  background: none;
   padding: 20px 40px;
-  overflow: scroll;
+  overflow-y: scroll;
 `;
 
 export const Description = styled.h4`
@@ -43,12 +42,13 @@ export const Description = styled.h4`
 export const InfoCard = styled.section`
   background: #2b2b2c;
   width: 100%;
-  height: 18vh;
+  height: 35vh;
   border-radius: 20px;
   display: flex;
-  align-items: center;
-  justify-content: space-around;
+  align-items: flex-start;
+  justify-content: space-between;
   overflow: hidden;
+  flex-direction: column;
 `;
 
 export const ChartsArea = styled.section`
@@ -134,22 +134,121 @@ export const MaterialsIcon = styled(MdOutlineLibraryBooks)<MenuStyleType>`
   cursor: default;
 `;
 
-export const CoursesContainer = styled.section<CourseCardType>`
-  width: 100%;
-  display: flex;
-  justify-content: ${userCourses('flex-start', 'space-evenly')};
-  margin: ${userCourses('25px 0 40px', '25px 0 0 0')};
-  overflow: hidden;
-  flex-wrap: wrap;
-  flex-direction: row;
-`;
-
-export const CourseCardStyled = styled(CourseCard)<CourseCardType>`
-  margin: ${userCourses('10px')};
-`;
-
 export const TitlePage = styled.h2`
   font-size: 22px;
   font-weight: 400;
   color: ${colors.primary.white};
+`;
+
+export const DataCourse = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+export const NameCourse = styled.span`
+  padding: 20px 0 0 20px;
+  font-size: 45px;
+  color: ${colors.primary.white};
+  font-weight: 500;
+`;
+
+export const YearCourse = styled.span`
+  padding: 0 0 20px 20px;
+  font-size: 20px;
+  color: #d0cdcd;
+`;
+
+export const HeadInfo = styled.div`
+  width: 100%;
+  height: 70px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
+export const ContainerActivities = styled.div`
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+`;
+export const Content = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+`;
+
+export const CreateCard = styled.div`
+  width: 20%;
+  margin: 30px 20px 0 0;
+  padding: 20px;
+  border-radius: 15px;
+  background: #2b2b2c;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+
+  span:first-child {
+    color: ${colors.primary.white};
+  }
+
+  p {
+    color: #c6c6c6;
+    font-size: 15px;
+    padding: 20px 0;
+  }
+
+  button {
+    width: 150px;
+  }
+`;
+
+export const Materials = styled.button<TabVisibleType>`
+  border: none;
+  height: 100%;
+  width: 100px;
+
+  background: #2b2b2c;
+  color: ${tabVisible(colors.tertiary.green, 'white')};
+  border-bottom: 2px solid ${tabVisible(colors.tertiary.green, 'none')};
+  cursor: pointer;
+
+  &:hover {
+    background: ${tabVisible('#3d3d3d', '#3d3d3d')};
+  }
+`;
+
+export const Students = styled.button<TabVisibleType>`
+  border: none;
+  height: 100%;
+  width: 100px;
+
+  background: #2b2b2c;
+  color: ${tabVisible(colors.tertiary.green, 'white')};
+  border-bottom: 2px solid ${tabVisible(colors.tertiary.green, 'none')};
+  cursor: pointer;
+
+  &:hover {
+    background: ${tabVisible('#3d3d3d', '#3d3d3d')};
+  }
+`;
+
+export const UsersContainer = styled.div`
+  margin-left: 50px;
+  width: 65%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+
+  span {
+    color: white;
+    font-size: 20px;
+    padding: 40px 0 40px 0;
+  }
+`;
+
+export const Users = styled(UsersCard)`
+  width: 100%;
 `;
