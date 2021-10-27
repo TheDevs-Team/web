@@ -1,4 +1,4 @@
-declare type HoverIconsType = '' | 'USERS' | 'DASHBOARD' | 'COURSES' | 'PROFILE' | 'LOGOUT' | 'MESSAGES';
+declare type HoverIconsType = '' | 'USERS' | 'DASHBOARD' | 'COURSES' | 'PROFILE' | 'LOGOUT' | 'NOTIFICATIONS';
 
 declare type MenuStyleType = {
   active?: boolean;
