@@ -10,19 +10,12 @@ type Props = {
 
 const UserContainer: React.FC<Props> = ({ user }) => {
   const [hover, setHover] = useState<HoverIconsType>('');
-  const [size, setSize] = useState(0);
   const [loaded, setLoaded] = useState(false);
   const [adms, setAdms] = useState<UserType[]>([]);
   const [users, setUsers] = useState<UserType[]>([]);
   const [pendings, setPendings] = useState<UserType[]>([]);
-
-  const updateSize = () => setSize(window.innerWidth);
-
-  const sizeEvent = () => {
-    window.addEventListener('resize', updateSize);
-    updateSize();
-    return () => window.removeEventListener('resize', updateSize);
-  };
+  const [filteredUsers, setFilteredUsers] = useState<UserType[]>([]);
+  const [filter, setFilter] = useState(false);
 
   const handleHover = (item: HoverIconsType) => setHover(item);
 
@@ -40,9 +33,12 @@ const UserContainer: React.FC<Props> = ({ user }) => {
     setLoaded(true);
   };
 
+  const searchUsers = (query: string) => {
+    const filtereds = user.users.filter((user: UserType) => user.name.toLowerCase().indexOf(query.toLowerCase()) > -1);
+    return setFilteredUsers(filtereds);
+  };
+
   useEffect(() => {
-    updateSize();
-    sizeEvent();
     handleLoad();
   }, []);
 
@@ -50,11 +46,14 @@ const UserContainer: React.FC<Props> = ({ user }) => {
     <User
       hover={hover}
       setHover={handleHover}
-      size={size}
       loaded={loaded}
       users={users}
       adms={adms}
       pendings={pendings}
+      filteredUsers={filteredUsers}
+      searchUsers={searchUsers}
+      filter={filter}
+      setFilter={setFilter}
     />
   );
 };
