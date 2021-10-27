@@ -11,18 +11,7 @@ type Props = {
 
 const HomeContainer: React.FC<Props> = ({ dashboard, user }) => {
   const [hover, setHover] = useState<HoverIconsType>('');
-  const [size, setSize] = useState(0);
   const [loaded, setLoaded] = useState(false);
-
-  const updateSize = () => {
-    setSize(window.innerWidth);
-  };
-
-  const sizeEvent = () => {
-    window.addEventListener('resize', updateSize);
-    updateSize();
-    return () => window.removeEventListener('resize', updateSize);
-  };
 
   const onClickCourse = () => notify('info', 'Entre em contato para adquirir novos cursos!');
 
@@ -36,8 +25,6 @@ const HomeContainer: React.FC<Props> = ({ dashboard, user }) => {
 
   useEffect(() => {
     handleLoad();
-    updateSize();
-    sizeEvent();
   }, []);
 
   return (
@@ -46,7 +33,6 @@ const HomeContainer: React.FC<Props> = ({ dashboard, user }) => {
       hover={hover}
       setHover={handleHover}
       allData={dashboard.allData}
-      size={size}
       user={user.profile}
       loaded={loaded}
     />
