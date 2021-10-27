@@ -20,16 +20,14 @@ const CourseById: React.FC<Props> = ({ hover, setHover, size, loaded, course }) 
       </If>
       <If condition={loaded}>
         <If condition={isAdm()}>
-          {size >= 950 && (
-            <>
-              <MenuStyled hover={hover} setHover={setHover} active={'COURSES'} />
-              <Main>
-                <p>{course.name}</p>
-                <p>{course.description}</p>
-                <p>{course.id}</p>
-              </Main>
-            </>
-          )}
+          <>
+            <MenuStyled hover={hover} setHover={setHover} active={'COURSES'} />
+            <Main>
+              <p>{course.name}</p>
+              <p>{course.description}</p>
+              <p>{course.id}</p>
+            </Main>
+          </>
         </If>
         <If condition={!isAdm()}>
           {size >= 950 && (
