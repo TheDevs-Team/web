@@ -4,7 +4,7 @@ import { ToggleStyled } from './styles';
 
 type Props = {
   checked: boolean;
-  onChange: (value: any) => void;
+  onChange: (value: boolean) => void;
 };
 
 export const Toggle: React.FC<Props> = ({ checked, onChange, ...rest }) => (

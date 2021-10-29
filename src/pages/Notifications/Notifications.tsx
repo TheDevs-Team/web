@@ -1,6 +1,7 @@
 import React from 'react';
 import { If } from '~/components';
 import { isAdm } from '~/services/auth';
+import { useFormikContext, FormikProps } from '~/utils';
 
 import {
   Container,
@@ -8,26 +9,24 @@ import {
   Main,
   LoadingPageStyled,
   ToggleStyled,
-  ItemCard,
-  InfoCard,
-  ToggleCard,
+  OptionsContainer,
+  OptionLine,
   TitleOption,
-  DescriptionOption,
-  ContentInfo,
+  ButtonStyled,
+  ButtonContent,
   Content,
-  ContentButton,
-  ButtonAddUser,
+  TitlePage,
 } from './styles';
 
 type Props = {
-  setChecked: (value: boolean) => void;
-  checked: boolean;
   loaded: boolean;
   hover: HoverIconsType;
   setHover: (value: HoverIconsType) => void;
 };
 
-export const Notifications: React.FC<Props> = ({ setChecked, checked, loaded, hover, setHover }) => {
+export const Notifications: React.FC<Props> = ({ loaded, hover, setHover }) => {
+  const { values, submitForm, setFieldValue }: FormikProps<NotificationOptionsType> = useFormikContext();
+
   return (
     <Container>
       <If condition={!loaded}>
@@ -37,37 +36,36 @@ export const Notifications: React.FC<Props> = ({ setChecked, checked, loaded, ho
         <If condition={isAdm()}>
           <MenuStyled hover={hover} setHover={setHover} active={'NOTIFICATIONS'} />
           <Main>
-            <InfoCard>
+            <OptionsContainer>
               <Content>
-                <ContentInfo>
-                  <ItemCard>
-                    <TitleOption>Novos Cursos</TitleOption>
-                    <DescriptionOption>
-                      Tem curso novo na área? envie um Alerta para todos os alunos da plataforma para que fiquem por
-                      dentro das novidades.
-                    </DescriptionOption>
-                  </ItemCard>
-                  <ToggleCard>
-                    <ToggleStyled onChange={setChecked} checked={checked} />
-                  </ToggleCard>
-                </ContentInfo>
-                <ContentInfo>
-                  <ItemCard>
-                    <TitleOption>Novos Cursos</TitleOption>
-                    <DescriptionOption>
-                      Tem curso novo na área? envie um Alerta para todos os alunos da plataforma para que fiquem por
-                      dentro das novidades.
-                    </DescriptionOption>
-                  </ItemCard>
-                  <ToggleCard>
-                    <ToggleStyled onChange={setChecked} checked={checked} />
-                  </ToggleCard>
-                </ContentInfo>
+                <TitlePage>Selecione a forma de notificação</TitlePage>
               </Content>
-              <ContentButton>
-                <ButtonAddUser>Notificar</ButtonAddUser>
-              </ContentButton>
-            </InfoCard>
+              <Content>
+                <OptionLine>
+                  <TitleOption>Usuários pendentes</TitleOption>
+                  <ToggleStyled checked={values.pendings} onChange={(value) => setFieldValue('pendings', value)} />
+                </OptionLine>
+                <OptionLine>
+                  <TitleOption>Novos Curso</TitleOption>
+                  <ToggleStyled
+                    checked={values.new_courses}
+                    onChange={(value) => setFieldValue('new_courses', value)}
+                  />
+                </OptionLine>
+                <OptionLine>
+                  <TitleOption>Lembrete de aulas</TitleOption>
+                  <ToggleStyled
+                    checked={values.class_notification}
+                    onChange={(value) => setFieldValue('class_notification', value)}
+                  />
+                </OptionLine>
+              </Content>
+              <Content>
+                <ButtonContent>
+                  <ButtonStyled onClick={submitForm}>Enviar</ButtonStyled>
+                </ButtonContent>
+              </Content>
+            </OptionsContainer>
           </Main>
         </If>
       </If>
