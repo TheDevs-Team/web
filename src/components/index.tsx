@@ -10,4 +10,5 @@ export * from './LoadingPage';
 export * from './CourseCard';
 export * from './Activities';
 export * from './UsersCard';
+export * from './InputText';
 export * from './Toggle';
