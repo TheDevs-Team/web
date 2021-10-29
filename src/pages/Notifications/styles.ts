@@ -22,7 +22,7 @@ export const MenuStyled = styled(Menu)``;
 export const ToggleStyled = styled(Toggle)``;
 
 export const OptionsContainer = styled.div`
-  width: 90%;
+  width: 50%;
   height: 90%;
   background: #2b2b2c;
   margin: 0 auto;
