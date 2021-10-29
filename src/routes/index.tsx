@@ -6,7 +6,7 @@ export const Routes: React.FC = () => (
   <BrowserRouter>
     <Switch>
       <PrivateRoutes exact path={'/'} component={Home} />
-      <Route exact path={'/perfil'} component={Profile} />
+      <PrivateRoutes exact path={'/perfil'} component={Profile} />
       <PrivateRoutes exact path={'/usuarios'} component={User} />
       <PrivateRoutes exact path={'/materiais'} component={Material} />
       <PrivateRoutes exact path={'/home'} component={HomeAdm} />
