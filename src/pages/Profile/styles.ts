@@ -1,57 +1,40 @@
 import styled from 'styled-components';
 import { colors } from '~/theme';
+import { TextField } from '~/components';
 
 export const Container = styled.div`
   width: 100vw;
   height: 100vh;
+  background: #202024;
+  display: flex;
+  overflow: hidden;
 `;
 
-export const Main = styled.div`
-  width: 100%;
-  height: 94%;
-
-  background: ${colors.primary.dark};
-
+export const Main = styled.main`
+  width: 95%;
+  height: 95%;
+  padding: 20px 40px;
+  overflow-y: scroll;
   display: flex;
   align-items: center;
-  justify-content: space-around;
-  flex-direction: column;
+  justify-content: center;
 `;
 
 export const Form = styled.form`
-  width: 500px;
+  width: 450px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  background: ${colors.primary.main};
+  border-radius: 5px;
+
   padding: 30px;
-  border-radius: 15px;
+
+  background: #d3d3d3;
 
   @media screen and (max-width: 600px) {
     width: 350px;
     padding: 16px;
   } ;
-`;
-
-export const InputContainer = styled.div`
-  width: 90%;
-  margin: 8px 0;
-`;
-
-export const Label = styled.label`
-  font-size: 14px;
-  color: ${colors.primary.light};
-`;
-
-export const Input = styled.input`
-  width: 95%;
-
-  border: 2px solid ${colors.secondary.main};
-  background: transparent;
-  border-radius: 10px;
-  padding: 10px 0 10px 10px;
-  outline: 0;
-  color: ${colors.primary.grey};
 `;
 
 export const Btn = styled.button`
@@ -60,34 +43,27 @@ export const Btn = styled.button`
   font-size: 15px;
   font-weight: 300;
   width: 60%;
-  height: 40px;
+  height: 70px;
   margin: 10px 0;
   border: none;
-  border-radius: 15px;
   opacity: 0.8;
   cursor: pointer;
+  border-radius: 5px;
+
   &:hover {
     opacity: 1;
     transition: 0.4s;
   }
 `;
 
-export const Select = styled.select`
-  width: 98%;
-
-  border: 1px solid ${colors.primary.main};
-  background: transparent;
-  border-radius: 10px;
-  padding: 10px 0 10px 10px;
-  outline: 0;
-  color: ${colors.primary.grey};
-`;
-
-export const Option = styled.option`
-  background: ${colors.primary.main};
-`;
-
 export const Span = styled.span`
-  color: ${colors.primary.light};
+  color: ${colors.primary.dark};
   font-weight: 400;
+  margin-bottom: 10px;
+  font-size: 20px;
+`;
+
+export const Input = styled(TextField)`
+  width: 90%;
+  color: blue;
 `;
