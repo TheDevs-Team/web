@@ -39,7 +39,7 @@ export const Menu: React.FC<Props> = ({ hover, setHover, active, ...rest }) => {
             {item.key === 'DASHBOARD' && <DashboardIcon active={item.key === active} hover={item.key === hover} />}
             {item.key === 'USERS' && <UsersIcon active={item.key === active} hover={item.key === hover} />}
             {item.key === 'COURSES' && <CoursesIcon active={item.key === active} hover={item.key === hover} />}
-            {item.key === 'MESSAGES' && <SendIcon active={item.key === active} hover={item.key === hover} />}
+            {item.key === 'NOTIFICATIONS' && <SendIcon active={item.key === active} hover={item.key === hover} />}
             {item.key === 'PROFILE' && <ProfileIcon active={item.key === active} hover={item.key === hover} />}
             {item.key === 'LOGOUT' && <LogoutIcon active={item.key === active} hover={item.key === hover} />}
             <MenuText

@@ -33,9 +33,9 @@ export const MENU_ADM_OPTIONS: MenuOptionsType[] = [
   },
 
   {
-    key: 'MESSAGES',
-    name: 'Mensagens',
-    url: '/mensagens',
+    key: 'NOTIFICATIONS',
+    name: 'Notificações',
+    url: '/notificacoes',
   },
 
   {

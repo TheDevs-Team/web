@@ -26,14 +26,13 @@ import moment from 'moment';
 type Props = {
   hover: HoverIconsType;
   setHover: (value: HoverIconsType) => void;
-  size: number;
   loaded: boolean;
   course: CourseType;
   tab: string;
   setTab: (tab: string) => void;
 };
 
-const CourseById: React.FC<Props> = ({ hover, setHover, size, loaded, course, tab, setTab }) => {
+const CourseById: React.FC<Props> = ({ hover, setHover, loaded, course, tab, setTab }) => {
   return (
     <Container>
       <If condition={!loaded}>
@@ -41,99 +40,97 @@ const CourseById: React.FC<Props> = ({ hover, setHover, size, loaded, course, ta
       </If>
       <If condition={loaded}>
         <If condition={isAdm()}>
-          {size >= 950 && (
-            <>
-              <MenuStyled hover={hover} setHover={setHover} active={'COURSES'} />
-              <Main>
-                <InfoCard>
-                  <HeadInfo>
-                    <Materials tabVisible={tab === 'materials'} onClick={() => setTab('materials')}>
-                      Materiais
-                    </Materials>
-                    <Students tabVisible={tab === 'students'} onClick={() => setTab('students')}>
-                      Alunos
-                    </Students>
-                  </HeadInfo>
-                  <DataCourse>
-                    <NameCourse>{course.name}</NameCourse>
-                    <YearCourse>{moment().format('Y')} - TURMA G2K</YearCourse>
-                  </DataCourse>
-                </InfoCard>
-                <If condition={tab === 'materials'}>
-                  <Content>
-                    <CreateCard>
-                      <span>Olá, Professor!</span>
-                      <p>Aqui você pode criar novos materiais pra este curso!</p>
-                      <Button>Criar Material</Button>
-                    </CreateCard>
-                    <ContainerActivities>
-                      <Activities />
-                      <Activities />
-                      <Activities /> <Activities />
-                      <Activities /> <Activities />
-                      <Activities />
-                    </ContainerActivities>
-                  </Content>
-                </If>
-                <If condition={tab === 'students'}>
-                  <Content>
-                    <CreateCard>
-                      <span>Olá, Professor!</span>
-                      <p>Aqui você pode adicionar novos alunos para esse curso!</p>
-                      <Button>Adicionar Aluno</Button>
-                    </CreateCard>
-                    <UsersContainer>
-                      <span>Alunos Participantes</span>
-                      <Users name="Eduardo" />
-                      <Users name="Carlos" />
-                      <Users name="Fabio" />
-                      <Users name="Vanessa" />
-                      <Users name="Marcola" />
-                      <Users name="Jonas" />
-                      <Users name="Jennifer" />
-                      <Users name="Rubens" />
-                      <Users name="Neymar" />
-                    </UsersContainer>
-                  </Content>
-                </If>
-              </Main>
-            </>
-          )}
+          <MenuStyled hover={hover} setHover={setHover} active={'COURSES'} />
+          <Main>
+            <InfoCard>
+              <HeadInfo>
+                <Materials tabVisible={tab === 'materials'} onClick={() => setTab('materials')}>
+                  Materiais
+                </Materials>
+                <Students tabVisible={tab === 'students'} onClick={() => setTab('students')}>
+                  Alunos
+                </Students>
+              </HeadInfo>
+              <DataCourse>
+                <NameCourse>{course.name}</NameCourse>
+                <YearCourse>{moment().format('Y')} - TURMA G2K</YearCourse>
+              </DataCourse>
+            </InfoCard>
+            <If condition={tab === 'materials'}>
+              <Content>
+                <CreateCard>
+                  <span>Olá, Professor!</span>
+                  <p>Aqui você pode criar novos materiais pra este curso!</p>
+                  <Button>Criar Material</Button>
+                </CreateCard>
+                <ContainerActivities>
+                  <Activities />
+                  <Activities />
+                  <Activities /> <Activities />
+                  <Activities /> <Activities />
+                  <Activities />
+                </ContainerActivities>
+              </Content>
+            </If>
+            <If condition={tab === 'students'}>
+              <Content>
+                <CreateCard>
+                  <span>Olá, Professor!</span>
+                  <p>Aqui você pode adicionar novos alunos para esse curso!</p>
+                  <Button>Adicionar Aluno</Button>
+                </CreateCard>
+                <UsersContainer>
+                  <span>Alunos Participantes</span>
+                  <Users name="Eduardo" />
+                  <Users name="Carlos" />
+                  <Users name="Fabio" />
+                  <Users name="Vanessa" />
+                  <Users name="Marcola" />
+                  <Users name="Jonas" />
+                  <Users name="Jennifer" />
+                  <Users name="Rubens" />
+                  <Users name="Neymar" />
+                </UsersContainer>
+              </Content>
+            </If>
+          </Main>
+          <MenuStyled hover={hover} setHover={setHover} active={'COURSES'} />
+          <Main>
+            <p>{course.name}</p>
+            <p>{course.description}</p>
+            <p>{course.id}</p>
+          </Main>
         </If>
         <If condition={!isAdm()}>
-          {size >= 950 && (
-            <>
-              <MenuStyled hover={hover} setHover={setHover} active={'COURSES'} />
-              <Main>
-                <InfoCard>
-                  <HeadInfo>
-                    <Materials tabVisible={tab === 'materials'} onClick={() => setTab('materials')}>
-                      Materiais
-                    </Materials>
-                  </HeadInfo>
-                  <DataCourse>
-                    <NameCourse>{course.name}</NameCourse>
-                    <YearCourse>{moment().format('Y')} - TURMA G2K</YearCourse>
-                  </DataCourse>
-                </InfoCard>
-                <If condition={tab === 'materials'}>
-                  <Content>
-                    <CreateCard>
-                      <span>Olá, Aluno!</span>
-                      <p>Aqui você pode ver os materiais disponibilizados!</p>
-                    </CreateCard>
-                    <ContainerActivities>
-                      <Activities />
-                      <Activities />
-                      <Activities /> <Activities />
-                      <Activities /> <Activities />
-                      <Activities />
-                    </ContainerActivities>
-                  </Content>
-                </If>
-              </Main>
-            </>
-          )}
+          <MenuStyled hover={hover} setHover={setHover} active={'COURSES'} />
+          <Main>
+            <InfoCard>
+              <HeadInfo>
+                <Materials tabVisible={tab === 'materials'} onClick={() => setTab('materials')}>
+                  Materiais
+                </Materials>
+              </HeadInfo>
+              <DataCourse>
+                <NameCourse>{course.name}</NameCourse>
+                <YearCourse>{moment().format('Y')} - TURMA G2K</YearCourse>
+              </DataCourse>
+            </InfoCard>
+            <If condition={tab === 'materials'}>
+              <Content>
+                <CreateCard>
+                  <span>Olá, Aluno!</span>
+                  <p>Aqui você pode ver os materiais disponibilizados!</p>
+                </CreateCard>
+                <ContainerActivities>
+                  <Activities />
+                  <Activities />
+                  <Activities /> <Activities />
+                  <Activities /> <Activities />
+                  <Activities />
+                </ContainerActivities>
+              </Content>
+            </If>
+          </Main>
         </If>
       </If>
     </Container>

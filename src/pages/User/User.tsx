@@ -21,62 +21,86 @@ import {
 type Props = {
   hover: HoverIconsType;
   setHover: (value: HoverIconsType) => void;
-  size: number;
   loaded: boolean;
   users: UserType[];
   adms: UserType[];
   pendings: UserType[];
+  filteredUsers: UserType[];
+  filter: boolean;
+  searchUsers: (query: string) => void;
+  setFilter: (valui: boolean) => void;
 };
 
-export const User: React.FC<Props> = ({ hover, setHover, size, loaded, users, adms, pendings }) => (
+export const User: React.FC<Props> = ({
+  hover,
+  setHover,
+  loaded,
+  users,
+  adms,
+  pendings,
+  filteredUsers,
+  searchUsers,
+  filter,
+  setFilter,
+}) => (
   <Container>
     <If condition={!loaded}>
       <LoadingPageStyled />
     </If>
     <If condition={loaded}>
       <If condition={isAdm()}>
-        {size >= 950 && (
-          <>
-            <MenuStyled hover={hover} setHover={setHover} active={'USERS'} />
-            <Main>
-              <Header>
-                <SearchContent>
-                  <SearchIcon />
-                  <SearchInput placeholder="Buscar usuários" />
-                </SearchContent>
-                <ButtonAddUser onClick={() => {}}>Novo Usuário</ButtonAddUser>
-              </Header>
-              <ContentUsers>
-                <TitleSection>Administradores</TitleSection>
-                {adms.map((adm: UserType, idx) => (
-                  <UsersCardStyled key={idx} name={adm.name} />
-                ))}
-              </ContentUsers>
-              <ContentUsers>
-                <TitleSection>Usuários</TitleSection>
-                {users.map((user: UserType, idx: number) => (
-                  <UsersCardStyled key={idx} name={user.name} />
-                ))}
-              </ContentUsers>
-              <If condition={!isEmpty(pendings)}>
-                <ContentUsers>
-                  <TitleSection>Pendentes</TitleSection>
-                  {pendings.map((user: UserType, idx: number) => (
-                    <UsersCardStyled key={idx} name={user.name} />
-                  ))}
-                </ContentUsers>
-              </If>
-            </Main>
-          </>
-        )}
+        <MenuStyled hover={hover} setHover={setHover} active={'USERS'} />
+        <Main>
+          <Header>
+            <SearchContent>
+              <SearchIcon />
+              <SearchInput
+                placeholder="Buscar usuários"
+                onChange={({ target }) => {
+                  searchUsers(target.value);
+                  setFilter(!!target.value);
+                }}
+              />
+            </SearchContent>
+            <ButtonAddUser onClick={() => {}}>Novo Usuário</ButtonAddUser>
+          </Header>
+          <If condition={filter}>
+            {console.log(filteredUsers)}
+            <ContentUsers>
+              {filteredUsers.map((user: UserType, idx: number) => (
+                <UsersCardStyled key={idx} name={user.name} />
+              ))}
+            </ContentUsers>
+          </If>
+          <ContentUsers>
+            <If condition={!filter}>
+              <TitleSection>Administradores</TitleSection>
+              {adms.map((adm: UserType, idx) => (
+                <UsersCardStyled key={idx} name={adm.name} />
+              ))}
+            </If>
+          </ContentUsers>
+          <ContentUsers>
+            <If condition={!filter}>
+              <TitleSection>Usuários</TitleSection>
+              {users.map((user: UserType, idx: number) => (
+                <UsersCardStyled key={idx} name={user.name} />
+              ))}
+            </If>
+          </ContentUsers>
+          <If condition={!isEmpty(pendings) && !filter}>
+            <ContentUsers>
+              <TitleSection>Pendentes</TitleSection>
+              {pendings.map((user: UserType, idx: number) => (
+                <UsersCardStyled key={idx} name={user.name} />
+              ))}
+            </ContentUsers>
+          </If>
+        </Main>
       </If>
       <If condition={!isAdm()}>
-        {size >= 950 && (
-          <>
-            <MenuStyled hover={hover} setHover={setHover} active={'COURSES'} />
-            <Main></Main>
-          </>
-        )}
+        <MenuStyled hover={hover} setHover={setHover} active={'COURSES'} />
+        <Main></Main>
       </If>
     </If>
   </Container>
