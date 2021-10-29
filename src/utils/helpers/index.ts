@@ -43,12 +43,12 @@ export const notify = (type: 'success' | 'error' | 'info', msg: string) => {
     return notifyError();
   }
   if (type === 'info') {
-    const notifyError = () =>
+    const notifyInfo = () =>
       toast.info(msg, {
-        toastId: 'no-repeat-error',
+        toastId: 'no-repeat-info',
       });
 
-    return notifyError();
+    return notifyInfo();
   }
   const notifySuccess = () =>
     toast.success(msg, {
