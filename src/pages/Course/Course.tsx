@@ -12,7 +12,9 @@ import {
   CourseCardStyled,
   LoadingPageStyled,
   TitlePage,
+  Text,
 } from './styles';
+import { isEmpty } from 'lodash';
 
 type Props = {
   hover: HoverIconsType;
@@ -53,6 +55,9 @@ const Course: React.FC<Props> = ({ hover, setHover, courses, loaded, myCourses, 
           <MenuStyled hover={hover} setHover={setHover} active={'COURSES'} />
           <Main>
             <TitlePage>Meus Cursos</TitlePage>
+            <If condition={isEmpty(myCourses)}>
+              <Text>Você não está participando de nenhum curso.</Text>
+            </If>
             <CoursesContainer userCourses>
               {myCourses.map((course: StudentCourseType, idx) => (
                 <CourseCardStyled

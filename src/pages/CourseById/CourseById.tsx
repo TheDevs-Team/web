@@ -94,12 +94,6 @@ const CourseById: React.FC<Props> = ({ hover, setHover, loaded, course, tab, set
               </Content>
             </If>
           </Main>
-          <MenuStyled hover={hover} setHover={setHover} active={'COURSES'} />
-          <Main>
-            <p>{course.name}</p>
-            <p>{course.description}</p>
-            <p>{course.id}</p>
-          </Main>
         </If>
         <If condition={!isAdm()}>
           <MenuStyled hover={hover} setHover={setHover} active={'COURSES'} />

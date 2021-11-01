@@ -153,3 +153,10 @@ export const TitlePage = styled.h2`
   font-weight: 400;
   color: ${colors.primary.white};
 `;
+
+export const Text = styled.p`
+  font-size: 16px;
+  font-weight: 400;
+  color: ${colors.primary.light};
+  margin-bottom: -10px;
+`;

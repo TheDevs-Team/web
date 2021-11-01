@@ -11,7 +11,7 @@ type Props = {
 
 export const NotificationsContainer: React.FC<Props> = ({ notification }) => {
   const [hover, setHover] = useState<HoverIconsType>('');
-  const [loaded, setLoaded] = useState(true);
+  const [loaded] = useState(true);
 
   const handleHover = (item: HoverIconsType) => setHover(item);
 

@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React from 'react';
 import { TextFieldProps } from '@material-ui/core';
 import { Input } from './styles';
 
