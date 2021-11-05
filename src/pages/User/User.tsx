@@ -1,5 +1,5 @@
 import React from 'react';
-import { If } from '~/components';
+import { If, RemoveUserModal } from '~/components';
 import { isAdm } from '~/services/auth';
 import { isEmpty } from 'lodash';
 
@@ -28,7 +28,10 @@ type Props = {
   filteredUsers: UserType[];
   filter: boolean;
   searchUsers: (query: string) => void;
-  setFilter: (valui: boolean) => void;
+  setFilter: (value: boolean) => void;
+  modalRemoveUser: boolean;
+  setModalRemoveUser: (value: boolean) => void;
+  setCurrent: (value: string) => void;
 };
 
 export const User: React.FC<Props> = ({
@@ -42,8 +45,14 @@ export const User: React.FC<Props> = ({
   searchUsers,
   filter,
   setFilter,
+  modalRemoveUser,
+  setModalRemoveUser,
+  setCurrent,
 }) => (
   <Container>
+    <If condition={modalRemoveUser}>
+      <RemoveUserModal />
+    </If>
     <If condition={!loaded}>
       <LoadingPageStyled />
     </If>
@@ -64,38 +73,44 @@ export const User: React.FC<Props> = ({
             </SearchContent>
             <ButtonAddUser onClick={() => {}}>Novo Usuário</ButtonAddUser>
           </Header>
-          <If condition={filter}>
-            {console.log(filteredUsers)}
+          {/* <If condition={filter}>
             <ContentUsers>
               {filteredUsers.map((user: UserType, idx: number) => (
-                <UsersCardStyled key={idx} name={user.name} />
+                <UsersCardStyled key={idx} name={user.name} remove={() => setModalRemoveUser} />
               ))}
             </ContentUsers>
-          </If>
-          <ContentUsers>
+          </If> */}
+          {/* <ContentUsers>
             <If condition={!filter}>
               <TitleSection>Administradores</TitleSection>
               {adms.map((adm: UserType, idx) => (
-                <UsersCardStyled key={idx} name={adm.name} />
+                <UsersCardStyled key={idx} name={adm.name} remove={() => setModalRemoveUser} />
               ))}
             </If>
-          </ContentUsers>
+          </ContentUsers> */}
           <ContentUsers>
             <If condition={!filter}>
               <TitleSection>Usuários</TitleSection>
               {users.map((user: UserType, idx: number) => (
-                <UsersCardStyled key={idx} name={user.name} />
+                <UsersCardStyled
+                  key={idx}
+                  name={user.name}
+                  remove={() => {
+                    setCurrent(user.id);
+                    setModalRemoveUser(!modalRemoveUser);
+                  }}
+                />
               ))}
             </If>
           </ContentUsers>
-          <If condition={!isEmpty(pendings) && !filter}>
+          {/* <If condition={!isEmpty(pendings) && !filter}>
             <ContentUsers>
               <TitleSection>Pendentes</TitleSection>
               {pendings.map((user: UserType, idx: number) => (
-                <UsersCardStyled key={idx} name={user.name} />
+                <UsersCardStyled key={idx} name={user.name} remove={() => setModalRemoveUser} />
               ))}
             </ContentUsers>
-          </If>
+          </If> */}
         </Main>
       </If>
       <If condition={!isAdm()}>

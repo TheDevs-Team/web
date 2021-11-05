@@ -12,3 +12,7 @@ declare type CourseCardType = {
 declare type TabVisibleType = {
   tabVisible?: boolean;
 };
+
+declare type CancelButtonType = {
+  cancel?: boolean;
+};

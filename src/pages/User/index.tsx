@@ -16,6 +16,7 @@ const UserContainer: React.FC<Props> = ({ user }) => {
   const [pendings, setPendings] = useState<UserType[]>([]);
   const [filteredUsers, setFilteredUsers] = useState<UserType[]>([]);
   const [filter, setFilter] = useState(false);
+  const [modalRemoveUser, setModalRemoveUser] = useState(false);
 
   const handleHover = (item: HoverIconsType) => setHover(item);
 
@@ -38,6 +39,8 @@ const UserContainer: React.FC<Props> = ({ user }) => {
     return setFilteredUsers(filtereds);
   };
 
+  const setCurrent = (id: string) => user.setCurrent(id);
+
   useEffect(() => {
     handleLoad();
   }, []);
@@ -54,6 +57,9 @@ const UserContainer: React.FC<Props> = ({ user }) => {
       searchUsers={searchUsers}
       filter={filter}
       setFilter={setFilter}
+      modalRemoveUser={modalRemoveUser}
+      setModalRemoveUser={setModalRemoveUser}
+      setCurrent={setCurrent}
     />
   );
 };
