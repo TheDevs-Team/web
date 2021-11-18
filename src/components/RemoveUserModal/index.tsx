@@ -5,25 +5,18 @@ import { Modal, Container, Content, ButtonStyled, Text } from './styles';
 
 type Props = {
   user?: UserStore;
+  onClose: () => void;
+  onConfirm: () => void;
 };
 
-export const RemoveUserModal: React.FC<Props> = ({ user, ...rest }) => {
-  const removeCurrent = async () => user?.setCurrent('');
-  const removeUser = async () => await user?.deleteCurrent();
-
+export const RemoveUserModal: React.FC<Props> = ({ user, onClose, onConfirm, ...rest }) => {
   return (
     <Container {...rest}>
       <Modal>
         <Text>Tem certeza que deseja remover este usuário?</Text>
         <Content>
-          <ButtonStyled onClick={() => console.log('clicou')}>Cancelar</ButtonStyled>
-          <ButtonStyled
-            cancel
-            onClick={() => {
-              removeUser();
-              console.log('clicou');
-            }}
-          >
+          <ButtonStyled onClick={onClose}>Cancelar</ButtonStyled>
+          <ButtonStyled cancel onClick={onConfirm}>
             Remover
           </ButtonStyled>
         </Content>

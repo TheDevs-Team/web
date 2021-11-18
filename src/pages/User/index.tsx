@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { inject, observer } from 'mobx-react';
+import { useHistory } from 'react-router';
 import { User } from './User';
 import { UserStore } from '~/store';
-import { FINANCIAL_STATUS, TYPE_USER } from '~/utils';
+import { FINANCIAL_STATUS, TYPE_USER, notify } from '~/utils';
 
 type Props = {
   user: UserStore;
@@ -17,6 +18,8 @@ const UserContainer: React.FC<Props> = ({ user }) => {
   const [filteredUsers, setFilteredUsers] = useState<UserType[]>([]);
   const [filter, setFilter] = useState(false);
   const [modalRemoveUser, setModalRemoveUser] = useState(false);
+
+  const history = useHistory();
 
   const handleHover = (item: HoverIconsType) => setHover(item);
 
@@ -41,6 +44,16 @@ const UserContainer: React.FC<Props> = ({ user }) => {
 
   const setCurrent = (id: string) => user.setCurrent(id);
 
+  const handleRemoveUser = async () => {
+    const response = await user.deleteCurrent();
+
+    if (response) {
+      return history.push('/usuarios');
+    }
+
+    return notify('error', 'Erro ao remover o usuário');
+  };
+
   useEffect(() => {
     handleLoad();
   }, []);
@@ -60,6 +73,7 @@ const UserContainer: React.FC<Props> = ({ user }) => {
       modalRemoveUser={modalRemoveUser}
       setModalRemoveUser={setModalRemoveUser}
       setCurrent={setCurrent}
+      handleRemoveUser={handleRemoveUser}
     />
   );
 };

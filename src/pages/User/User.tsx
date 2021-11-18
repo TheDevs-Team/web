@@ -32,6 +32,7 @@ type Props = {
   modalRemoveUser: boolean;
   setModalRemoveUser: (value: boolean) => void;
   setCurrent: (value: string) => void;
+  handleRemoveUser: () => void;
 };
 
 export const User: React.FC<Props> = ({
@@ -48,10 +49,17 @@ export const User: React.FC<Props> = ({
   modalRemoveUser,
   setModalRemoveUser,
   setCurrent,
+  handleRemoveUser,
 }) => (
   <Container>
     <If condition={modalRemoveUser}>
-      <RemoveUserModal />
+      <RemoveUserModal
+        onClose={() => setModalRemoveUser(false)}
+        onConfirm={() => {
+          handleRemoveUser();
+          setModalRemoveUser(false);
+        }}
+      />
     </If>
     <If condition={!loaded}>
       <LoadingPageStyled />
@@ -73,21 +81,21 @@ export const User: React.FC<Props> = ({
             </SearchContent>
             <ButtonAddUser onClick={() => {}}>Novo Usuário</ButtonAddUser>
           </Header>
-          {/* <If condition={filter}>
+          <If condition={filter}>
             <ContentUsers>
               {filteredUsers.map((user: UserType, idx: number) => (
                 <UsersCardStyled key={idx} name={user.name} remove={() => setModalRemoveUser} />
               ))}
             </ContentUsers>
-          </If> */}
-          {/* <ContentUsers>
+          </If>
+          <ContentUsers>
             <If condition={!filter}>
               <TitleSection>Administradores</TitleSection>
               {adms.map((adm: UserType, idx) => (
                 <UsersCardStyled key={idx} name={adm.name} remove={() => setModalRemoveUser} />
               ))}
             </If>
-          </ContentUsers> */}
+          </ContentUsers>
           <ContentUsers>
             <If condition={!filter}>
               <TitleSection>Usuários</TitleSection>
@@ -103,14 +111,14 @@ export const User: React.FC<Props> = ({
               ))}
             </If>
           </ContentUsers>
-          {/* <If condition={!isEmpty(pendings) && !filter}>
+          <If condition={!isEmpty(pendings) && !filter}>
             <ContentUsers>
               <TitleSection>Pendentes</TitleSection>
               {pendings.map((user: UserType, idx: number) => (
                 <UsersCardStyled key={idx} name={user.name} remove={() => setModalRemoveUser} />
               ))}
             </ContentUsers>
-          </If> */}
+          </If>
         </Main>
       </If>
       <If condition={!isAdm()}>
