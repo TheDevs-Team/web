@@ -48,7 +48,7 @@ const UserContainer: React.FC<Props> = ({ user }) => {
     const response = await user.deleteCurrent();
 
     if (response) {
-      return history.push('/usuarios');
+      return window.location.reload();
     }
 
     return notify('error', 'Erro ao remover o usuário');

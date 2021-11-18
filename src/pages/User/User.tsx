@@ -84,7 +84,14 @@ export const User: React.FC<Props> = ({
           <If condition={filter}>
             <ContentUsers>
               {filteredUsers.map((user: UserType, idx: number) => (
-                <UsersCardStyled key={idx} name={user.name} remove={() => setModalRemoveUser} />
+                <UsersCardStyled
+                  key={idx}
+                  name={user.name}
+                  remove={() => {
+                    setCurrent(user.id);
+                    setModalRemoveUser(!modalRemoveUser);
+                  }}
+                />
               ))}
             </ContentUsers>
           </If>
@@ -92,7 +99,14 @@ export const User: React.FC<Props> = ({
             <If condition={!filter}>
               <TitleSection>Administradores</TitleSection>
               {adms.map((adm: UserType, idx) => (
-                <UsersCardStyled key={idx} name={adm.name} remove={() => setModalRemoveUser} />
+                <UsersCardStyled
+                  key={idx}
+                  name={adm.name}
+                  remove={() => {
+                    setCurrent(adm.id);
+                    setModalRemoveUser(!modalRemoveUser);
+                  }}
+                />
               ))}
             </If>
           </ContentUsers>
@@ -115,7 +129,14 @@ export const User: React.FC<Props> = ({
             <ContentUsers>
               <TitleSection>Pendentes</TitleSection>
               {pendings.map((user: UserType, idx: number) => (
-                <UsersCardStyled key={idx} name={user.name} remove={() => setModalRemoveUser} />
+                <UsersCardStyled
+                  key={idx}
+                  name={user.name}
+                  remove={() => {
+                    setCurrent(user.id);
+                    setModalRemoveUser(!modalRemoveUser);
+                  }}
+                />
               ))}
             </ContentUsers>
           </If>
