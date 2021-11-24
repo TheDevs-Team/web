@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 import React from 'react';
 import { Input } from '~/components';
-import { Container, Nav, FormContainer, Header, Title, Button, Span, Logo } from './styles';
+import { Container, Nav, FormContainer, Header, Title, Button, Logo } from './styles';
 
 type Props = {
   onSubmit: (event: React.FormEvent<HTMLFormElement>) => void;
@@ -22,7 +22,6 @@ export const Login: React.FC<Props> = ({ onSubmit, setEmail, setPassword }) => {
         <Input placeholder="E-mail" type="text" onChange={(event) => setEmail(event.target.value)} />
         <Input placeholder="Senha" type="password" onChange={(event) => setPassword(event.target.value)} />
         <Button>CONTINUAR</Button>
-        <Span>Ainda não sou G2K</Span>
       </FormContainer>
     </Container>
   );

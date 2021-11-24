@@ -25,7 +25,7 @@ export const FormContainer = styled.form`
   width: 100%;
   min-width: 350px;
   max-width: 450px;
-  height: 500px;
+  height: 400px;
 
   display: flex;
   align-items: center;
@@ -93,16 +93,4 @@ export const Button = styled.button.attrs({
 
     transition: 0.4s;
   }
-`;
-
-export const Span = styled.span`
-  color: ${colors.primary.main};
-  font-size: 15px;
-  font-weight: 400;
-
-  padding-top: 50px;
-
-  text-decoration: underline;
-
-  cursor: pointer;
 `;
