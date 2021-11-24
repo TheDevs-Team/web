@@ -104,6 +104,16 @@ class UserStore {
   };
 
   @action
+  update = async (values: FormValuesUpdateType): Promise<boolean> => {
+    const response = await UserAPI.update(values);
+
+    if (response) {
+      return true;
+    }
+    return false;
+  };
+
+  @action
   delete = async (id: string): Promise<boolean> => {
     const response = await UserAPI.delete(id);
 

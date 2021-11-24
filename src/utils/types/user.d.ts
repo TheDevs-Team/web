@@ -37,3 +37,11 @@ declare type ListUsersByType = {
   adms: UserType[];
   users: UserType[];
 };
+
+declare type FormValuesUpdateType = {
+  name: string;
+  email: string;
+  phone: string;
+  password: string;
+  confirm_password: string;
+};
