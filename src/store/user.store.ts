@@ -58,7 +58,7 @@ class UserStore {
 
   @persist
   @observable
-  current: string | undefined;
+  current: string | undefined | null;
 
   constructor() {
     makeObservable(this);
@@ -115,7 +115,21 @@ class UserStore {
   };
 
   @action
+  deleteCurrent = async (): Promise<boolean> => {
+    const response = await UserAPI.delete(this.current as string);
+
+    console.log(response);
+
+    if (response) {
+      return true;
+    }
+
+    return false;
+  };
+
+  @action
   setCurrent = (id?: string) => {
+    console.log('o current é ', id);
     return (this.current = id);
   };
 
