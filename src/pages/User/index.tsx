@@ -19,8 +19,6 @@ const UserContainer: React.FC<Props> = ({ user }) => {
   const [filter, setFilter] = useState(false);
   const [modalRemoveUser, setModalRemoveUser] = useState(false);
 
-  const history = useHistory();
-
   const handleHover = (item: HoverIconsType) => setHover(item);
 
   const handleLoad = async () => {

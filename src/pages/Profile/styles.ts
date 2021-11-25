@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { colors } from '~/theme';
-import { TextField } from '~/components';
+import { LoadingPage, TextField } from '~/components';
 
 export const Container = styled.div`
   width: 100vw;
@@ -63,7 +63,16 @@ export const Span = styled.span`
   font-size: 20px;
 `;
 
+export const Alert = styled.span`
+  color: ${colors.primary.dark};
+  font-weight: 400;
+  margin-bottom: 10px;
+  font-size: 12px;
+`;
+
 export const Input = styled(TextField)`
   width: 90%;
   color: blue;
 `;
+
+export const LoadingPageStyled = styled(LoadingPage)``;

@@ -28,6 +28,15 @@ class UserAPI {
     }
   };
 
+  static update = async (values: FormValuesUpdateType): Promise<boolean> => {
+    try {
+      await api.put('/user/update', values);
+      return true;
+    } catch (error) {
+      return false;
+    }
+  };
+
   static delete = async (id: string): Promise<boolean> => {
     try {
       await api.post('/user/delete', { id });
