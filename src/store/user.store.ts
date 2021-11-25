@@ -104,7 +104,7 @@ class UserStore {
   };
 
   @action
-  update = async (values: FormValuesUpdateType): Promise<boolean> => {
+  update = async (values: any): Promise<boolean> => {
     const response = await UserAPI.update(values);
 
     if (response) {

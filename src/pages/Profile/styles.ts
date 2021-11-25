@@ -63,6 +63,13 @@ export const Span = styled.span`
   font-size: 20px;
 `;
 
+export const Alert = styled.span`
+  color: ${colors.primary.dark};
+  font-weight: 400;
+  margin-bottom: 10px;
+  font-size: 12px;
+`;
+
 export const Input = styled(TextField)`
   width: 90%;
   color: blue;

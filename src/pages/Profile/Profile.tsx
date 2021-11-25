@@ -2,7 +2,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useState } from 'react';
 import { Menu } from '~/components';
-import { Container, Main, Btn, Form, Span, Input } from './styles';
+import { Container, Main, Btn, Form, Span, Input, Alert } from './styles';
 
 type Props = {
   submitForm: (state: any) => void;
@@ -30,6 +30,7 @@ export const Profile: React.FC<Props> = ({ submitForm }) => {
         <Main>
           <Form>
             <Span>Editar Dados Básicos</Span>
+            <Alert>OBS: Preencha todos os campos!</Alert>
             <Input
               id="name"
               label="Nome"

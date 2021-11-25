@@ -8,9 +8,8 @@ type Props = {
 };
 
 const ProfileContainer: React.FC<Props> = ({ user }) => {
-  const id = user.profile.id;
   const submitForm = (state: any) => {
-    user.update({ ...state, id });
+    user.update({ ...state, id: user.profile.id, document: user.profile.document, type: user.profile.type });
   };
   return <Profile submitForm={submitForm} />;
 };
