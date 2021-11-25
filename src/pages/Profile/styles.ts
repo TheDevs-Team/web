@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { colors } from '~/theme';
-import { TextField } from '~/components';
+import { LoadingPage, TextField } from '~/components';
 
 export const Container = styled.div`
   width: 100vw;
@@ -74,3 +74,5 @@ export const Input = styled(TextField)`
   width: 90%;
   color: blue;
 `;
+
+export const LoadingPageStyled = styled(LoadingPage)``;

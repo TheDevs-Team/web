@@ -1,5 +1,5 @@
 import { inject, observer } from 'mobx-react';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Profile from './Profile';
 import { UserStore } from 'store';
 import { notify } from '~/utils';
@@ -11,6 +11,13 @@ type Props = {
 
 const ProfileContainer: React.FC<Props> = ({ user }) => {
   const history = useHistory();
+  const [loaded, setLoaded] = useState(false);
+
+  const fetchUser = async () => {
+    setLoaded(false);
+    await user.get();
+    setLoaded(true);
+  };
 
   const submitForm = async (state: any) => {
     const response = await user.update({
@@ -27,7 +34,12 @@ const ProfileContainer: React.FC<Props> = ({ user }) => {
 
     return notify('error', 'Erro ao atualizar dados!');
   };
-  return <Profile submitForm={submitForm} />;
+
+  useEffect(() => {
+    fetchUser();
+  }, []);
+
+  return <Profile submitForm={submitForm} loaded={loaded} />;
 };
 
 export default inject('user')(observer(ProfileContainer));

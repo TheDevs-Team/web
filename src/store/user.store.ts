@@ -139,7 +139,6 @@ class UserStore {
 
   @action
   setCurrent = (id?: string) => {
-    console.log('o current é ', id);
     return (this.current = id);
   };
 
@@ -148,7 +147,8 @@ class UserStore {
     const response = await UserAPI.get();
 
     if (response) {
-      return (this.profile = response);
+      this.profile = response;
+      return response;
     }
 
     return null;
