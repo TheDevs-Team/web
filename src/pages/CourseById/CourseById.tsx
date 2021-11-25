@@ -79,7 +79,7 @@ const CourseById: React.FC<Props> = ({ hover, setHover, loaded, course, tab, set
                   <p>Aqui você pode adicionar novos alunos para esse curso!</p>
                   <Button>Adicionar Aluno</Button>
                 </CreateCard>
-                <UsersContainer>
+                {/* <UsersContainer>
                   <span>Alunos Participantes</span>
                   <Users name="Eduardo" />
                   <Users name="Carlos" />
@@ -90,7 +90,7 @@ const CourseById: React.FC<Props> = ({ hover, setHover, loaded, course, tab, set
                   <Users name="Jennifer" />
                   <Users name="Rubens" />
                   <Users name="Neymar" />
-                </UsersContainer>
+                </UsersContainer> */}
               </Content>
             </If>
           </Main>
