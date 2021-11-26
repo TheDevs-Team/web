@@ -1,15 +1,13 @@
 import React from 'react';
-import { UserStore } from '~/store';
 
 import { Modal, Container, Content, ButtonStyled, Text } from './styles';
 
 type Props = {
-  user?: UserStore;
   onClose: () => void;
   onConfirm: () => void;
 };
 
-export const RemoveUserModal: React.FC<Props> = ({ user, onClose, onConfirm, ...rest }) => {
+export const RemoveUserModal: React.FC<Props> = ({ onClose, onConfirm, ...rest }) => {
   return (
     <Container {...rest}>
       <Modal>
