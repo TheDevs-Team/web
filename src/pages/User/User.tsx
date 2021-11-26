@@ -1,5 +1,5 @@
 import React from 'react';
-import { If, RemoveUserModal } from '~/components';
+import { If, RemoveUserModal, UpdateUserModal, CreateUserModal } from '~/components';
 import { isAdm } from '~/services/auth';
 import { isEmpty } from 'lodash';
 
@@ -30,9 +30,14 @@ type Props = {
   searchUsers: (query: string) => void;
   setFilter: (value: boolean) => void;
   modalRemoveUser: boolean;
+  modalUpdateUser: boolean;
+  setModalUpdateUser: (values: boolean) => void;
+  modalCreateUser: boolean;
+  setModalCreateUser: (values: boolean) => void;
   setModalRemoveUser: (value: boolean) => void;
   setCurrent: (value: string) => void;
   handleRemoveUser: () => void;
+  handleUpdateUser: () => void;
 };
 
 export const User: React.FC<Props> = ({
@@ -50,6 +55,11 @@ export const User: React.FC<Props> = ({
   setModalRemoveUser,
   setCurrent,
   handleRemoveUser,
+  handleUpdateUser,
+  setModalUpdateUser,
+  modalUpdateUser,
+  setModalCreateUser,
+  modalCreateUser,
 }) => (
   <Container>
     <If condition={modalRemoveUser}>
@@ -58,6 +68,23 @@ export const User: React.FC<Props> = ({
         onConfirm={() => {
           handleRemoveUser();
           setModalRemoveUser(false);
+        }}
+      />
+    </If>
+    <If condition={modalCreateUser}>
+      <CreateUserModal
+        onClose={() => setModalCreateUser(false)}
+        onConfirm={() => {
+          setModalCreateUser(false);
+        }}
+      />
+    </If>
+    <If condition={modalUpdateUser}>
+      <UpdateUserModal
+        onClose={() => setModalUpdateUser(false)}
+        onConfirm={() => {
+          handleUpdateUser();
+          setModalUpdateUser(false);
         }}
       />
     </If>
@@ -79,7 +106,13 @@ export const User: React.FC<Props> = ({
                 }}
               />
             </SearchContent>
-            <ButtonAddUser onClick={() => {}}>Novo Usuário</ButtonAddUser>
+            <ButtonAddUser
+              onClick={() => {
+                setModalCreateUser(!modalCreateUser);
+              }}
+            >
+              Novo Usuário
+            </ButtonAddUser>
           </Header>
           <If condition={filter}>
             <ContentUsers>
@@ -90,6 +123,10 @@ export const User: React.FC<Props> = ({
                   remove={() => {
                     setCurrent(user.id);
                     setModalRemoveUser(!modalRemoveUser);
+                  }}
+                  update={() => {
+                    setCurrent(user.id);
+                    setModalUpdateUser(!modalUpdateUser);
                   }}
                 />
               ))}
@@ -106,6 +143,10 @@ export const User: React.FC<Props> = ({
                     setCurrent(adm.id);
                     setModalRemoveUser(!modalRemoveUser);
                   }}
+                  update={() => {
+                    setCurrent(adm.id);
+                    setModalUpdateUser(!modalUpdateUser);
+                  }}
                 />
               ))}
             </If>
@@ -121,6 +162,10 @@ export const User: React.FC<Props> = ({
                     setCurrent(user.id);
                     setModalRemoveUser(!modalRemoveUser);
                   }}
+                  update={() => {
+                    setCurrent(user.id);
+                    setModalUpdateUser(!modalUpdateUser);
+                  }}
                 />
               ))}
             </If>
@@ -135,6 +180,10 @@ export const User: React.FC<Props> = ({
                   remove={() => {
                     setCurrent(user.id);
                     setModalRemoveUser(!modalRemoveUser);
+                  }}
+                  update={() => {
+                    setCurrent(user.id);
+                    setModalUpdateUser(!modalUpdateUser);
                   }}
                 />
               ))}

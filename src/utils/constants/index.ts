@@ -4,8 +4,8 @@ export const USER_STATUS = {
 };
 
 export const USER_STATUS_FINANCEIRO = {
-  PAGO: 'Pago',
-  AGUARDANDO_PAGAMENTO: 'Aguardando Pagamento',
+  PAGO: 'PAGO',
+  AGUARDANDO_PAGAMENTO: 'AGUARDANDO PAGAMENTO',
 };
 
 export const FINANCIAL_STATUS = {

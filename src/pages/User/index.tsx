@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { inject, observer } from 'mobx-react';
-import { useHistory } from 'react-router';
 import { User } from './User';
 import { UserStore } from '~/store';
 import { FINANCIAL_STATUS, TYPE_USER, notify } from '~/utils';
@@ -18,6 +17,8 @@ const UserContainer: React.FC<Props> = ({ user }) => {
   const [filteredUsers, setFilteredUsers] = useState<UserType[]>([]);
   const [filter, setFilter] = useState(false);
   const [modalRemoveUser, setModalRemoveUser] = useState(false);
+  const [modalUpdateUser, setModalUpdateUser] = useState(false);
+  const [modalCreateUser, setModalCreateUser] = useState(false);
 
   const handleHover = (item: HoverIconsType) => setHover(item);
 
@@ -40,7 +41,9 @@ const UserContainer: React.FC<Props> = ({ user }) => {
     return setFilteredUsers(filtereds);
   };
 
-  const setCurrent = (id: string) => user.setCurrent(id);
+  const setCurrent = (id: string) => {
+    user.setCurrent(id);
+  };
 
   const handleRemoveUser = async () => {
     const response = await user.deleteCurrent();
@@ -50,6 +53,10 @@ const UserContainer: React.FC<Props> = ({ user }) => {
     }
 
     return notify('error', 'Erro ao remover o usuário');
+  };
+
+  const handleUpdateUser = async () => {
+    return notify('error', 'Erro ao atualizar o usuário');
   };
 
   useEffect(() => {
@@ -72,6 +79,11 @@ const UserContainer: React.FC<Props> = ({ user }) => {
       setModalRemoveUser={setModalRemoveUser}
       setCurrent={setCurrent}
       handleRemoveUser={handleRemoveUser}
+      handleUpdateUser={handleUpdateUser}
+      modalUpdateUser={modalUpdateUser}
+      setModalUpdateUser={setModalUpdateUser}
+      setModalCreateUser={setModalCreateUser}
+      modalCreateUser={modalCreateUser}
     />
   );
 };

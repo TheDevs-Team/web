@@ -15,9 +15,10 @@ import {
 type Props = {
   name: string;
   remove: () => void;
+  update: () => void;
 };
 
-export const UsersCard: React.FC<Props> = ({ name, remove, ...rest }) => (
+export const UsersCard: React.FC<Props> = ({ name, remove, update, ...rest }) => (
   <Container {...rest}>
     <ContentAvatar>
       <BackgroundIcon>
@@ -28,7 +29,7 @@ export const UsersCard: React.FC<Props> = ({ name, remove, ...rest }) => (
       <UserName>{name}</UserName>
     </ContentName>
     <ContentOptions>
-      <EditIcon />
+      <EditIcon onClick={update} />
       <DeleteIcon onClick={remove} />
     </ContentOptions>
   </Container>

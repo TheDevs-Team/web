@@ -13,3 +13,5 @@ export * from './UsersCard';
 export * from './InputText';
 export * from './Toggle';
 export * from './RemoveUserModal';
+export { default as UpdateUserModal } from './UpdateUserModal';
+export { default as CreateUserModal } from './CreateUserModal';

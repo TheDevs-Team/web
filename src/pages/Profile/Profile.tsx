@@ -9,7 +9,7 @@ type Props = {
   loaded: boolean;
 };
 
-export const Profile: React.FC<Props> = ({ submitForm, loaded }) => {
+const Profile: React.FC<Props> = ({ submitForm, loaded }) => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
