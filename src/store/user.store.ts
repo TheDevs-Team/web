@@ -92,10 +92,7 @@ class UserStore {
 
   @action
   create = async (values: CreateUserType): Promise<boolean> => {
-    const response = await UserAPI.create({
-      ...values,
-      financial_status: values.financial_status === USER_STATUS_FINANCEIRO.PAGO ? 'PAID' : 'WAITING_PAYMENT',
-    });
+    const response = await UserAPI.create(values);
 
     if (response) {
       return true;
