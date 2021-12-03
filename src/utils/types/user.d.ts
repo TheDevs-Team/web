@@ -12,6 +12,7 @@ declare type UserType = {
   type: string;
   financial_status: string;
   password: string;
+  confirm_password?: string;
   active: boolean;
   created_at?: Date;
   updated_at?: Date;
@@ -39,9 +40,9 @@ declare type ListUsersByType = {
 };
 
 declare type FormValuesUpdateType = {
-  name: string;
-  email: string;
-  phone: string;
+  name?: string;
+  email?: string;
+  phone?: string;
   password: string;
   confirm_password: string;
 };

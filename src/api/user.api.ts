@@ -28,10 +28,10 @@ class UserAPI {
     }
   };
 
-  static update = async (values: FormValuesUpdateType): Promise<boolean> => {
+  static update = async (values: UserType): Promise<UserType | false> => {
     try {
-      await api.put('/user/update', values);
-      return true;
+      const { data } = await api.put('/user/update', values);
+      return data;
     } catch (error) {
       return false;
     }

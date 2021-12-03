@@ -1,7 +1,7 @@
 import { observable, action, makeObservable } from 'mobx';
 import { persist } from 'mobx-persist';
 import { UserAPI } from '~/api';
-import { setToken, USER_STATUS_FINANCEIRO, setTypeUser } from '~/utils';
+import { setToken, setTypeUser, setUserData } from '~/utils';
 
 class UserStore {
   @persist
@@ -71,6 +71,7 @@ class UserStore {
     if (response) {
       setToken(response.token);
       setTypeUser(response.user.type);
+      setUserData(JSON.stringify(response.user));
       this.profile = response.user;
 
       return true;
@@ -105,6 +106,7 @@ class UserStore {
     const response = await UserAPI.update(values);
 
     if (response) {
+      setUserData(JSON.stringify(response));
       return true;
     }
     return false;
@@ -125,8 +127,6 @@ class UserStore {
   deleteCurrent = async (): Promise<boolean> => {
     const response = await UserAPI.delete(this.current as string);
 
-    console.log(response);
-
     if (response) {
       return true;
     }
@@ -145,6 +145,10 @@ class UserStore {
 
     if (response) {
       this.profile = response;
+
+      const data = JSON.stringify(response);
+      setUserData(data);
+
       return response;
     }
 
