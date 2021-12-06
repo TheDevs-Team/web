@@ -19,6 +19,14 @@ const UserContainer: React.FC<Props> = ({ user }) => {
   const [modalRemoveUser, setModalRemoveUser] = useState(false);
   const [modalUpdateUser, setModalUpdateUser] = useState(false);
   const [modalCreateUser, setModalCreateUser] = useState(false);
+  const [otherProfile, setOtherProfile] = useState({
+    id: '',
+    type: '',
+    name: '',
+    phone: '',
+    password: '',
+    confirm_password: '',
+  });
 
   const handleHover = (item: HoverIconsType) => setHover(item);
 
@@ -33,6 +41,12 @@ const UserContainer: React.FC<Props> = ({ user }) => {
         : setAdms((old) => [...old, user]),
     );
 
+    setLoaded(true);
+  };
+
+  const beforeClickEdit = async (id: string) => {
+    setLoaded(false);
+    await user.getOtherProfile(id);
     setLoaded(true);
   };
 
@@ -84,6 +98,7 @@ const UserContainer: React.FC<Props> = ({ user }) => {
       setModalUpdateUser={setModalUpdateUser}
       setModalCreateUser={setModalCreateUser}
       modalCreateUser={modalCreateUser}
+      beforeClickEdit={beforeClickEdit}
     />
   );
 };

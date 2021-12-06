@@ -1,7 +1,7 @@
 import { observable, action, makeObservable } from 'mobx';
 import { persist } from 'mobx-persist';
 import { UserAPI } from '~/api';
-import { setToken, setTypeUser, setUserData } from '~/utils';
+import { checkOtherUserData, setOtherUserData, setToken, setTypeUser, setUserData } from '~/utils';
 
 class UserStore {
   @persist
@@ -148,6 +148,21 @@ class UserStore {
 
       const data = JSON.stringify(response);
       setUserData(data);
+
+      return response;
+    }
+
+    return null;
+  };
+
+  @action
+  getOtherProfile = async (id: string): Promise<UserType | null> => {
+    const response = await UserAPI.getOtherProfile(id);
+
+    if (response) {
+      checkOtherUserData();
+      const data = JSON.stringify(response);
+      setOtherUserData(data);
 
       return response;
     }

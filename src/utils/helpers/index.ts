@@ -1,4 +1,5 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
+import { isEmpty } from 'lodash';
 import { toast } from 'react-toastify';
 
 export const getToken = (): string | null => {
@@ -21,6 +22,10 @@ export const setUserData = (user: string): void => {
   return localStorage.setItem('@g2k:user', user);
 };
 
+export const setOtherUserData = (user: string): void => {
+  return localStorage.setItem('@g2k:otherUser', user);
+};
+
 export const setTypeUser = (value: string): void => {
   return localStorage.setItem('@g2k:typeuser', value);
 };
@@ -31,6 +36,18 @@ export const setCurrentCourseID = (value: string): void => {
 
 export const getUserData = () => {
   return JSON.parse(localStorage.getItem('@g2k:user')!);
+};
+
+export const getOtherUserData = () => {
+  return JSON.parse(localStorage.getItem('@g2k:otherUser')!);
+};
+
+export const checkOtherUserData = () => {
+  if (!isEmpty(localStorage.getItem('@g2k:otherUser'))) {
+    return localStorage.removeItem('@g2k:otherUser');
+  }
+
+  return;
 };
 
 export const notify = (type: 'success' | 'error' | 'info', msg: string) => {

@@ -38,6 +38,7 @@ type Props = {
   setCurrent: (value: string) => void;
   handleRemoveUser: () => void;
   handleUpdateUser: () => void;
+  beforeClickEdit: (id: string) => void;
 };
 
 export const User: React.FC<Props> = ({
@@ -60,6 +61,7 @@ export const User: React.FC<Props> = ({
   modalUpdateUser,
   setModalCreateUser,
   modalCreateUser,
+  beforeClickEdit,
 }) => (
   <Container>
     <If condition={modalRemoveUser}>
@@ -79,9 +81,11 @@ export const User: React.FC<Props> = ({
         }}
       />
     </If>
-    <If condition={modalUpdateUser}>
+    <If condition={modalUpdateUser && loaded}>
       <UpdateUserModal
-        onClose={() => setModalUpdateUser(false)}
+        onClose={() => {
+          setModalUpdateUser(false);
+        }}
         onConfirm={() => {
           handleUpdateUser();
           setModalUpdateUser(false);
@@ -125,6 +129,7 @@ export const User: React.FC<Props> = ({
                     setModalRemoveUser(!modalRemoveUser);
                   }}
                   update={() => {
+                    beforeClickEdit(user.id);
                     setCurrent(user.id);
                     setModalUpdateUser(!modalUpdateUser);
                   }}
@@ -144,6 +149,7 @@ export const User: React.FC<Props> = ({
                     setModalRemoveUser(!modalRemoveUser);
                   }}
                   update={() => {
+                    beforeClickEdit(adm.id);
                     setCurrent(adm.id);
                     setModalUpdateUser(!modalUpdateUser);
                   }}
@@ -163,6 +169,7 @@ export const User: React.FC<Props> = ({
                     setModalRemoveUser(!modalRemoveUser);
                   }}
                   update={() => {
+                    beforeClickEdit(user.id);
                     setCurrent(user.id);
                     setModalUpdateUser(!modalUpdateUser);
                   }}
@@ -182,6 +189,7 @@ export const User: React.FC<Props> = ({
                     setModalRemoveUser(!modalRemoveUser);
                   }}
                   update={() => {
+                    beforeClickEdit(user.id);
                     setCurrent(user.id);
                     setModalUpdateUser(!modalUpdateUser);
                   }}

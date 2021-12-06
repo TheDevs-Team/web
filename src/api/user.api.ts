@@ -54,6 +54,15 @@ class UserAPI {
       return null;
     }
   };
+
+  static getOtherProfile = async (id: string): Promise<UserType | null> => {
+    try {
+      const { data } = await api.post('/user/find-other-profile', { id });
+      return data;
+    } catch (error) {
+      return null;
+    }
+  };
 }
 
 export default UserAPI;

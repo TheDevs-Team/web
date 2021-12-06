@@ -1,8 +1,7 @@
 import { inject, observer } from 'mobx-react';
 import React, { useState } from 'react';
-import { useHistory } from 'react-router';
 import { UserStore } from '~/store';
-import { notify } from '~/utils';
+import { getOtherUserData, notify } from '~/utils';
 import { Modal, Container, Content, ButtonStyled, Input, Form, Span, Alert, Close, CloseWrapper } from './styles';
 
 type Props = {
@@ -12,11 +11,7 @@ type Props = {
 };
 
 const UpdateUserModal: React.FC<Props> = ({ user, onClose, onConfirm, ...rest }) => {
-  const history = useHistory();
   const [name, setName] = useState('');
-  const [document, setDocument] = useState('');
-  const [typeUser, setTypeUser] = useState('');
-  const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
   const [password, setPassword] = useState('');
   const [confirm_password, setConfirmPassword] = useState('');
@@ -24,11 +19,8 @@ const UpdateUserModal: React.FC<Props> = ({ user, onClose, onConfirm, ...rest })
 
   const state: any = {
     name,
-    email,
     phone,
     password,
-    typeUser,
-    document,
     confirm_password,
     financial_status,
   };
@@ -41,11 +33,13 @@ const UpdateUserModal: React.FC<Props> = ({ user, onClose, onConfirm, ...rest })
 
     if (response) {
       notify('success', 'Sucesso ao atualizar usuário!');
-      return history.push('/');
+      return window.location.reload();
     }
 
     return notify('error', 'Erro ao atualizar usuário!');
   };
+
+  const data = getOtherUserData();
 
   return (
     <Container {...rest}>
@@ -62,31 +56,17 @@ const UpdateUserModal: React.FC<Props> = ({ user, onClose, onConfirm, ...rest })
             variant="filled"
             color={'success'}
             helperText={'Ex: Eduardo Alves Zuppo'}
+            value={data.name}
             onChange={(e: any) => setName(e.target.value)}
-          />
-          <Input
-            id="email"
-            label="Email"
-            variant="filled"
-            color={'success'}
-            helperText={'Ex: user@email.com'}
-            onChange={(e: any) => setEmail(e.target.value)}
           />
           <Input
             id="phone"
             label="Telefone"
             variant="filled"
             color={'success'}
+            value={data.phone}
             helperText={'Ex: 11963851702'}
             onChange={(e: any) => setPhone(e.target.value)}
-          />
-          <Input
-            id="type"
-            label="Tipo do Usuário"
-            variant="filled"
-            color={'success'}
-            helperText={'ADMIN | USER'}
-            onChange={(e: any) => setTypeUser(e.target.value)}
           />
           <Input
             id="financial_status"
@@ -94,15 +74,8 @@ const UpdateUserModal: React.FC<Props> = ({ user, onClose, onConfirm, ...rest })
             color={'success'}
             label="Status do Pagamento"
             helperText={'PAID | WAITING_PAYMENT'}
+            value={data.financial_status}
             onChange={(e: any) => setFinancialStatus(e.target.value.toUpperCase())}
-          />
-          <Input
-            id="document"
-            label="Documente"
-            variant="filled"
-            color={'success'}
-            helperText={'52302900804'}
-            onChange={(e: any) => setDocument(e.target.value)}
           />
           <Input
             id="password"
