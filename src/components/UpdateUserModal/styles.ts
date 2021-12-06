@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { Button } from '../Button';
 import { colors } from '~/theme';
 import { ifStyle } from '~/utils';
-import { TextField } from '@material-ui/core';
+import { TextField, Select, MenuItem } from '@material-ui/core';
 import { CloseIcon } from '../Header/styles';
 
 const cancel = ifStyle('cancel');
@@ -54,7 +54,6 @@ export const ButtonStyled = styled(Button)<CancelButtonType>`
 
 export const Input = styled(TextField)`
   width: 90%;
-  color: blue;
 `;
 
 export const Form = styled.form`
@@ -95,3 +94,10 @@ export const CloseWrapper = styled.div`
 export const Close = styled(CloseIcon)`
   padding: 10px 10px 0 0;
 `;
+
+export const SelectStyled = styled(Select)`
+  width: 90%;
+  margin-bottom: 15px;
+`;
+
+export const SelectItem = styled(MenuItem)``;

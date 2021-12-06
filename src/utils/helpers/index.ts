@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
 import { isEmpty } from 'lodash';
 import { toast } from 'react-toastify';
+import { FINANCIAL_STATUS, FINANCIAL_STATUS_FORMATED } from '..';
 
 export const getToken = (): string | null => {
   return localStorage.getItem('@g2k:token');
@@ -86,4 +87,10 @@ export const textLimiter = (text: string): string => {
   }
 
   return text;
+};
+
+export const formatFinancialStatus = (value: string): string => {
+  return value === FINANCIAL_STATUS.PAID
+    ? FINANCIAL_STATUS_FORMATED.PAGO
+    : FINANCIAL_STATUS_FORMATED.AGUARDANDO_PAGAMENTO;
 };

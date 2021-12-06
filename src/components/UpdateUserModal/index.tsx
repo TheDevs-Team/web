@@ -2,7 +2,20 @@ import { inject, observer } from 'mobx-react';
 import React, { useState } from 'react';
 import { UserStore } from '~/store';
 import { getOtherUserData, notify } from '~/utils';
-import { Modal, Container, Content, ButtonStyled, Input, Form, Span, Alert, Close, CloseWrapper } from './styles';
+import {
+  Modal,
+  Container,
+  Content,
+  ButtonStyled,
+  Input,
+  Form,
+  Span,
+  Alert,
+  Close,
+  CloseWrapper,
+  SelectStyled,
+  SelectItem,
+} from './styles';
 
 type Props = {
   user?: UserStore;
@@ -11,35 +24,24 @@ type Props = {
 };
 
 const UpdateUserModal: React.FC<Props> = ({ user, onClose, onConfirm, ...rest }) => {
-  const [name, setName] = useState('');
-  const [phone, setPhone] = useState('');
-  const [password, setPassword] = useState('');
-  const [confirm_password, setConfirmPassword] = useState('');
-  const [financial_status, setFinancialStatus] = useState('');
-
-  const state: any = {
-    name,
-    phone,
-    password,
-    confirm_password,
-    financial_status,
-  };
-
-  const submitForm = async (state: any) => {
-    const response = await user?.update({
-      ...state,
-      id: user.current,
-    });
-
-    if (response) {
-      notify('success', 'Sucesso ao atualizar usuário!');
-      return window.location.reload();
-    }
-
-    return notify('error', 'Erro ao atualizar usuário!');
-  };
-
   const data = getOtherUserData();
+
+  const [dataUser, setDataUser] = useState({
+    name: data.name,
+    phone: data.phone,
+    password: '',
+    confirm_password: '',
+    financial_status: data.financial_status,
+  });
+
+  const handleChange = (event: any) => {
+    const { name, value } = event.target;
+    setDataUser((old) => ({ ...old, [name]: value }));
+  };
+
+  const submitForm = async () => {
+    console.log(dataUser);
+  };
 
   return (
     <Container {...rest}>
@@ -52,51 +54,59 @@ const UpdateUserModal: React.FC<Props> = ({ user, onClose, onConfirm, ...rest })
           <Alert>OBS: Preencha todos os campos!</Alert>
           <Input
             id="name"
+            name="name"
             label="Nome"
             variant="filled"
             color={'success'}
             helperText={'Ex: Eduardo Alves Zuppo'}
-            value={data.name}
-            onChange={(e: any) => setName(e.target.value)}
+            value={dataUser.name}
+            onChange={handleChange}
           />
           <Input
+            name="phone"
             id="phone"
             label="Telefone"
             variant="filled"
             color={'success'}
-            value={data.phone}
+            value={dataUser.phone}
             helperText={'Ex: 11963851702'}
-            onChange={(e: any) => setPhone(e.target.value)}
+            onChange={handleChange}
           />
-          <Input
+          <SelectStyled
+            name="financial_status"
+            labelId="financial_status-label"
             id="financial_status"
             variant="filled"
             color={'success'}
-            label="Status do Pagamento"
-            helperText={'PAID | WAITING_PAYMENT'}
-            value={data.financial_status}
-            onChange={(e: any) => setFinancialStatus(e.target.value.toUpperCase())}
-          />
+            placeholder="Status do Pagamento"
+            value={dataUser.financial_status}
+            onChange={handleChange}
+          >
+            <SelectItem value="PAID">Pago</SelectItem>
+            <SelectItem value="WAITING_PAYMENT">Aguardando Pagamento</SelectItem>
+          </SelectStyled>
           <Input
             id="password"
+            name="password"
             label="Senha"
             type="password"
             variant="filled"
             color={'success'}
             helperText={'Utilize senha com caracteres especiais'}
-            onChange={(e: any) => setPassword(e.target.value)}
+            onChange={handleChange}
           />
           <Input
-            id="password-confirm"
+            id="confirm_password"
+            name="confirm_password"
             label="Confirmar Senha"
             type="password"
             variant="filled"
             color={'success'}
-            onChange={(e: any) => setConfirmPassword(e.target.value)}
+            onChange={handleChange}
           />
         </Form>
         <Content>
-          <ButtonStyled cancel onClick={() => submitForm(state)}>
+          <ButtonStyled cancel onClick={submitForm}>
             Confirmar
           </ButtonStyled>
         </Content>

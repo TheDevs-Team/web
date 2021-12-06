@@ -3,7 +3,20 @@ import React, { useState } from 'react';
 import { useHistory } from 'react-router';
 import { UserStore } from '~/store';
 import { notify, USER_STATUS_FINANCEIRO } from '~/utils';
-import { Modal, Container, Content, ButtonStyled, Input, Form, Span, Alert, Close, CloseWrapper } from './styles';
+import {
+  Modal,
+  Container,
+  Content,
+  ButtonStyled,
+  Input,
+  Form,
+  Span,
+  Alert,
+  Close,
+  CloseWrapper,
+  SelectStyled,
+  SelectItem,
+} from './styles';
 
 type Props = {
   user?: UserStore;
@@ -12,32 +25,27 @@ type Props = {
 };
 
 const CreateUserModal: React.FC<Props> = ({ user, onClose, onConfirm, ...rest }) => {
-  const history = useHistory();
-  const [name, setName] = useState('');
-  const [document, setDocument] = useState('');
-  const [type, setType] = useState('');
-  const [email, setEmail] = useState('');
-  const [phone, setPhone] = useState('');
-  const [password, setPassword] = useState('');
-  const [confirm_password, setConfirmPassword] = useState('');
-  const [financial_status, setFinancialStatus] = useState('');
+  const [dataUser, setDataUser] = useState({
+    type: '',
+    name: '',
+    email: '',
+    phone: '',
+    password: '',
+    confirm_password: '',
+    financial_status: '',
+    document: '',
+  });
 
-  const state: any = {
-    name,
-    email,
-    phone,
-    password,
-    type,
-    document,
-    confirm_password,
-    financial_status,
+  const handleChange = (event: any) => {
+    const { name, value } = event.target;
+    setDataUser((old) => ({ ...old, [name]: value }));
   };
 
-  const submitForm = async (state: any) => {
-    const response = await user?.create(state);
+  const submitForm = async () => {
+    const response = await user?.create(dataUser);
     if (response) {
       notify('success', 'Sucesso ao criar usuário!');
-      return history.push('/');
+      return window.location.reload();
     }
     return notify('error', 'Erro ao criar usuário!');
   };
@@ -53,72 +61,87 @@ const CreateUserModal: React.FC<Props> = ({ user, onClose, onConfirm, ...rest })
           <Alert>OBS: Preencha todos os campos!</Alert>
           <Input
             id="name"
+            name="name"
             label="Nome"
             variant="filled"
             color={'success'}
             helperText={'Ex: Eduardo Alves Zuppo'}
-            onChange={(e: any) => setName(e.target.value)}
+            onChange={handleChange}
           />
           <Input
             id="email"
+            name="email"
             label="Email"
             variant="filled"
             color={'success'}
             helperText={'Ex: user@email.com'}
-            onChange={(e: any) => setEmail(e.target.value)}
+            onChange={handleChange}
           />
           <Input
             id="phone"
+            name="phone"
             label="Telefone"
             variant="filled"
             color={'success'}
             helperText={'Ex: 11963851702'}
-            onChange={(e: any) => setPhone(e.target.value)}
+            onChange={handleChange}
           />
-          <Input
+          <SelectStyled
             id="financial_status"
-            variant="filled"
+            name="financial_status"
             color={'success'}
-            label="Status do Pagamento"
-            helperText={'PAID | WAITING_PAYMENT'}
-            onChange={(e: any) => setFinancialStatus(e.target.value.toUpperCase())}
-          />
-          <Input
+            variant="filled"
+            placeholder="Status do Pagamento"
+            value={dataUser.financial_status}
+            onChange={handleChange}
+          >
+            <SelectItem value="PAID">Pago</SelectItem>
+            <SelectItem value="WAITING_PAYMENT">Aguardando Pagamento</SelectItem>
+          </SelectStyled>
+
+          <SelectStyled
             id="type"
-            label="Tipo do Usuário"
+            name="type"
             variant="filled"
             color={'success'}
-            helperText={'ADMIN | USER'}
-            onChange={(e: any) => setType(e.target.value)}
-          />
+            value={dataUser.type}
+            onChange={handleChange}
+          >
+            <SelectItem value="ADMIN">Administrador</SelectItem>
+            <SelectItem value="USER">Usuário</SelectItem>
+          </SelectStyled>
+
           <Input
             id="document"
             label="Documente"
             variant="filled"
+            name="document"
             color={'success'}
             helperText={'52302900804'}
-            onChange={(e: any) => setDocument(e.target.value)}
+            onChange={handleChange}
           />
           <Input
             id="password"
             label="Senha"
+            name="password"
             type="password"
             variant="filled"
             color={'success'}
             helperText={'Utilize senha com caracteres especiais'}
-            onChange={(e: any) => setPassword(e.target.value)}
+            onChange={handleChange}
           />
           <Input
             id="password-confirm"
             label="Confirmar Senha"
+            name="confirm_password"
             type="password"
             variant="filled"
             color={'success'}
-            onChange={(e: any) => setConfirmPassword(e.target.value)}
+            onChange={handleChange}
           />
         </Form>
         <Content>
-          <ButtonStyled cancel onClick={() => submitForm(state)}>
+          <ButtonStyled cancel onClick={submitForm}>
             Confirmar
           </ButtonStyled>
         </Content>

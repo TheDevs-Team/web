@@ -13,6 +13,11 @@ export const FINANCIAL_STATUS = {
   WAITING_PAYMENT: 'WAITING_PAYMENT',
 };
 
+export const FINANCIAL_STATUS_FORMATED = {
+  PAGO: 'Pago',
+  AGUARDANDO_PAGAMENTO: 'Aguardando Pagamento',
+};
+
 export const MENU_ADM_OPTIONS: MenuOptionsType[] = [
   {
     key: 'DASHBOARD',
