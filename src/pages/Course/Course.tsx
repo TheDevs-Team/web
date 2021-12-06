@@ -13,6 +13,11 @@ import {
   LoadingPageStyled,
   TitlePage,
   Text,
+  HeaderSearch,
+  SearchContent,
+  SearchIcon,
+  SearchInput,
+  ButtonAddCourse,
 } from './styles';
 import { isEmpty } from 'lodash';
 
@@ -24,9 +29,25 @@ type Props = {
   myCourses: StudentCourseType[];
   toCourse: (path: string) => void;
   onClickCourse: () => void;
+  searchCourses: (value: string) => void;
+  setFilter: (value: boolean) => void;
+  filter: boolean;
+  filteredCourses: CourseType[];
 };
 
-const Course: React.FC<Props> = ({ hover, setHover, courses, loaded, myCourses, toCourse, onClickCourse }) => {
+const Course: React.FC<Props> = ({
+  hover,
+  setHover,
+  courses,
+  loaded,
+  myCourses,
+  toCourse,
+  onClickCourse,
+  searchCourses,
+  setFilter,
+  filter,
+  filteredCourses,
+}) => {
   return (
     <Container>
       <If condition={!loaded}>
@@ -36,19 +57,55 @@ const Course: React.FC<Props> = ({ hover, setHover, courses, loaded, myCourses, 
         <If condition={isAdm()}>
           <MenuStyled hover={hover} setHover={setHover} active={'COURSES'} />
           <Main>
-            <CoursesContainer>
-              {courses.map((course: CourseType, idx) => (
-                <CourseCardStyled
-                  onClick={() => {
-                    setCurrentCourseID(course.id);
-                    toCourse(`/cursos/${course.id}`);
+            <HeaderSearch>
+              <SearchContent>
+                <SearchIcon />
+                <SearchInput
+                  placeholder="Buscar cursos"
+                  onChange={({ target }) => {
+                    searchCourses(target.value);
+                    setFilter(!!target.value);
                   }}
-                  key={idx}
-                  name={course.name}
-                  description={textLimiter(course.description)}
                 />
-              ))}
-            </CoursesContainer>
+              </SearchContent>
+              <ButtonAddCourse
+              // onClick={() => {
+              //   setModalCreateCourse(!modalCreateCourse);
+              // }}
+              >
+                Novo Curso
+              </ButtonAddCourse>
+            </HeaderSearch>
+            <If condition={filter}>
+              <CoursesContainer>
+                {filteredCourses.map((course: CourseType, idx) => (
+                  <CourseCardStyled
+                    onClick={() => {
+                      setCurrentCourseID(course.id);
+                      toCourse(`/cursos/${course.id}`);
+                    }}
+                    key={idx}
+                    name={course.name}
+                    description={textLimiter(course.description)}
+                  />
+                ))}
+              </CoursesContainer>
+            </If>
+            <If condition={!filter}>
+              <CoursesContainer>
+                {courses.map((course: CourseType, idx) => (
+                  <CourseCardStyled
+                    onClick={() => {
+                      setCurrentCourseID(course.id);
+                      toCourse(`/cursos/${course.id}`);
+                    }}
+                    key={idx}
+                    name={course.name}
+                    description={textLimiter(course.description)}
+                  />
+                ))}
+              </CoursesContainer>
+            </If>
           </Main>
         </If>
         <If condition={!isAdm()}>

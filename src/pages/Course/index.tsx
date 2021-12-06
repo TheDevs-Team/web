@@ -13,6 +13,8 @@ type Props = {
 const CourseContainer: React.FC<Props> = ({ course, studentCourse }) => {
   const [hover, setHover] = useState<HoverIconsType>('');
   const [loaded, setLoaded] = useState(false);
+  const [filter, setFilter] = useState(false);
+  const [filteredCourses, setFilteredCourses] = useState<CourseType[]>([]);
 
   const history = useHistory();
 
@@ -28,6 +30,13 @@ const CourseContainer: React.FC<Props> = ({ course, studentCourse }) => {
     setLoaded(true);
   };
 
+  const searchCourses = (query: string) => {
+    const filtereds = course.courses.filter(
+      (course: CourseType) => course.name.toLowerCase().indexOf(query.toLowerCase()) > -1,
+    );
+    return setFilteredCourses(filtereds);
+  };
+
   useEffect(() => {
     handleLoad();
   }, []);
@@ -41,6 +50,10 @@ const CourseContainer: React.FC<Props> = ({ course, studentCourse }) => {
       myCourses={studentCourse.courses}
       toCourse={toCourse}
       onClickCourse={onClickCourse}
+      searchCourses={searchCourses}
+      setFilter={setFilter}
+      filter={filter}
+      filteredCourses={filteredCourses}
     />
   );
 };

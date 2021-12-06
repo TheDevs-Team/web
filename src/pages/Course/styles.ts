@@ -1,7 +1,7 @@
 import styled from 'styled-components';
-import { Menu, LoadingPage, CourseCard } from '~/components';
+import { Menu, LoadingPage, CourseCard, Button } from '~/components';
 import { colors } from '~/theme';
-import { FiUsers, MdPendingActions, MdOutlineLibraryBooks, MdOutlineSchool } from '~/utils';
+import { FiUsers, MdPendingActions, MdOutlineLibraryBooks, MdOutlineSchool, BiSearch } from '~/utils';
 import { ifStyle } from '@platformbuilders/helpers';
 
 const userCourses = ifStyle('userCourses');
@@ -11,6 +11,20 @@ export const Container = styled.div`
   height: 100vh;
   background: #202024;
   display: flex;
+`;
+
+export const ButtonAddCourse = styled(Button)`
+  width: 20%;
+  height: 80%;
+  border: none;
+  background: none;
+  border: 1px solid #38c58d;
+  color: #38c58d;
+
+  &:hover {
+    background: #38c58d;
+    color: #2b2b2c;
+  }
 `;
 
 export const MenuStyled = styled(Menu)``;
@@ -159,4 +173,43 @@ export const Text = styled.p`
   font-weight: 400;
   color: ${colors.primary.light};
   margin-bottom: -10px;
+`;
+
+export const HeaderSearch = styled.header`
+  width: 60%;
+  height: 10vh;
+  margin: 20px auto 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+`;
+
+export const SearchContent = styled.div`
+  width: 70%;
+  height: 80%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  border: 2px solid #353535;
+  border-radius: 8px;
+
+  padding: 0 5px;
+`;
+
+export const SearchIcon = styled(BiSearch)`
+  color: #cccccc;
+  margin-left: 5px;
+`;
+
+export const SearchInput = styled.input`
+  width: 94%;
+  height: 100%;
+  border: none;
+  background: none;
+  color: #fff;
+
+  &::placeholder {
+    color: #fff;
+  }
 `;
