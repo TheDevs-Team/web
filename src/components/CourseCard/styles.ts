@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { colors } from '~/theme';
 import { FaMoneyBillWave } from '~/utils';
+import { AiOutlineClose, AiOutlineEdit } from 'react-icons/ai';
 
 export const CoursesCard = styled.div`
   width: 18vw;
@@ -71,4 +72,33 @@ export const DescriptionCard = styled.h4`
   font-size: 13px;
   font-weight: 300;
   color: ${colors.primary.light};
+`;
+
+export const OptionsCard = styled.div`
+  width: 100%;
+  height: 8%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+`;
+
+export const IconDelete = styled(AiOutlineClose)`
+  font-size: 1rem;
+  color: #fff;
+  cursor: pointer;
+  margin: 0 10px;
+
+  &:hover {
+    color: #38c58d;
+  }
+`;
+
+export const IconEdit = styled(AiOutlineEdit)`
+  font-size: 1rem;
+  color: #fff;
+  cursor: pointer;
+
+  &:hover {
+    color: #38c58d;
+  }
 `;

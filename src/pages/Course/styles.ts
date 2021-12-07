@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Menu, LoadingPage, CourseCard, Button } from '~/components';
+import { Menu, LoadingPage, CourseCard, Button, RemoveCourseModal } from '~/components';
 import { colors } from '~/theme';
 import { FiUsers, MdPendingActions, MdOutlineLibraryBooks, MdOutlineSchool, BiSearch } from '~/utils';
 import { ifStyle } from '@platformbuilders/helpers';
@@ -213,3 +213,5 @@ export const SearchInput = styled.input`
     color: #fff;
   }
 `;
+
+export const RemoveCourse = styled(RemoveCourseModal)``;

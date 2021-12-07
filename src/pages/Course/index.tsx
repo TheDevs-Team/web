@@ -16,6 +16,8 @@ const CourseContainer: React.FC<Props> = ({ course, studentCourse }) => {
   const [filter, setFilter] = useState(false);
   const [filteredCourses, setFilteredCourses] = useState<CourseType[]>([]);
   const [modalCreateCourse, setModalCreateCourse] = useState(false);
+  const [onRemove, setOnRemove] = useState(false);
+  const [onEdit, setOnEdit] = useState(false);
 
   const history = useHistory();
 
@@ -38,6 +40,22 @@ const CourseContainer: React.FC<Props> = ({ course, studentCourse }) => {
     return setFilteredCourses(filtereds);
   };
 
+  const removeCourse = async () => {
+    const response = await course.delete(course.current);
+
+    if (response) {
+      notify('success', 'Curso deletado com sucesso!');
+      return setTimeout(() => {
+        window.location.reload();
+      }, 1000);
+    }
+    return notify('error', 'Erro ao deletar curso!');
+  };
+
+  const setCurrent = (value: string): void => {
+    course.setCurrent(value);
+  };
+
   useEffect(() => {
     handleLoad();
   }, []);
@@ -57,6 +75,12 @@ const CourseContainer: React.FC<Props> = ({ course, studentCourse }) => {
       filteredCourses={filteredCourses}
       setModalCreateCourse={setModalCreateCourse}
       modalCreateCourse={modalCreateCourse}
+      onRemove={onRemove}
+      onEdit={onEdit}
+      setOnRemove={setOnRemove}
+      setOnEdit={setOnEdit}
+      removeCourse={removeCourse}
+      setCurrent={setCurrent}
     />
   );
 };

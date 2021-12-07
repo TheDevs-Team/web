@@ -21,6 +21,9 @@ class CourseStore {
     updated_at: '',
   };
 
+  @observable
+  current = '';
+
   constructor() {
     makeObservable(this);
   }
@@ -56,6 +59,18 @@ class CourseStore {
     }
 
     return false;
+  };
+
+  @action
+  delete = async (values: string): Promise<boolean> => {
+    const response = await CourseAPI.delete(values);
+
+    return response;
+  };
+
+  @action
+  setCurrent = (value: string): string => {
+    return (this.current = value);
   };
 }
 

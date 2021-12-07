@@ -18,6 +18,7 @@ import {
   SearchIcon,
   SearchInput,
   ButtonAddCourse,
+  RemoveCourse,
 } from './styles';
 import { isEmpty } from 'lodash';
 
@@ -35,6 +36,12 @@ type Props = {
   filteredCourses: CourseType[];
   setModalCreateCourse: (values: boolean) => void;
   modalCreateCourse: boolean;
+  onEdit: boolean;
+  onRemove: boolean;
+  setOnRemove: (value: boolean) => void;
+  setOnEdit: (value: boolean) => void;
+  removeCourse: () => void;
+  setCurrent: (value: string) => void;
 };
 
 const Course: React.FC<Props> = ({
@@ -51,6 +58,12 @@ const Course: React.FC<Props> = ({
   filteredCourses,
   modalCreateCourse,
   setModalCreateCourse,
+  onEdit,
+  setOnEdit,
+  onRemove,
+  setOnRemove,
+  removeCourse,
+  setCurrent,
 }) => {
   return (
     <Container>
@@ -64,6 +77,9 @@ const Course: React.FC<Props> = ({
             setModalCreateCourse(false);
           }}
         />
+      </If>
+      <If condition={onRemove}>
+        <RemoveCourse onClose={() => setOnRemove(false)} onConfirm={removeCourse} />
       </If>
       <If condition={loaded}>
         <If condition={isAdm()}>
@@ -92,6 +108,11 @@ const Course: React.FC<Props> = ({
               <CoursesContainer>
                 {filteredCourses.map((course: CourseType, idx) => (
                   <CourseCardStyled
+                    onEdit={() => setOnEdit(true)}
+                    onRemove={() => {
+                      setOnRemove(true);
+                      setCurrent(course.id);
+                    }}
                     onClick={() => {
                       setCurrentCourseID(course.id);
                       toCourse(`/cursos/${course.id}`);
@@ -107,6 +128,11 @@ const Course: React.FC<Props> = ({
               <CoursesContainer>
                 {courses.map((course: CourseType, idx) => (
                   <CourseCardStyled
+                    onEdit={() => setOnEdit(true)}
+                    onRemove={() => {
+                      setOnRemove(true);
+                      setCurrent(course.id);
+                    }}
                     onClick={() => {
                       setCurrentCourseID(course.id);
                       toCourse(`/cursos/${course.id}`);
