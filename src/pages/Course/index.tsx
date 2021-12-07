@@ -15,6 +15,7 @@ const CourseContainer: React.FC<Props> = ({ course, studentCourse }) => {
   const [loaded, setLoaded] = useState(false);
   const [filter, setFilter] = useState(false);
   const [filteredCourses, setFilteredCourses] = useState<CourseType[]>([]);
+  const [modalCreateCourse, setModalCreateCourse] = useState(false);
 
   const history = useHistory();
 
@@ -54,6 +55,8 @@ const CourseContainer: React.FC<Props> = ({ course, studentCourse }) => {
       setFilter={setFilter}
       filter={filter}
       filteredCourses={filteredCourses}
+      setModalCreateCourse={setModalCreateCourse}
+      modalCreateCourse={modalCreateCourse}
     />
   );
 };

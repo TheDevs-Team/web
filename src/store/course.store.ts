@@ -46,6 +46,17 @@ class CourseStore {
 
     return null;
   };
+
+  @action
+  create = async (values: CreateCourseType): Promise<CourseType | boolean> => {
+    const response = await CourseAPI.create(values);
+
+    if (response) {
+      return true;
+    }
+
+    return false;
+  };
 }
 
 export default CourseStore;

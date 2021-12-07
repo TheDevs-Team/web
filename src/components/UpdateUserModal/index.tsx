@@ -40,7 +40,12 @@ const UpdateUserModal: React.FC<Props> = ({ user, onClose, onConfirm, ...rest })
   };
 
   const submitForm = async () => {
-    console.log(dataUser);
+    const response = await user?.update({ ...dataUser, id: user?.current });
+    if (response) {
+      notify('success', 'Sucesso ao atualizar dados!');
+      return window.location.reload();
+    }
+    return notify('error', 'Erro ao atualizar dados!');
   };
 
   return (

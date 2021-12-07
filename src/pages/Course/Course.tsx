@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 import React from 'react';
-import { If } from '~/components';
+import { If, CreateCourseModal } from '~/components';
 import { textLimiter, setCurrentCourseID } from '~/utils';
 
 import { isAdm } from '~/services/auth';
@@ -33,6 +33,8 @@ type Props = {
   setFilter: (value: boolean) => void;
   filter: boolean;
   filteredCourses: CourseType[];
+  setModalCreateCourse: (values: boolean) => void;
+  modalCreateCourse: boolean;
 };
 
 const Course: React.FC<Props> = ({
@@ -47,11 +49,21 @@ const Course: React.FC<Props> = ({
   setFilter,
   filter,
   filteredCourses,
+  modalCreateCourse,
+  setModalCreateCourse,
 }) => {
   return (
     <Container>
       <If condition={!loaded}>
         <LoadingPageStyled />
+      </If>
+      <If condition={modalCreateCourse}>
+        <CreateCourseModal
+          onClose={() => setModalCreateCourse(false)}
+          onConfirm={() => {
+            setModalCreateCourse(false);
+          }}
+        />
       </If>
       <If condition={loaded}>
         <If condition={isAdm()}>
@@ -69,9 +81,9 @@ const Course: React.FC<Props> = ({
                 />
               </SearchContent>
               <ButtonAddCourse
-              // onClick={() => {
-              //   setModalCreateCourse(!modalCreateCourse);
-              // }}
+                onClick={() => {
+                  setModalCreateCourse(!modalCreateCourse);
+                }}
               >
                 Novo Curso
               </ButtonAddCourse>
