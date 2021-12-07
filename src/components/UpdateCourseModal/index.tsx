@@ -1,19 +1,20 @@
 import { inject, observer } from 'mobx-react';
 import React, { useState } from 'react';
 import { CourseStore } from '~/store';
-import { getOtherUserData, notify } from '~/utils';
+import { notify } from '~/utils';
 import { Modal, Container, Content, ButtonStyled, Input, Form, Span, Alert, Close, CloseWrapper } from './styles';
 
 type Props = {
   onClose: () => void;
-  onConfirm: () => void;
+  onConfirm?: () => void;
   course?: CourseStore;
+  data?: CourseType;
 };
 
-const CreateCourseModal: React.FC<Props> = ({ course, onClose, onConfirm, ...rest }) => {
+const UpdateCourseModal: React.FC<Props> = ({ course, onClose, onConfirm, data, ...rest }) => {
   const [dataCourse, setDataCourse] = useState({
-    name: '',
-    description: '',
+    name: data?.name,
+    description: data?.description,
   });
 
   const handleChange = (event: any) => {
@@ -22,14 +23,14 @@ const CreateCourseModal: React.FC<Props> = ({ course, onClose, onConfirm, ...res
   };
 
   const submitForm = async () => {
-    const response = await course?.create(dataCourse);
+    const response = await course?.update({ ...dataCourse, id: course.current });
     if (response) {
-      notify('success', 'Curso criado com sucesso!');
+      notify('success', 'Curso atualizado com sucesso!');
       return setTimeout(() => {
         window.location.reload();
       }, 1000);
     }
-    return notify('error', 'Erro ao criar curso!');
+    return notify('error', 'Erro ao atualizar curso!');
   };
 
   return (
@@ -39,7 +40,7 @@ const CreateCourseModal: React.FC<Props> = ({ course, onClose, onConfirm, ...res
           <Close onClick={onClose} />
         </CloseWrapper>
         <Form>
-          <Span>Criar Curso</Span>
+          <Span>Atualizar Curso!</Span>
           <Alert>OBS: Preencha todos os campos!</Alert>
           <Input
             id="name"
@@ -47,6 +48,7 @@ const CreateCourseModal: React.FC<Props> = ({ course, onClose, onConfirm, ...res
             label="Nome do Curso"
             variant="filled"
             color={'success'}
+            value={dataCourse.name}
             helperText={'Dica: Utilize um nome objetivo.'}
             onChange={handleChange}
           />
@@ -56,6 +58,7 @@ const CreateCourseModal: React.FC<Props> = ({ course, onClose, onConfirm, ...res
             label="Descrição  do Curso"
             variant="filled"
             color={'success'}
+            value={dataCourse.description}
             onChange={handleChange}
           />
         </Form>
@@ -69,4 +72,4 @@ const CreateCourseModal: React.FC<Props> = ({ course, onClose, onConfirm, ...res
   );
 };
 
-export default inject('course')(observer(CreateCourseModal));
+export default inject('course')(observer(UpdateCourseModal));

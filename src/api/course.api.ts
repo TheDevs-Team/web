@@ -28,7 +28,7 @@ class CourseAPI {
     }
   };
 
-  static update = async (values: UpdateCourseType): Promise<boolean> => {
+  static update = async (values?: UpdateCourseType): Promise<boolean> => {
     try {
       await api.put('/course', values);
       return true;

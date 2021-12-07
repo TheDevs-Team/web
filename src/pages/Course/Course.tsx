@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 import React from 'react';
-import { If, CreateCourseModal } from '~/components';
+import { If, CreateCourseModal, UpdateCourseModal } from '~/components';
 import { textLimiter, setCurrentCourseID } from '~/utils';
 
 import { isAdm } from '~/services/auth';
@@ -42,6 +42,8 @@ type Props = {
   setOnEdit: (value: boolean) => void;
   removeCourse: () => void;
   setCurrent: (value: string) => void;
+  setCourseData: (value: CourseType) => void;
+  courseData?: CourseType;
 };
 
 const Course: React.FC<Props> = ({
@@ -64,6 +66,8 @@ const Course: React.FC<Props> = ({
   setOnRemove,
   removeCourse,
   setCurrent,
+  setCourseData,
+  courseData,
 }) => {
   return (
     <Container>
@@ -80,6 +84,9 @@ const Course: React.FC<Props> = ({
       </If>
       <If condition={onRemove}>
         <RemoveCourse onClose={() => setOnRemove(false)} onConfirm={removeCourse} />
+      </If>
+      <If condition={onEdit}>
+        <UpdateCourseModal data={courseData} onClose={() => setOnEdit(false)} />
       </If>
       <If condition={loaded}>
         <If condition={isAdm()}>
@@ -108,7 +115,11 @@ const Course: React.FC<Props> = ({
               <CoursesContainer>
                 {filteredCourses.map((course: CourseType, idx) => (
                   <CourseCardStyled
-                    onEdit={() => setOnEdit(true)}
+                    onEdit={() => {
+                      setCourseData(course);
+                      setOnEdit(true);
+                      setCurrent(course.id);
+                    }}
                     onRemove={() => {
                       setOnRemove(true);
                       setCurrent(course.id);
@@ -128,7 +139,11 @@ const Course: React.FC<Props> = ({
               <CoursesContainer>
                 {courses.map((course: CourseType, idx) => (
                   <CourseCardStyled
-                    onEdit={() => setOnEdit(true)}
+                    onEdit={() => {
+                      setCourseData(course);
+                      setOnEdit(true);
+                      setCurrent(course.id);
+                    }}
                     onRemove={() => {
                       setOnRemove(true);
                       setCurrent(course.id);

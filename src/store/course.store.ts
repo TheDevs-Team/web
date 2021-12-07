@@ -62,6 +62,17 @@ class CourseStore {
   };
 
   @action
+  update = async (values?: UpdateCourseType): Promise<CourseType | boolean> => {
+    const response = await CourseAPI.update(values);
+
+    if (response) {
+      return true;
+    }
+
+    return false;
+  };
+
+  @action
   delete = async (values: string): Promise<boolean> => {
     const response = await CourseAPI.delete(values);
 

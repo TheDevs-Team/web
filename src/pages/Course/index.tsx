@@ -18,6 +18,7 @@ const CourseContainer: React.FC<Props> = ({ course, studentCourse }) => {
   const [modalCreateCourse, setModalCreateCourse] = useState(false);
   const [onRemove, setOnRemove] = useState(false);
   const [onEdit, setOnEdit] = useState(false);
+  const [courseData, setCourseData] = useState<CourseType>();
 
   const history = useHistory();
 
@@ -81,6 +82,8 @@ const CourseContainer: React.FC<Props> = ({ course, studentCourse }) => {
       setOnEdit={setOnEdit}
       removeCourse={removeCourse}
       setCurrent={setCurrent}
+      courseData={courseData}
+      setCourseData={setCourseData}
     />
   );
 };

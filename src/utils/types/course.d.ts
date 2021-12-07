@@ -16,5 +16,6 @@ declare type CreateCourseType = {
 
 declare type UpdateCourseType = {
   id: string;
-  name: string;
+  name?: string;
+  description?: string;
 };
