@@ -36,6 +36,16 @@ class StudentCourseAPI {
       return [];
     }
   };
+
+  static removeInCourse = async (values: CreateStudentCourseType): Promise<boolean> => {
+    try {
+      await api.post('/student-course/remove', values);
+
+      return true;
+    } catch (error) {
+      return false;
+    }
+  };
 }
 
 export default StudentCourseAPI;

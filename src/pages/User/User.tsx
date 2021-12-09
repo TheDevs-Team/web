@@ -38,6 +38,7 @@ type Props = {
   setCurrent: (value: string) => void;
   handleRemoveUser: () => void;
   handleUpdateUser: () => void;
+
   beforeClickEdit: (id: string) => void;
 };
 

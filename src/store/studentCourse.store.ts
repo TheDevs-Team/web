@@ -58,6 +58,13 @@ class StudentCourseStore {
 
     return [];
   };
+
+  @action
+  removeInCourse = async (values: CreateStudentCourseType): Promise<boolean> => {
+    const response = await StudentCourseAPI.removeInCourse(values);
+
+    return response;
+  };
 }
 
 export default StudentCourseStore;

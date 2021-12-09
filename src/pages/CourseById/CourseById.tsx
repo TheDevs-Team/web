@@ -39,6 +39,9 @@ type Props = {
   setCurrent: (id: string) => void;
   getCurrentUserID: () => string;
   inCourse: StudentCourseType[];
+  removeUser: boolean;
+  removeUserInCourse: (value: CreateStudentCourseType) => void;
+  setRemoveUser: (value: boolean) => void;
 };
 
 const CourseById: React.FC<Props> = ({
@@ -55,6 +58,9 @@ const CourseById: React.FC<Props> = ({
   setCurrent,
   getCurrentUserID,
   inCourse,
+  removeUser,
+  removeUserInCourse,
+  setRemoveUser,
 }) => {
   return (
     <Container>
@@ -69,6 +75,12 @@ const CourseById: React.FC<Props> = ({
               addUser
               onClose={() => setAddUser(false)}
               onConfirm={() => addUserInCourse({ course_id: getCurrentCourseID()!, user_id: getCurrentUserID() })}
+            />
+          </If>
+          <If condition={removeUser}>
+            <AddModal
+              onClose={() => setRemoveUser(false)}
+              onConfirm={() => removeUserInCourse({ course_id: getCurrentCourseID()!, user_id: getCurrentUserID() })}
             />
           </If>
           <Main>
@@ -131,9 +143,9 @@ const CourseById: React.FC<Props> = ({
                     key={idx}
                     name={user.user.name}
                     showDelete
-                    add={() => {
+                    remove={() => {
                       setCurrent(user.user.id);
-                      setAddUser(true);
+                      setRemoveUser(true);
                     }}
                   />
                 ))}

@@ -15,6 +15,7 @@ const CourseByIdContainer: React.FC<Props> = ({ course, studentCourse, user }) =
   const [loaded, setLoaded] = useState(false);
   const [tab, setTab] = useState('materials');
   const [addUser, setAddUser] = useState(false);
+  const [removeUser, setRemoveUser] = useState(false);
 
   const handleHover = (item: HoverIconsType) => setHover(item);
 
@@ -42,6 +43,19 @@ const CourseByIdContainer: React.FC<Props> = ({ course, studentCourse, user }) =
     return notify('error', 'Usuário ja está cadastrado ao curso!');
   };
 
+  const removeUserInCourse = async (values: CreateStudentCourseType) => {
+    const response = await studentCourse.removeInCourse(values);
+
+    if (response) {
+      notify('success', 'Usuário removido com sucesso!');
+      return setTimeout(() => {
+        window.location.reload();
+      }, 1000);
+    }
+
+    return notify('error', 'Erro ao remover usuário');
+  };
+
   const setCurrent = (id: string) => {
     user.setCurrent(id);
   };
@@ -65,6 +79,9 @@ const CourseByIdContainer: React.FC<Props> = ({ course, studentCourse, user }) =
       setCurrent={setCurrent}
       getCurrentUserID={getCurrentUserID}
       inCourse={studentCourse.inCourses}
+      removeUserInCourse={removeUserInCourse}
+      removeUser={removeUser}
+      setRemoveUser={setRemoveUser}
     />
   );
 };
