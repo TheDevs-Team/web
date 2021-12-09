@@ -19,9 +19,11 @@ import {
   Users,
   CreateCard,
   UsersContainer,
+  AddModal,
 } from './styles';
 
 import moment from 'moment';
+import { getCurrentCourseID } from '~/utils';
 
 type Props = {
   hover: HoverIconsType;
@@ -31,9 +33,27 @@ type Props = {
   tab: string;
   setTab: (tab: string) => void;
   notInCourse: UserType[];
+  setAddUser: (value: boolean) => void;
+  addUser: boolean;
+  addUserInCourse: (value: CreateStudentCourseType) => void;
+  setCurrent: (id: string) => void;
+  getCurrentUserID: () => string;
 };
 
-const CourseById: React.FC<Props> = ({ hover, setHover, loaded, course, tab, setTab, notInCourse }) => {
+const CourseById: React.FC<Props> = ({
+  hover,
+  setHover,
+  loaded,
+  course,
+  tab,
+  setTab,
+  notInCourse,
+  setAddUser,
+  addUser,
+  addUserInCourse,
+  setCurrent,
+  getCurrentUserID,
+}) => {
   return (
     <Container>
       <If condition={!loaded}>
@@ -42,6 +62,13 @@ const CourseById: React.FC<Props> = ({ hover, setHover, loaded, course, tab, set
       <If condition={loaded}>
         <If condition={isAdm()}>
           <MenuStyled hover={hover} setHover={setHover} active={'COURSES'} />
+          <If condition={addUser}>
+            <AddModal
+              addUser
+              onClose={() => setAddUser(false)}
+              onConfirm={() => addUserInCourse({ course_id: getCurrentCourseID()!, user_id: getCurrentUserID() })}
+            />
+          </If>
           <Main>
             <InfoCard>
               <HeadInfo>
@@ -81,7 +108,15 @@ const CourseById: React.FC<Props> = ({ hover, setHover, loaded, course, tab, set
                 <UsersContainer>
                   <span>Alunos Disponíveis</span>
                   {notInCourse.map((user, idx) => (
-                    <Users key={idx} name={user.name} showAdd />
+                    <Users
+                      key={idx}
+                      name={user.name}
+                      showAdd
+                      add={() => {
+                        setCurrent(user.id);
+                        setAddUser(true);
+                      }}
+                    />
                   ))}
                 </UsersContainer>
               </Content>

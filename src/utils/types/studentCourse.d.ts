@@ -8,3 +8,8 @@ declare type StudentCourseType = {
   created_at: Date;
   updated_at: Date;
 };
+
+declare type CreateStudentCourseType = {
+  user_id: string;
+  course_id: string;
+};

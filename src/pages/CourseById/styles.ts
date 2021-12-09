@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Menu, LoadingPage, UsersCard } from '~/components';
+import { Menu, LoadingPage, UsersCard, RemoveUserModal } from '~/components';
 import { colors } from '~/theme';
 import { FiUsers, MdPendingActions, MdOutlineLibraryBooks, MdOutlineSchool } from '~/utils';
 import { ifStyle } from '@platformbuilders/helpers';
@@ -251,3 +251,5 @@ export const UsersContainer = styled.div`
 export const Users = styled(UsersCard)`
   width: 60%;
 `;
+
+export const AddModal = styled(RemoveUserModal)``;

@@ -18,6 +18,15 @@ class StudentCourseAPI {
       return [];
     }
   };
+  static addInCourse = async (values: CreateStudentCourseType): Promise<boolean> => {
+    try {
+      await api.post('/student-course/create', values);
+
+      return true;
+    } catch (error) {
+      return false;
+    }
+  };
 }
 
 export default StudentCourseAPI;

@@ -4,6 +4,7 @@ import { Button } from '../Button';
 import { ifStyle } from '~/utils';
 
 const cancel = ifStyle('cancel');
+const confirm = ifStyle('confirm');
 
 export const Container = styled.section`
   width: 100vw;
@@ -40,12 +41,12 @@ export const ButtonStyled = styled(Button)<CancelButtonType>`
   padding: 10px 20px;
   border: none;
   background: none;
-  border: 1px solid ${cancel('#ee3a2f', '#c4c4c4')};
-  color: ${cancel('#ee3a2f', '#c4c4c4')};
+  border: 1px solid ${cancel('#ee3a2f', confirm('#217150', '#c4c4c4'))};
+  color: ${cancel('#ee3a2f', confirm('#217150', '#c4c4c4'))};
   font-weight: 500;
 
   &:hover {
-    background: ${cancel('#ee3a2f', '#c4c4c4')};
+    background: ${cancel('#ee3a2f', confirm('#217150', '#c4c4c4'))};
     color: #2b2b2c;
   }
 `;

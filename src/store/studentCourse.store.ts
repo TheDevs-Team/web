@@ -36,6 +36,13 @@ class StudentCourseStore {
 
     return [];
   };
+
+  @action
+  addInCourse = async (values: CreateStudentCourseType): Promise<boolean> => {
+    const response = await StudentCourseAPI.addInCourse(values);
+
+    return response;
+  };
 }
 
 export default StudentCourseStore;

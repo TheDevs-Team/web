@@ -15,4 +15,5 @@ declare type TabVisibleType = {
 
 declare type CancelButtonType = {
   cancel?: boolean;
+  confirm?: boolean;
 };
