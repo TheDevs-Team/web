@@ -253,3 +253,5 @@ export const Users = styled(UsersCard)`
 `;
 
 export const AddModal = styled(RemoveUserModal)``;
+
+export const DeleteMaterialModal = styled(RemoveUserModal)``;

@@ -8,3 +8,8 @@ declare type MaterialsType = {
   created_at?: Date;
   updated_at?: Date;
 };
+
+declare type RemoveMaterialsType = {
+  course_id: string;
+  id: string;
+};

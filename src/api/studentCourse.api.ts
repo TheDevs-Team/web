@@ -30,7 +30,6 @@ class StudentCourseAPI {
   static listInCourse = async (course_id: string): Promise<StudentCourseType[]> => {
     try {
       const { data } = await api.get(`/student-course/${course_id}`);
-      console.log(data);
       return data;
     } catch (error) {
       return [];

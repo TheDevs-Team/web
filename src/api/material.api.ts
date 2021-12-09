@@ -9,6 +9,14 @@ class MaterialAPI {
       return [];
     }
   };
+  static remove = async (values: RemoveMaterialsType): Promise<boolean> => {
+    try {
+      await api.post(`/material/remove`, values);
+      return true;
+    } catch (error) {
+      return false;
+    }
+  };
 }
 
 export default MaterialAPI;

@@ -19,9 +19,10 @@ import {
 
 type Props = {
   material: MaterialsType;
+  deleteMaterial?: () => void;
 };
 
-export const Activities: React.FC<Props> = ({ material }) => {
+export const Activities: React.FC<Props> = ({ material, deleteMaterial }) => {
   return (
     <Container>
       <Content onClick={() => window.open(material.file, '_blank')}>
@@ -43,7 +44,7 @@ export const Activities: React.FC<Props> = ({ material }) => {
       </Content>
 
       <Functions>
-        <IconDelete />
+        <IconDelete onClick={deleteMaterial} />
       </Functions>
     </Container>
   );

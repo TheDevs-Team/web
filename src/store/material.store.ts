@@ -13,6 +13,10 @@ class MaterialStore {
   @observable
   materials: MaterialsType[] = [];
 
+  @persist
+  @observable
+  current: string | undefined | null;
+
   @action
   list = async (): Promise<MaterialsType[]> => {
     const response = await MaterialAPI.list(getCurrentCourseID()!);
@@ -22,6 +26,17 @@ class MaterialStore {
     }
 
     return [];
+  };
+
+  @action
+  remove = async (values: RemoveMaterialsType): Promise<boolean> => {
+    const response = await MaterialAPI.remove(values);
+    return response;
+  };
+
+  @action
+  setCurrentMaterial = (value: string) => {
+    return (this.current = value);
   };
 }
 

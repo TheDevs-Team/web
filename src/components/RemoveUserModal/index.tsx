@@ -6,14 +6,14 @@ import { Modal, Container, Content, ButtonStyled, Text } from './styles';
 type Props = {
   onClose: () => void;
   onConfirm: () => void;
-  addUser?: boolean;
+  context?: string;
 };
 
-export const RemoveUserModal: React.FC<Props> = ({ onClose, onConfirm, addUser = false, ...rest }) => {
+export const RemoveUserModal: React.FC<Props> = ({ onClose, onConfirm, context = 'removeUser', ...rest }) => {
   return (
     <Container {...rest}>
       <Modal>
-        <If condition={!addUser}>
+        <If condition={context === 'removeUser'}>
           <Text>Tem certeza que deseja remover este usuário?</Text>
           <Content>
             <ButtonStyled onClick={onClose}>Cancelar</ButtonStyled>
@@ -22,8 +22,17 @@ export const RemoveUserModal: React.FC<Props> = ({ onClose, onConfirm, addUser =
             </ButtonStyled>
           </Content>
         </If>
-        <If condition={addUser}>
+        <If condition={context === 'addUser'}>
           <Text>Tem certeza que deseja adicionar este usuário?</Text>
+          <Content>
+            <ButtonStyled onClick={onClose}>Cancelar</ButtonStyled>
+            <ButtonStyled confirm onClick={onConfirm}>
+              Confirmar
+            </ButtonStyled>
+          </Content>
+        </If>
+        <If condition={context === 'removeMaterial'}>
+          <Text>Tem certeza que deseja remover este material?</Text>
           <Content>
             <ButtonStyled onClick={onClose}>Cancelar</ButtonStyled>
             <ButtonStyled confirm onClick={onConfirm}>

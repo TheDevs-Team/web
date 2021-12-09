@@ -17,6 +17,7 @@ const CourseByIdContainer: React.FC<Props> = ({ course, studentCourse, user, mat
   const [tab, setTab] = useState('materials');
   const [addUser, setAddUser] = useState(false);
   const [removeUser, setRemoveUser] = useState(false);
+  const [deleteMaterial, setDeleteMaterial] = useState(false);
 
   const handleHover = (item: HoverIconsType) => setHover(item);
 
@@ -30,6 +31,14 @@ const CourseByIdContainer: React.FC<Props> = ({ course, studentCourse, user, mat
 
   const getCurrentUserID = (): string => {
     return user.current as string;
+  };
+
+  const getCurrentMaterialID = (): string => {
+    return material.current as string;
+  };
+
+  const setCurrentMaterial = (value: string) => {
+    material.setCurrentMaterial(value);
   };
 
   const addUserInCourse = async (values: CreateStudentCourseType) => {
@@ -56,6 +65,19 @@ const CourseByIdContainer: React.FC<Props> = ({ course, studentCourse, user, mat
     }
 
     return notify('error', 'Erro ao remover usuário');
+  };
+
+  const removeMaterial = async (values: RemoveMaterialsType) => {
+    const response = await material.remove(values);
+
+    if (response) {
+      notify('success', 'Material removido com sucesso!');
+      return setTimeout(() => {
+        window.location.reload();
+      }, 1000);
+    }
+
+    return notify('error', 'Erro ao remover material');
   };
 
   const setCurrent = (id: string) => {
@@ -85,6 +107,11 @@ const CourseByIdContainer: React.FC<Props> = ({ course, studentCourse, user, mat
       removeUser={removeUser}
       setRemoveUser={setRemoveUser}
       materials={material.materials}
+      removeMaterial={removeMaterial}
+      deleteMaterial={deleteMaterial}
+      setDeleteMaterial={setDeleteMaterial}
+      getCurrentMaterialID={getCurrentMaterialID}
+      setCurrentMaterial={setCurrentMaterial}
     />
   );
 };

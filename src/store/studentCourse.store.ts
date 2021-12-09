@@ -51,7 +51,6 @@ class StudentCourseStore {
   @action
   setInCourse = async (): Promise<StudentCourseType[]> => {
     const response = await StudentCourseAPI.listInCourse(getCurrentCourseID()!);
-    console.log(response);
     if (response) {
       return (this.inCourses = response);
     }

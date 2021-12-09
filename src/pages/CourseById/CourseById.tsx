@@ -20,6 +20,7 @@ import {
   CreateCard,
   UsersContainer,
   AddModal,
+  DeleteMaterialModal,
 } from './styles';
 
 import moment from 'moment';
@@ -43,6 +44,11 @@ type Props = {
   removeUserInCourse: (value: CreateStudentCourseType) => void;
   setRemoveUser: (value: boolean) => void;
   materials: MaterialsType[];
+  removeMaterial: (value: RemoveMaterialsType) => void;
+  deleteMaterial: boolean;
+  setDeleteMaterial: (value: boolean) => void;
+  getCurrentMaterialID: () => string;
+  setCurrentMaterial: (value: string) => void;
 };
 
 const CourseById: React.FC<Props> = ({
@@ -63,6 +69,11 @@ const CourseById: React.FC<Props> = ({
   removeUserInCourse,
   setRemoveUser,
   materials,
+  removeMaterial,
+  deleteMaterial,
+  setDeleteMaterial,
+  setCurrentMaterial,
+  getCurrentMaterialID,
 }) => {
   return (
     <Container>
@@ -74,15 +85,23 @@ const CourseById: React.FC<Props> = ({
           <MenuStyled hover={hover} setHover={setHover} active={'COURSES'} />
           <If condition={addUser}>
             <AddModal
-              addUser
+              context="addUser"
               onClose={() => setAddUser(false)}
               onConfirm={() => addUserInCourse({ course_id: getCurrentCourseID()!, user_id: getCurrentUserID() })}
             />
           </If>
           <If condition={removeUser}>
             <AddModal
+              context="removeUser"
               onClose={() => setRemoveUser(false)}
               onConfirm={() => removeUserInCourse({ course_id: getCurrentCourseID()!, user_id: getCurrentUserID() })}
+            />
+          </If>
+          <If condition={deleteMaterial}>
+            <DeleteMaterialModal
+              context="removeMaterial"
+              onClose={() => setDeleteMaterial(false)}
+              onConfirm={() => removeMaterial({ course_id: getCurrentCourseID()!, id: getCurrentMaterialID() })}
             />
           </If>
           <Main>
@@ -113,7 +132,14 @@ const CourseById: React.FC<Props> = ({
                 </CreateCard>
                 <ContainerActivities>
                   {materials.map((material, idx) => (
-                    <Activities key={idx} material={material} />
+                    <Activities
+                      key={idx}
+                      material={material}
+                      deleteMaterial={() => {
+                        setCurrentMaterial(material.id);
+                        setDeleteMaterial(true);
+                      }}
+                    />
                   ))}
                 </ContainerActivities>
               </Content>
