@@ -4,6 +4,7 @@ import CourseStore from './course.store';
 import DashboardStore from './dashboard.store';
 import StudentCourseStore from './studentCourse.store';
 import NotificationStore from './notification.store';
+import MaterialStore from './material.store';
 
 class RootStore {
   public user: UserStore;
@@ -11,6 +12,7 @@ class RootStore {
   public dashboard: DashboardStore;
   public studentCourse: StudentCourseStore;
   public notification: NotificationStore;
+  public material: MaterialStore;
 
   constructor() {
     this.user = new UserStore();
@@ -18,6 +20,7 @@ class RootStore {
     this.dashboard = new DashboardStore();
     this.studentCourse = new StudentCourseStore();
     this.notification = new NotificationStore();
+    this.material = new MaterialStore();
   }
 }
 
@@ -32,7 +35,8 @@ hydrate('course', store.course);
 hydrate('dashboard', store.dashboard);
 hydrate('studentCourse', store.studentCourse);
 hydrate('notification', store.notification);
+hydrate('material', store.material);
 
-export { UserStore, CourseStore, DashboardStore, StudentCourseStore, NotificationStore };
+export { UserStore, CourseStore, DashboardStore, StudentCourseStore, NotificationStore, MaterialStore };
 
 export default store;

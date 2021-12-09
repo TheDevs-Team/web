@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { BiBook, FiDelete } from '~/utils';
+import { BiBook, FiDelete, BsImageFill, FiPlayCircle } from '~/utils';
 
 export const Container = styled.div`
   width: 100%;
@@ -33,7 +33,17 @@ export const IconContainer = styled.div`
   margin: 0 20px;
 `;
 
-export const IconMaterial = styled(BiBook)`
+export const IconDocument = styled(BiBook)`
+  font-size: 30px;
+  color: #67f7bd;
+`;
+
+export const IconVideo = styled(FiPlayCircle)`
+  font-size: 30px;
+  color: #67f7bd;
+`;
+
+export const IconImage = styled(BsImageFill)`
   font-size: 30px;
   color: #67f7bd;
 `;

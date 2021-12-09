@@ -3,6 +3,7 @@ declare type MaterialsType = {
   name: string;
   user: UserType;
   course: CourseType;
+  file: string;
   type: string;
   created_at?: Date;
   updated_at?: Date;

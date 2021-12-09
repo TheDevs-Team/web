@@ -42,6 +42,7 @@ type Props = {
   removeUser: boolean;
   removeUserInCourse: (value: CreateStudentCourseType) => void;
   setRemoveUser: (value: boolean) => void;
+  materials: MaterialsType[];
 };
 
 const CourseById: React.FC<Props> = ({
@@ -61,6 +62,7 @@ const CourseById: React.FC<Props> = ({
   removeUser,
   removeUserInCourse,
   setRemoveUser,
+  materials,
 }) => {
   return (
     <Container>
@@ -101,6 +103,7 @@ const CourseById: React.FC<Props> = ({
                 <YearCourse>{moment().format('Y')} - TURMA G2K</YearCourse>
               </DataCourse>
             </InfoCard>
+
             <If condition={tab === 'materials'}>
               <Content>
                 <CreateCard>
@@ -109,14 +112,13 @@ const CourseById: React.FC<Props> = ({
                   <Button>Criar Material</Button>
                 </CreateCard>
                 <ContainerActivities>
-                  <Activities />
-                  <Activities />
-                  <Activities /> <Activities />
-                  <Activities /> <Activities />
-                  <Activities />
+                  {materials.map((material, idx) => (
+                    <Activities key={idx} material={material} />
+                  ))}
                 </ContainerActivities>
               </Content>
             </If>
+
             <If condition={tab === 'addstudents'}>
               <Content>
                 <UsersContainer>
@@ -174,11 +176,9 @@ const CourseById: React.FC<Props> = ({
                   <p>Aqui você pode ver os materiais disponibilizados!</p>
                 </CreateCard>
                 <ContainerActivities>
-                  <Activities />
-                  <Activities />
-                  <Activities /> <Activities />
-                  <Activities /> <Activities />
-                  <Activities />
+                  {materials.map((material, idx) => (
+                    <Activities key={idx} material={material} />
+                  ))}
                 </ContainerActivities>
               </Content>
             </If>
