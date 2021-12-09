@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { FiUser, FiEdit, FiDelete } from '~/utils';
+import { FiUser, FiEdit, FiDelete, MdAdd } from '~/utils';
 
 export const Container = styled.section`
   width: 100%;
@@ -47,17 +47,20 @@ export const UserName = styled.p`
 `;
 
 export const ContentOptions = styled.div`
-  width: 20%;
+  width: 25%;
+
   height: 100%;
   display: flex;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: flex-end;
+  padding: 0 10px;
 `;
 
 export const EditIcon = styled(FiEdit)`
   font-size: 1.2rem;
   color: #d0cdcd;
   cursor: pointer;
+  margin: 0 50px;
 
   &:hover {
     color: #67b9f7;
@@ -72,6 +75,17 @@ export const DeleteIcon = styled(FiDelete)`
 
   &:hover {
     color: #f76767;
+    transition: 0.3s;
+  }
+`;
+
+export const AddIcon = styled(MdAdd)`
+  font-size: 1.2rem;
+  color: #fff;
+  cursor: pointer;
+
+  &:hover {
+    color: #67b9f7;
     transition: 0.3s;
   }
 `;

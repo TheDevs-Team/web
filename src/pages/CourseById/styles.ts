@@ -223,7 +223,7 @@ export const Materials = styled.button<TabVisibleType>`
 export const Students = styled.button<TabVisibleType>`
   border: none;
   height: 100%;
-  width: 100px;
+  padding: 0 12px;
 
   background: #2b2b2c;
   color: ${tabVisible(colors.tertiary.green, 'white')};
@@ -236,12 +236,11 @@ export const Students = styled.button<TabVisibleType>`
 `;
 
 export const UsersContainer = styled.div`
-  margin-left: 50px;
-  width: 65%;
+  width: 100%;
   display: flex;
   align-items: center;
   flex-direction: column;
-
+  justify-content: center;
   span {
     color: white;
     font-size: 20px;
@@ -250,5 +249,5 @@ export const UsersContainer = styled.div`
 `;
 
 export const Users = styled(UsersCard)`
-  width: 100%;
+  width: 60%;
 `;

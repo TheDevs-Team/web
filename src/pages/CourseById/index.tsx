@@ -1,13 +1,14 @@
 import { inject, observer } from 'mobx-react';
 import React, { useState, useEffect } from 'react';
-import { CourseStore } from '~/store';
+import { CourseStore, StudentCourseStore } from '~/store';
 import CourseById from './CourseById';
 
 type Props = {
   course: CourseStore;
+  studentCourse: StudentCourseStore;
 };
 
-const CourseByIdContainer: React.FC<Props> = ({ course }) => {
+const CourseByIdContainer: React.FC<Props> = ({ course, studentCourse }) => {
   const [hover, setHover] = useState<HoverIconsType>('');
   const [loaded, setLoaded] = useState(false);
   const [tab, setTab] = useState('materials');
@@ -16,6 +17,7 @@ const CourseByIdContainer: React.FC<Props> = ({ course }) => {
 
   const handleLoad = async () => {
     await course.find();
+    await studentCourse.setNotInCourse();
     setLoaded(true);
   };
 
@@ -24,8 +26,16 @@ const CourseByIdContainer: React.FC<Props> = ({ course }) => {
   }, []);
 
   return (
-    <CourseById setTab={setTab} tab={tab} hover={hover} setHover={handleHover} loaded={loaded} course={course.course} />
+    <CourseById
+      setTab={setTab}
+      tab={tab}
+      hover={hover}
+      setHover={handleHover}
+      loaded={loaded}
+      course={course.course}
+      notInCourse={studentCourse.notInCourse}
+    />
   );
 };
 
-export default inject('course')(observer(CourseByIdContainer));
+export default inject('course', 'studentCourse')(observer(CourseByIdContainer));

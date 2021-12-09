@@ -9,6 +9,15 @@ class StudentCourseAPI {
       return null;
     }
   };
+  static notInCourse = async (): Promise<UserType[]> => {
+    try {
+      const { data } = await api.get('/student-course/not-in-course');
+
+      return data;
+    } catch (error) {
+      return [];
+    }
+  };
 }
 
 export default StudentCourseAPI;

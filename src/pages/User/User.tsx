@@ -122,6 +122,8 @@ export const User: React.FC<Props> = ({
             <ContentUsers>
               {filteredUsers.map((user: UserType, idx: number) => (
                 <UsersCardStyled
+                  showDelete
+                  showEdit
                   key={idx}
                   name={user.name}
                   remove={() => {
@@ -142,6 +144,8 @@ export const User: React.FC<Props> = ({
               <TitleSection>Administradores</TitleSection>
               {adms.map((adm: UserType, idx) => (
                 <UsersCardStyled
+                  showDelete
+                  showEdit
                   key={idx}
                   name={adm.name}
                   remove={() => {
@@ -162,6 +166,8 @@ export const User: React.FC<Props> = ({
               <TitleSection>Usuários</TitleSection>
               {users.map((user: UserType, idx: number) => (
                 <UsersCardStyled
+                  showDelete
+                  showEdit
                   key={idx}
                   name={user.name}
                   remove={() => {
@@ -182,6 +188,8 @@ export const User: React.FC<Props> = ({
               <TitleSection>Pendentes</TitleSection>
               {pendings.map((user: UserType, idx: number) => (
                 <UsersCardStyled
+                  showDelete
+                  showEdit
                   key={idx}
                   name={user.name}
                   remove={() => {

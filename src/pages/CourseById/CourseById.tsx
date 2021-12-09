@@ -30,9 +30,10 @@ type Props = {
   course: CourseType;
   tab: string;
   setTab: (tab: string) => void;
+  notInCourse: UserType[];
 };
 
-const CourseById: React.FC<Props> = ({ hover, setHover, loaded, course, tab, setTab }) => {
+const CourseById: React.FC<Props> = ({ hover, setHover, loaded, course, tab, setTab, notInCourse }) => {
   return (
     <Container>
       <If condition={!loaded}>
@@ -47,8 +48,11 @@ const CourseById: React.FC<Props> = ({ hover, setHover, loaded, course, tab, set
                 <Materials tabVisible={tab === 'materials'} onClick={() => setTab('materials')}>
                   Materiais
                 </Materials>
-                <Students tabVisible={tab === 'students'} onClick={() => setTab('students')}>
-                  Alunos
+                <Students tabVisible={tab === 'participants'} onClick={() => setTab('participants')}>
+                  Participantes
+                </Students>
+                <Students tabVisible={tab === 'addstudents'} onClick={() => setTab('addstudents')}>
+                  Adicionar Alunos
                 </Students>
               </HeadInfo>
               <DataCourse>
@@ -72,26 +76,21 @@ const CourseById: React.FC<Props> = ({ hover, setHover, loaded, course, tab, set
                 </ContainerActivities>
               </Content>
             </If>
-            <If condition={tab === 'students'}>
+            <If condition={tab === 'addstudents'}>
               <Content>
-                <CreateCard>
-                  <span>Olá, Professor!</span>
-                  <p>Aqui você pode adicionar novos alunos para esse curso!</p>
-                  <Button>Adicionar Aluno</Button>
-                </CreateCard>
-                {/* <UsersContainer>
-                  <span>Alunos Participantes</span>
-                  <Users name="Eduardo" />
-                  <Users name="Carlos" />
-                  <Users name="Fabio" />
-                  <Users name="Vanessa" />
-                  <Users name="Marcola" />
-                  <Users name="Jonas" />
-                  <Users name="Jennifer" />
-                  <Users name="Rubens" />
-                  <Users name="Neymar" />
-                </UsersContainer> */}
+                <UsersContainer>
+                  <span>Alunos Disponíveis</span>
+                  {notInCourse.map((user, idx) => (
+                    <Users key={idx} name={user.name} showAdd />
+                  ))}
+                </UsersContainer>
               </Content>
+            </If>
+            <If condition={tab === 'participants'}>
+              <UsersContainer>
+                <span>Alunos Participantes</span>
+                <Users name="Eduardo" showDelete />
+              </UsersContainer>
             </If>
           </Main>
         </If>
