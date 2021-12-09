@@ -38,6 +38,7 @@ type Props = {
   addUserInCourse: (value: CreateStudentCourseType) => void;
   setCurrent: (id: string) => void;
   getCurrentUserID: () => string;
+  inCourse: StudentCourseType[];
 };
 
 const CourseById: React.FC<Props> = ({
@@ -53,6 +54,7 @@ const CourseById: React.FC<Props> = ({
   addUserInCourse,
   setCurrent,
   getCurrentUserID,
+  inCourse,
 }) => {
   return (
     <Container>
@@ -124,7 +126,17 @@ const CourseById: React.FC<Props> = ({
             <If condition={tab === 'participants'}>
               <UsersContainer>
                 <span>Alunos Participantes</span>
-                <Users name="Eduardo" showDelete />
+                {inCourse.map((user, idx) => (
+                  <Users
+                    key={idx}
+                    name={user.user.name}
+                    showDelete
+                    add={() => {
+                      setCurrent(user.user.id);
+                      setAddUser(true);
+                    }}
+                  />
+                ))}
               </UsersContainer>
             </If>
           </Main>

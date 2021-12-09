@@ -21,6 +21,7 @@ const CourseByIdContainer: React.FC<Props> = ({ course, studentCourse, user }) =
   const handleLoad = async () => {
     await course.find();
     await studentCourse.setNotInCourse();
+    await studentCourse.setInCourse();
     setLoaded(true);
   };
 
@@ -32,8 +33,10 @@ const CourseByIdContainer: React.FC<Props> = ({ course, studentCourse, user }) =
     const response = await studentCourse.addInCourse(values);
 
     if (response) {
-      setAddUser(false);
-      return notify('success', 'Usuário adicionado com sucesso!');
+      notify('success', 'Usuário adicionado com sucesso!');
+      return setTimeout(() => {
+        window.location.reload();
+      }, 1000);
     }
 
     return notify('error', 'Usuário ja está cadastrado ao curso!');
@@ -61,6 +64,7 @@ const CourseByIdContainer: React.FC<Props> = ({ course, studentCourse, user }) =
       addUserInCourse={addUserInCourse}
       setCurrent={setCurrent}
       getCurrentUserID={getCurrentUserID}
+      inCourse={studentCourse.inCourses}
     />
   );
 };

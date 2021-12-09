@@ -11,6 +11,10 @@ class StudentCourseStore {
   @observable
   notInCourse: UserType[] = [];
 
+  @persist
+  @observable
+  inCourses: StudentCourseType[] = [];
+
   constructor() {
     makeObservable(this);
   }
@@ -42,6 +46,17 @@ class StudentCourseStore {
     const response = await StudentCourseAPI.addInCourse(values);
 
     return response;
+  };
+
+  @action
+  setInCourse = async (): Promise<StudentCourseType[]> => {
+    const response = await StudentCourseAPI.listInCourse(getCurrentCourseID()!);
+    console.log(response);
+    if (response) {
+      return (this.inCourses = response);
+    }
+
+    return [];
   };
 }
 
