@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Menu, LoadingPage, UsersCard, RemoveUserModal } from '~/components';
+import { Menu, LoadingPage, UsersCard, RemoveUserModal, CreateMaterialModal } from '~/components';
 import { colors } from '~/theme';
 import { FiUsers, MdPendingActions, MdOutlineLibraryBooks, MdOutlineSchool } from '~/utils';
 import { ifStyle } from '@platformbuilders/helpers';
@@ -255,3 +255,5 @@ export const Users = styled(UsersCard)`
 export const AddModal = styled(RemoveUserModal)``;
 
 export const DeleteMaterialModal = styled(RemoveUserModal)``;
+
+export const AddMaterialModal = styled(CreateMaterialModal)``;

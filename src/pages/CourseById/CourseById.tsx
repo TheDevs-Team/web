@@ -21,6 +21,7 @@ import {
   UsersContainer,
   AddModal,
   DeleteMaterialModal,
+  AddMaterialModal,
 } from './styles';
 
 import moment from 'moment';
@@ -49,6 +50,8 @@ type Props = {
   setDeleteMaterial: (value: boolean) => void;
   getCurrentMaterialID: () => string;
   setCurrentMaterial: (value: string) => void;
+  addMaterial: boolean;
+  setAddMaterial: (value: boolean) => void;
 };
 
 const CourseById: React.FC<Props> = ({
@@ -74,6 +77,8 @@ const CourseById: React.FC<Props> = ({
   setDeleteMaterial,
   setCurrentMaterial,
   getCurrentMaterialID,
+  setAddMaterial,
+  addMaterial,
 }) => {
   return (
     <Container>
@@ -104,6 +109,9 @@ const CourseById: React.FC<Props> = ({
               onConfirm={() => removeMaterial({ course_id: getCurrentCourseID()!, id: getCurrentMaterialID() })}
             />
           </If>
+          <If condition={addMaterial}>
+            <AddMaterialModal onClose={() => setAddMaterial(false)} onConfirm={() => {}} />
+          </If>
           <Main>
             <InfoCard>
               <HeadInfo>
@@ -128,7 +136,7 @@ const CourseById: React.FC<Props> = ({
                 <CreateCard>
                   <span>Olá, Professor!</span>
                   <p>Aqui você pode criar novos materiais pra este curso!</p>
-                  <Button>Criar Material</Button>
+                  <Button onClick={() => setAddMaterial(true)}>Criar Material</Button>
                 </CreateCard>
                 <ContainerActivities>
                   {materials.map((material, idx) => (

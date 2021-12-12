@@ -18,6 +18,7 @@ const CourseByIdContainer: React.FC<Props> = ({ course, studentCourse, user, mat
   const [addUser, setAddUser] = useState(false);
   const [removeUser, setRemoveUser] = useState(false);
   const [deleteMaterial, setDeleteMaterial] = useState(false);
+  const [addMaterial, setAddMaterial] = useState(false);
 
   const handleHover = (item: HoverIconsType) => setHover(item);
 
@@ -112,6 +113,8 @@ const CourseByIdContainer: React.FC<Props> = ({ course, studentCourse, user, mat
       setDeleteMaterial={setDeleteMaterial}
       getCurrentMaterialID={getCurrentMaterialID}
       setCurrentMaterial={setCurrentMaterial}
+      addMaterial={addMaterial}
+      setAddMaterial={setAddMaterial}
     />
   );
 };
