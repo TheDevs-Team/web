@@ -6,6 +6,7 @@ type PropsPreview = {
 
 export const Container = styled.ul`
   margin-top: 20px;
+  width: 50%;
 
   li {
     display: flex;
@@ -13,6 +14,7 @@ export const Container = styled.ul`
     align-items: center;
     color: #444;
     margin: 15px 0;
+    width: 100%;
 
     div {
       display: flex;
@@ -46,8 +48,8 @@ export const FileInfo = styled.div`
 `;
 
 export const Preview = styled.div`
-  width: 36px;
-  height: 36px;
+  width: 42px;
+  height: 42px;
   margin-right: 10px;
   border-radius: 5px;
   background-image: url(${(props: PropsPreview) => props.src});
