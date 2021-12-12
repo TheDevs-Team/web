@@ -19,14 +19,6 @@ const UserContainer: React.FC<Props> = ({ user }) => {
   const [modalRemoveUser, setModalRemoveUser] = useState(false);
   const [modalUpdateUser, setModalUpdateUser] = useState(false);
   const [modalCreateUser, setModalCreateUser] = useState(false);
-  const [otherProfile, setOtherProfile] = useState({
-    id: '',
-    type: '',
-    name: '',
-    phone: '',
-    password: '',
-    confirm_password: '',
-  });
 
   const handleHover = (item: HoverIconsType) => setHover(item);
 

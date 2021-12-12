@@ -1,17 +1,14 @@
-/* eslint-disable @typescript-eslint/no-non-null-assertion */
 import { inject, observer } from 'mobx-react';
 import React, { useEffect, useState } from 'react';
 import Profile from './Profile';
 import { UserStore } from 'store';
 import { getUserData, notify } from '~/utils';
-import { useHistory } from 'react-router-dom';
 
 type Props = {
   user: UserStore;
 };
 
 const ProfileContainer: React.FC<Props> = ({ user }) => {
-  const history = useHistory();
   const [loaded, setLoaded] = useState(false);
   const [profile, setProfile] = useState({
     id: '',

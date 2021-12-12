@@ -1,7 +1,7 @@
 import { inject, observer } from 'mobx-react';
 import React, { useState } from 'react';
 import { CourseStore } from '~/store';
-import { getOtherUserData, notify } from '~/utils';
+import { notify } from '~/utils';
 import { Modal, Container, Content, ButtonStyled, Input, Form, Span, Alert, Close, CloseWrapper } from './styles';
 
 type Props = {

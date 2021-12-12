@@ -18,3 +18,4 @@ export { default as CreateUserModal } from './CreateUserModal';
 export { default as CreateCourseModal } from './CreateCourseModal';
 export * from './RemoveCourseModal';
 export { default as UpdateCourseModal } from './UpdateCourseModal';
+export { default as CreateMaterialModal } from './CreateMaterialModal';

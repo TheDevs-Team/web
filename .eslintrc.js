@@ -66,5 +66,7 @@ module.exports = {
     'import/no-named-as-default': 'off',
     'import/no-named-as-default-member': 'off',
     '@typescript-eslint/no-explicit-any': 'off',
+    'no-non-null-assertion': 'off',
+    '@typescript-eslint/no-non-null-assertion': 'off',
   },
 };
