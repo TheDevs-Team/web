@@ -1,17 +1,27 @@
 import { inject, observer } from 'mobx-react';
 import React, { useState } from 'react';
 import { MaterialStore } from '~/store';
-import { Container, UploadFileStyled, FileListStyled, Contend, Input, ButtonStyled } from './styles';
+import {
+  Container,
+  UploadFileStyled,
+  FileListStyled,
+  Contend,
+  Input,
+  ButtonStyled,
+  CloseWrapper,
+  Close,
+} from './styles';
 import filesize from 'filesize';
 import api from '~/services/api';
-import { FaWindowClose, getCurrentCourseID, notify } from '~/utils';
+import { getCurrentCourseID, notify } from '~/utils';
 import { isEmpty } from 'lodash';
 
 type Props = {
   material?: MaterialStore;
+  onClose: () => void;
 };
 
-const CreateMaterialModal: React.FC<Props> = ({ material, ...rest }) => {
+const CreateMaterialModal: React.FC<Props> = ({ material, onClose, ...rest }) => {
   const [uploadedFile, setUploadedFile] = useState({});
 
   const [progress, setProgress] = useState(0);
@@ -30,8 +40,6 @@ const CreateMaterialModal: React.FC<Props> = ({ material, ...rest }) => {
       file: fileLink,
       type: 'IMAGE',
     });
-
-    console.log(response);
 
     if (response) {
       notify('success', 'Material adicionado com sucesso');
@@ -98,6 +106,9 @@ const CreateMaterialModal: React.FC<Props> = ({ material, ...rest }) => {
   return (
     <Container {...rest}>
       <Contend>
+        <CloseWrapper>
+          <Close onClick={onClose} />
+        </CloseWrapper>
         <UploadFileStyled onUpload={(file) => handleUpload(file[0])} />
         <FileListStyled
           file={uploadedFile}

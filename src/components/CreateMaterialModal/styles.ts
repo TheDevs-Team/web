@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { Button } from '../Button';
 import { FileList } from '../FileList';
+import { CloseIcon } from '../Header/styles';
 import { UploadFile } from '../UploadFile';
 
 export const Container = styled.section`
@@ -35,8 +36,21 @@ export const Input = styled.input`
   border-radius: 8px;
 `;
 
-export const ButtonStyled = styled(Button)``;
+export const ButtonStyled = styled(Button)`
+  margin-bottom: 10px;
+`;
 
 export const FileListStyled = styled(FileList)``;
 
 export const UploadFileStyled = styled(UploadFile)``;
+
+export const CloseWrapper = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  padding-bottom: 100px;
+`;
+
+export const Close = styled(CloseIcon)`
+  padding: 10px 10px 0 0;
+`;
