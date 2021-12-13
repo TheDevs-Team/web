@@ -33,7 +33,7 @@ export const Activities: React.FC<Props> = ({ material, deleteMaterial }) => {
           <If condition={material.type === 'VIDEO'}>
             <IconVideo />
           </If>
-          <If condition={material.type === 'DOCUMENT'}>
+          <If condition={material.type === 'TEXT' || material.type === 'APPLICATION'}>
             <IconDocument />
           </If>
         </IconContainer>

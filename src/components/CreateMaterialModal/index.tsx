@@ -16,6 +16,7 @@ const CreateMaterialModal: React.FC<Props> = ({ material, ...rest }) => {
 
   const [progress, setProgress] = useState(0);
   const [fileLink, setFileLink] = useState('');
+  const [fileType, setFileType] = useState('');
   const [fileUploaded, setFileUploaded] = useState(false);
   const [name, setName] = useState('');
 
@@ -28,10 +29,8 @@ const CreateMaterialModal: React.FC<Props> = ({ material, ...rest }) => {
       name,
       course_id: getCurrentCourseID()!,
       file: fileLink,
-      type: 'IMAGE',
+      type: fileType,
     });
-
-    console.log(response);
 
     if (response) {
       notify('success', 'Material adicionado com sucesso');
@@ -46,6 +45,7 @@ const CreateMaterialModal: React.FC<Props> = ({ material, ...rest }) => {
 
   const processUpload = async (file: any) => {
     setUploadedFile(file);
+    setFileType(file.type);
 
     const data = new FormData();
 
@@ -74,15 +74,14 @@ const CreateMaterialModal: React.FC<Props> = ({ material, ...rest }) => {
     setProgress(0);
     setFileUploaded(false);
     setFileLink('');
+    setFileType('');
 
     const uploaded = {
       file,
       name: file.name,
       readableSize: filesize(file.size),
       preview: URL.createObjectURL(file),
-      uploaded: false,
-      error: false,
-      url: null,
+      type: file.type.split('/')[0].toUpperCase(),
     };
 
     processUpload(uploaded);
@@ -93,6 +92,7 @@ const CreateMaterialModal: React.FC<Props> = ({ material, ...rest }) => {
     setProgress(0);
     setFileUploaded(false);
     setFileLink('');
+    setFileType('');
   };
 
   return (
