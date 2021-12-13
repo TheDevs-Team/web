@@ -18,6 +18,12 @@ class MaterialStore {
   current: string | undefined | null;
 
   @action
+  create = async (values: CreateMaterialType): Promise<boolean> => {
+    const response = await MaterialAPI.create(values);
+    return response;
+  };
+
+  @action
   list = async (): Promise<MaterialsType[]> => {
     const response = await MaterialAPI.list(getCurrentCourseID()!);
 

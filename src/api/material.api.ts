@@ -1,6 +1,15 @@
 import api from '~/services/api';
 
 class MaterialAPI {
+  static create = async (values: CreateMaterialType): Promise<boolean> => {
+    try {
+      await api.post('/material/create', values);
+      return true;
+    } catch (error) {
+      return false;
+    }
+  };
+
   static list = async (course_id: string): Promise<MaterialsType[]> => {
     try {
       const { data } = await api.get(`/material/${course_id}`);
@@ -9,6 +18,7 @@ class MaterialAPI {
       return [];
     }
   };
+
   static remove = async (values: RemoveMaterialsType): Promise<boolean> => {
     try {
       await api.post(`/material/remove`, values);

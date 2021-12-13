@@ -110,7 +110,7 @@ const CourseById: React.FC<Props> = ({
             />
           </If>
           <If condition={addMaterial}>
-            <AddMaterialModal onClose={() => setAddMaterial(false)} onConfirm={() => {}} />
+            <AddMaterialModal />
           </If>
           <Main>
             <InfoCard>

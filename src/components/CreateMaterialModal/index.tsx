@@ -1,22 +1,48 @@
 import { inject, observer } from 'mobx-react';
 import React, { useState } from 'react';
-import { CourseStore } from '~/store';
-import { Container, UploadFileStyled, FileListStyled, Contend } from './styles';
+import { MaterialStore } from '~/store';
+import { Container, UploadFileStyled, FileListStyled, Contend, Input, ButtonStyled } from './styles';
 import filesize from 'filesize';
 import api from '~/services/api';
+import { FaWindowClose, getCurrentCourseID, notify } from '~/utils';
+import { isEmpty } from 'lodash';
 
 type Props = {
-  onClose: () => void;
-  onConfirm: () => void;
-  course?: CourseStore;
+  material?: MaterialStore;
 };
 
-const CreateMaterialModal: React.FC<Props> = ({ onClose, onConfirm, ...rest }) => {
+const CreateMaterialModal: React.FC<Props> = ({ material, ...rest }) => {
   const [uploadedFile, setUploadedFile] = useState({});
 
   const [progress, setProgress] = useState(0);
   const [fileLink, setFileLink] = useState('');
   const [fileUploaded, setFileUploaded] = useState(false);
+  const [name, setName] = useState('');
+
+  const createMaterial = async () => {
+    if (isEmpty(name)) {
+      return notify('info', 'Digite o titulo do material');
+    }
+
+    const response = await material?.create({
+      name,
+      course_id: getCurrentCourseID()!,
+      file: fileLink,
+      type: 'IMAGE',
+    });
+
+    console.log(response);
+
+    if (response) {
+      notify('success', 'Material adicionado com sucesso');
+
+      return setTimeout(() => {
+        window.location.reload();
+      }, 1500);
+    }
+
+    return notify('error', 'Erro ao adicionar o material');
+  };
 
   const processUpload = async (file: any) => {
     setUploadedFile(file);
@@ -80,9 +106,19 @@ const CreateMaterialModal: React.FC<Props> = ({ onClose, onConfirm, ...rest }) =
           fileUploaded={fileUploaded}
           onDelete={onDelete}
         />
+        {fileUploaded && (
+          <>
+            <Input
+              placeholder="Digite o titulo do material"
+              value={name}
+              onChange={({ target }) => setName(target.value)}
+            />
+            <ButtonStyled onClick={createMaterial}>Adicionar</ButtonStyled>
+          </>
+        )}
       </Contend>
     </Container>
   );
 };
 
-export default inject('course')(observer(CreateMaterialModal));
+export default inject('material')(observer(CreateMaterialModal));
