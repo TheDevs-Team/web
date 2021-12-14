@@ -176,8 +176,8 @@ const Course: React.FC<Props> = ({
                   name={course.course.name}
                   description={textLimiter(course.course.description)}
                   onClick={() => {
-                    setCurrentCourseID(course.id);
-                    toCourse(`/cursos/${course.id}`);
+                    setCurrentCourseID(course.course.id);
+                    toCourse(`/cursos/${course.course.id}`);
                   }}
                 />
               ))}
